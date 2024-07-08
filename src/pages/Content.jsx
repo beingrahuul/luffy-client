@@ -83,7 +83,7 @@ const Content = ({type}) => {
       }
     }
     fetchData()
-  }, [id])
+  }, [id, setEpisodeId])
 
   return (
     <Container>
