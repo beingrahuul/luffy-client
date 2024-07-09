@@ -29,14 +29,14 @@ const Carousel = styled.div`
   }
 `
 
-function CardContainer({data, title, comingSoon}) {
+function CardContainer({data, title, recommedation}) {
   
   return (
     <Container>
       <Title>{title}</Title>
       <Carousel>
         {data.map((item) => (
-          <Card key={item.id} item={item} comingSoon = {comingSoon}/>
+          <Card key={item.id} item={item} recommedation = {recommedation}/>
         ))}
       </Carousel>
     </Container>

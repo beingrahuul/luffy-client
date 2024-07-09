@@ -65,7 +65,7 @@ const Misc = styled.p`
   margin: 0;
 `
 
-const Card = ({item, comingSoon}) => {
+const Card = ({item, recommedation}) => {
 
   const handleClick = () => {
     window.location.href = `/${
@@ -75,14 +75,13 @@ const Card = ({item, comingSoon}) => {
   return (
     <Container onClick={handleClick}>
       <ImageContainer>
-        <Image src={item.poster} />
+        <Image src={item.poster || item.image} />
       </ImageContainer>
 
       <InfoContainer>
-        {comingSoon ? (
+        {recommedation ? (
             <MiscContainer>
               <Misc>{item.type}</Misc>
-              <Misc>{item.releaseDate}</Misc>
             </MiscContainer>
         ) : (
             <MiscContainer>

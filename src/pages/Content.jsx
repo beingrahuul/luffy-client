@@ -8,6 +8,7 @@ import VideoPlayer from '../components/VideoPlayer'
 import InfoCard from '../components/InfoCard'
 import Episodes from '../components/Episodes'
 import Server from '../components/Server'
+import Recommendation from '../components/Recommendation';
 
 
 const Container = styled.div`
@@ -97,10 +98,12 @@ const Content = ({type}) => {
           <MainContainer>
 
             <LeftContainer>
-              <VideoPlayer content={content}/>
+              <VideoPlayer />
 
               <Server />
               {type === "tv" && <Episodes data={content.episodes} />}
+
+              <Recommendation data={content.recommendations}/>
             </LeftContainer>
             
             <RightContainer>
