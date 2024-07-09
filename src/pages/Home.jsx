@@ -9,7 +9,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: #2F323B;
+  background-color: #1F1F1F;
   gap: 20px;
 `
 

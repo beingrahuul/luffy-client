@@ -67,18 +67,20 @@ const Misc = styled.p`
   margin: 0;
 `
 
-const Card = ({item, recommedation, search}) => {
+const Card = ({item, recommedation}) => {
 
   const handleClick = () => {
     window.location.href = `/${
       item.id
     }`
   }
+
+  console.log(item.image)
   return (
     <Container onClick={handleClick}>
       <ImageContainer>
         {
-          item.poster === null && item.image === null ? (
+          item.poster === "/images/no_thumbnail.jpg" || item.image === "/images/no_thumbnail.jpg" ? (
             <Image src="https://i.imgur.com/CVBcGsU.jpeg" />
           ) : (
             <Image src={item.poster ? item.poster : item.image} />
