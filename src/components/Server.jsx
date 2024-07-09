@@ -28,13 +28,13 @@ const Button = styled.div`
 `
 
 
-const Server = ({mediaId}) => {
+const Server = () => {
 
   const [server, setServer] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
-  const { episodeId } = useEpisode();
+  const { episodeId, mediaId, selectedServer, setSelectedServer } = useEpisode();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -51,6 +51,7 @@ const Server = ({mediaId}) => {
         }
         const data = await response.json()
         setServer(data)
+        setSelectedServer(data[0])
         console.log("Server data: ", data)
       } catch (error) {
         setError(error.message)
@@ -60,7 +61,7 @@ const Server = ({mediaId}) => {
     }
     fetchData()
   }
-  , [episodeId, mediaId])
+  , [episodeId, mediaId, setSelectedServer])
 
 
   return (
@@ -69,7 +70,13 @@ const Server = ({mediaId}) => {
         loading ? <p>Loading...</p> : 
         error ? <p>{error}</p> : (
           server.map((server, index) => (
-            <Button key={index}>
+            <Button 
+              key={index}
+              onClick={() => {
+                setSelectedServer(server)
+              }}
+              style={{backgroundColor: selectedServer === server ? '#45a049' : '#4CAF50', color: selectedServer === server ? 'black' : 'white'  }}
+            >
               {server.name}
             </Button>
           ))

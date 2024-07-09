@@ -89,7 +89,7 @@ const InfoCard = ({content}) => {
       <InfoContainer>
         <Title>{content.title}</Title>
         <Group>
-          <IMDB>{`IMDb ${content.rating}`}</IMDB>
+          <IMDB>{`IMDb ${content.rating === null ? 'N/A' : content.rating}`}</IMDB>
           <Misc>{content.duration}</Misc>
         </Group>
         <Description>

@@ -57,7 +57,7 @@ const Content = ({type}) => {
   const [error, setError] = useState(null)
   const [content, setContent] = useState(null)
 
-  const { setEpisodeId } = useEpisode();
+  const { setEpisodeId, setMediaId } = useEpisode();
 
   const id = `${type}/${tempId}`
   useEffect(() => {
@@ -75,6 +75,7 @@ const Content = ({type}) => {
         }
         const data = await response.json()
         setEpisodeId(data.episodes[0].id)
+        setMediaId(data.id)
         setContent(data)
       } catch (error) {
         setError(error.message)
@@ -83,7 +84,7 @@ const Content = ({type}) => {
       }
     }
     fetchData()
-  }, [id, setEpisodeId])
+  }, [id, setEpisodeId, setMediaId])
 
   return (
     <Container>
@@ -98,7 +99,7 @@ const Content = ({type}) => {
             <LeftContainer>
               <VideoPlayer content={content}/>
 
-              <Server mediaId={content.id}/>
+              <Server />
               {type === "tv" && <Episodes data={content.episodes} />}
             </LeftContainer>
             
