@@ -75,7 +75,6 @@ const Card = ({item, recommedation}) => {
     }`
   }
 
-  console.log(item.image)
   return (
     <Container onClick={handleClick}>
       <ImageContainer>
