@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+//image
+
 const Container = styled.div`
   display: flex;
   align-items: center;
@@ -65,7 +67,7 @@ const Misc = styled.p`
   margin: 0;
 `
 
-const Card = ({item, recommedation}) => {
+const Card = ({item, recommedation, search}) => {
 
   const handleClick = () => {
     window.location.href = `/${
@@ -75,7 +77,13 @@ const Card = ({item, recommedation}) => {
   return (
     <Container onClick={handleClick}>
       <ImageContainer>
-        <Image src={item.poster || item.image} />
+        {
+          item.poster === null && item.image === null ? (
+            <Image src="https://i.imgur.com/CVBcGsU.jpeg" />
+          ) : (
+            <Image src={item.poster ? item.poster : item.image} />
+          )
+        }
       </ImageContainer>
 
       <InfoContainer>

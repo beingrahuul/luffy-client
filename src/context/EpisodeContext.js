@@ -14,6 +14,7 @@ export const EpisodeProvider = ({ children }) => {
   const [playerData, setPlayerData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [search, setSearch] = useState('');
 
 
   useEffect(() => {
@@ -52,6 +53,8 @@ export const EpisodeProvider = ({ children }) => {
       selectedServer, 
       setSelectedServer, 
       playerData,
+      search,
+      setSearch,
       loading,
       error
       }}>

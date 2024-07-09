@@ -20,19 +20,15 @@ const VideoPlayer = () => {
 
   useEffect(() => {
     if (loading) {
-      console.log('loading');
       return;
     }
     if (error) {
-      console.log('error');
       return;
     }
     if (!playerData || !playerData.sources || !playerData.sources[0] || !playerData.sources[0].url) {
-      console.log('no data');
       return;
     }
 
-    console.log('playerData: ', playerData);
 
     const videoElement = videoRef.current;
     if (Hls.isSupported()) {
@@ -45,7 +41,7 @@ const VideoPlayer = () => {
     } else if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
       videoElement.src = playerData.sources[0].url;
       videoElement.addEventListener('loadedmetadata', () => {
-        videoElement.play();
+        videoElement.pause();
       });
     }
   }, [playerData, loading, error]);

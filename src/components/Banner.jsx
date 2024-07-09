@@ -1,12 +1,13 @@
 import styled from 'styled-components'
 
 //images
-import BANNER from '../images/background.jpeg';
+import BANNER from '../images/background.webp';
 
 const Container = styled.div`
   display: flex;
   width: 100vw;
   align-items: center;
+  justify-content: right;
   min-height: 600px;
   background-image: url(${BANNER});
   background-size: cover;

@@ -1,7 +1,9 @@
 import styled from 'styled-components';
+import {useState } from 'react';
+import { useNavigate} from 'react-router-dom';
 
 //icons
-import SEARCH from '../icons/search.svg';
+//import SEARCH from '../icons/search.svg';
 import NOTI from '../icons/notification.svg';
 import SETTING from '../icons/setting.svg';
 
@@ -42,7 +44,7 @@ const SearchContainer = styled.div`
 
 const Search = styled.input`
   height: 100%;
-  width: 85%;
+  width: 100%;
   padding: 10px 0px 10px 20px;
   outline: none;
   border: none;
@@ -50,22 +52,22 @@ const Search = styled.input`
   font-family: "Poppins", sans-serif;
 `
 
-const SearchButton = styled.div`
-  background-color: #D63837;
-  height: 100%;
-  width: 15%;
-  border-left: 2px solid black;
-  padding-right: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-`
+//const SearchButton = styled.div`
+  //background-color: #D63837;
+  //height: 100%;
+  //width: 15%;
+  //border-left: 2px solid black;
+  //padding-right: 10px;
+  //display: flex;
+  //justify-content: center;
+//  align-items: center;
+ // cursor: pointer;
+//`
 
-const SearchImage = styled.img`
-  width: 40px;
-  height: 40px;
-`
+//const SearchImage = styled.img`
+//  width: 40px;
+//  height: 40px;
+//`
 
 const LinkContainer = styled.div`
   display: flex;
@@ -115,6 +117,20 @@ const AccountImage = styled.img`
 
 
 const Navbar = () => {
+
+  const [search, setSearch ] = useState('');
+
+  const navigate = useNavigate();
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setSearch(value);
+    if (value === '') {
+      navigate(`/`);
+    } else {
+      navigate(`/search/${value}`);
+    }
+  }
+
   return (
     <Container>
       <LogoContainer>
@@ -122,10 +138,12 @@ const Navbar = () => {
       </LogoContainer>
 
       <SearchContainer>
-        <Search type="text" placeholder="Search for Movies and TV shows" />
-        <SearchButton>
-          <SearchImage src={SEARCH} alt="search" />
-        </SearchButton>
+        <Search 
+          type="text" 
+          placeholder="Search for Movies and TV shows" 
+          value={search}
+          onChange={handleChange}  
+        />
       </SearchContainer>
 
       <LinkContainer>

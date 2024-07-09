@@ -18,6 +18,7 @@ const Container = styled.div`
   padding-top: 40px;
   background-color: #22252F;
   color: white;
+  flex-direction: column;
 `
 
 const MainContainer = styled.div`
@@ -103,7 +104,6 @@ const Content = ({type}) => {
               <Server />
               {type === "tv" && <Episodes data={content.episodes} />}
 
-              <Recommendation data={content.recommendations}/>
             </LeftContainer>
             
             <RightContainer>
@@ -111,6 +111,7 @@ const Content = ({type}) => {
             </RightContainer>
 
           </MainContainer>
+          <Recommendation data={content.recommendations}/>
         </>
       )}
     </Container>
