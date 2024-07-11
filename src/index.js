@@ -8,11 +8,13 @@ import App from './App';
 
 //context
 import { EpisodeProvider } from './context/EpisodeContext';
+import GlobalStyle from './styles/GlobalStyle';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <EpisodeProvider>
+      <GlobalStyle />
       <App />
       <Analytics />
       <SpeedInsights />

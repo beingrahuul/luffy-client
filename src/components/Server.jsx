@@ -52,7 +52,6 @@ const Server = () => {
         const data = await response.json()
         setServer(data)
         setSelectedServer(data[0])
-        console.log("Server data: ", data)
       } catch (error) {
         setError(error.message)
       } finally {

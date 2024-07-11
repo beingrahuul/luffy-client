@@ -9,6 +9,7 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Content from './pages/Content';
 import Search from './pages/Search';
+//import MainVideo from './pages/MainVideo';
 
 
 function App() {

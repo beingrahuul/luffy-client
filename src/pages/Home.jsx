@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 //components
-import Banner from '../components/Banner'
 import CardContainer from '../components/CardContainer'
+import BannerSlider from '../components/BannerSlider'
 
 const Container = styled.div`
   display: flex;
@@ -38,7 +38,7 @@ function Home() {
 
   return (
     <Container>
-      <Banner />
+      <BannerSlider />
       {loading ? (
         <h1>Loading...</h1>
       ) : error ? (

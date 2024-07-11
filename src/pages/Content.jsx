@@ -99,7 +99,7 @@ const Content = ({type}) => {
           <MainContainer>
 
             <LeftContainer>
-              <VideoPlayer />
+              <VideoPlayer data={content.cover} />
 
               <Server />
               {type === "tv" && <Episodes data={content.episodes} />}

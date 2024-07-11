@@ -24,6 +24,8 @@ export const EpisodeProvider = ({ children }) => {
   }, [episodeId, mediaId, selectedServer]);
 
   const fetchEpisodeDetails = async (episodeId, mediaId, selectedServer) => {
+    setLoading(true);
+    setError(null);
     try {
       const response = await fetch("https://luffy-server-production.up.railway.app/watch", {
         method: 'POST',
