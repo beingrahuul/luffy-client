@@ -4,6 +4,7 @@ import styled from 'styled-components'
 //components
 import CardContainer from '../components/CardContainer'
 import BannerSlider from '../components/BannerSlider'
+import Loader from '../components/Loader'
 
 const Container = styled.div`
   display: flex;
@@ -40,7 +41,7 @@ function Home() {
     <Container>
       <BannerSlider />
       {loading ? (
-        <h1>Loading...</h1>
+        <Loader height="50vh" width="100vw" type={"mutatingDots"}/>
       ) : error ? (
         <h1>Error: {error}</h1>
       ) : (

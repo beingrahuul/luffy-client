@@ -9,6 +9,7 @@ import InfoCard from '../components/InfoCard'
 import Episodes from '../components/Episodes'
 import Server from '../components/Server'
 import Recommendation from '../components/Recommendation';
+import Loader from '../components/Loader';
 
 
 const Container = styled.div`
@@ -16,7 +17,7 @@ const Container = styled.div`
   width: 100vw;
   height: 100%;
   padding-top: 40px;
-  background-color: #22252F;
+  background-color: #1C1E22;
   color: white;
   flex-direction: column;
 `
@@ -91,7 +92,7 @@ const Content = ({type}) => {
   return (
     <Container>
       {loading ? (
-        <h1>Loading...</h1>
+        <Loader height="100vh" width="100vw" bgColor={"#1C1E22"} type={"mutatingDots"}/>
       ) : error ? (
         <h1>Error: {error}</h1>
       ) : (
@@ -99,7 +100,7 @@ const Content = ({type}) => {
           <MainContainer>
 
             <LeftContainer>
-              <VideoPlayer data={content.cover} />
+              <VideoPlayer cover={content.cover} title={content.title}/>
 
               <Server />
               {type === "tv" && <Episodes data={content.episodes} />}

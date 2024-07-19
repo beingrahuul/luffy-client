@@ -1,11 +1,12 @@
 import {useEffect, useState} from 'react'
 import styled from 'styled-components'
 import { useEpisode } from '../context/EpisodeContext'
+import Loader from './Loader'
 
 const Container = styled.div`
   display: flex;
   height: 100%;
-  background-color: #22252F;
+  background-color: #1C1E22;
   color: white;
 `
 
@@ -66,7 +67,7 @@ const Server = () => {
   return (
     <Container>
       {
-        loading ? <p>Loading...</p> : 
+        loading ? <Loader height="100%" width="100%" bgColor={"#1C1E22"} type={"mutatingDots"}/> : 
         error ? <p>{error}</p> : (
           server.map((server, index) => (
             <Button 

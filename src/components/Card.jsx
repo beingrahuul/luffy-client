@@ -6,24 +6,23 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  min-width: 242px;
-  min-height: 377px;
+  width: 200px;
+  height: 334.9px;
   background-color: #303030;
-  border-radius: 10px;
+  border-radius: 5px;
   overflow: hidden;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 
-
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
   }
 
 `
 
 const ImageContainer = styled.div`
   width: 100%;
-  height: 285px;
+  height: 270px;
 `
 
 const Image = styled.img`
@@ -38,12 +37,12 @@ const InfoContainer = styled.div`
   gap: 10px;
   flex-direction: column;
   width: 85%;
-  margin-top: 20px;
+  margin-top: 10px;
 `
 
 const Title = styled.h1`
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 500;
   color: white;
   margin: 0;
 `
@@ -62,7 +61,7 @@ const Group = styled.div`
 `
 
 const Misc = styled.p`
-  font-size: 14px;
+  font-size: 12px;
   color: white;
   margin: 0;
 `

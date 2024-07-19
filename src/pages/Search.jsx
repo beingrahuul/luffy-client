@@ -5,6 +5,7 @@ import styled from "styled-components";
 
 //components
 import Card from "../components/Card";
+import Loader from "../components/Loader";
 
 const Container = styled.div`
   display: flex;
@@ -13,6 +14,7 @@ const Container = styled.div`
   height: 100%;
   width: 100%;
   flex-direction: column;
+  margin-top: 40px;
 `;
 
 const MainContainer = styled.div`
@@ -81,7 +83,7 @@ const Search = () => {
       <Title>Search Results for {query}</Title>
       <MainContainer>
       {loading ? (
-        <h1>Loading...</h1>
+        <Loader height="400px" width="100vw" bgColor={"1C1E22"} type={"mutatingDots"}/>
       ) : error ? (
         <h1>{error}</h1>
       ) : results.length === 0 ? (

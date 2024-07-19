@@ -6,9 +6,11 @@ import 'slick-carousel/slick/slick-theme.css';
 
 // components
 import Banner from './Banner';
+import Loader from './Loader';
+
 
 const SliderWrapper = styled.div`
-  width: 100%;
+  width: 100vw;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -16,7 +18,7 @@ const SliderWrapper = styled.div`
 `;
 
 const StyledSlider = styled(Slider)`
-  width: 90%;  // Adjust width as necessary
+  width: 100%;  // Adjust width as necessary
   height: auto;
   .slick-slide {
     display: flex;
@@ -62,7 +64,7 @@ const BannerSlider = () => {
   return (
     <SliderWrapper>
       {loading ? (
-        <p>Loading...</p>
+        <Loader height="100vh" width="100vw" type={"mutatingDots"}/>
       ) : error ? (
         <p>Error</p>
       ) : data.length > 0 ? (

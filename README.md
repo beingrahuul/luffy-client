@@ -68,3 +68,70 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+const Image = styled.img`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
+const pulse = keyframes`
+  0% {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.2, 1.2);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+`;
+
+
+const Warpper = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #99bf9975;
+  margin: 0 auto;
+
+  .circle {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    background-color: #33cc33;
+    margin: auto;
+    transform: scale(1, 1);
+
+    &.pulse {
+      animation-timing-function: ease;
+      animation: ${pulse} 1s infinite;
+      background-color: lighten(#33cc33, 25%);
+    }
+  }
+
+  svg {
+    fill: darken(#33cc33, 12%);
+    stroke: darken(#33cc33, 12%);
+    stroke-linejoin: round;
+    stroke-width: 5;
+    transition: all 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      fill: darken(#33cc33, 17%);
+      stroke: darken(#33cc33, 17%);
+      transform: scale(1.2, 1.2);
+    }
+  }
+`;

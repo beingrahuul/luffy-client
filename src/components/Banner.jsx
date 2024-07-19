@@ -2,11 +2,9 @@ import styled from 'styled-components';
 
 
 const Container = styled.div`
-  margin: 20px;
   display: flex;
-  width: 90vw;
-  height: 550px;
-  border-radius: 20px;
+  width: 100vw;
+  height: 680px;
   overflow: hidden;
   position: relative;
 `;
@@ -23,14 +21,14 @@ const InfoContainer = styled.div`
   gap: 20px;
   margin: 40px;
   border-radius: 10px;
-  background-color: #00000065;
-
+  text-shadow: 10px 4px 10px #000000;
 `;
 
 const Title = styled.h1`
   font-size: 40px;
   font-weight: 600;
   margin: 0;
+  
 `;
 
 const Group = styled.div`
@@ -46,6 +44,7 @@ const IMDB = styled.div`
   background-color: #f6be4f;
   color: black;
   padding: 5px;
+  text-shadow: none;
 `;
 
 const Misc = styled.p`
@@ -82,6 +81,13 @@ const Button = styled.button`
 `;
 
 const Banner = ({ data }) => {
+
+  const handleClick = () => {
+    window.location.href = `/${
+      data.id
+    }`
+  }
+
   return (
     <Container>
       <BannerImage src={data.cover} alt="banner" />
@@ -96,7 +102,7 @@ const Banner = ({ data }) => {
           ))}
         </Group>
         <Description>{data.description.length > 300 ? `${data.description.slice(0, 300)}...` : data.description}</Description>
-        <Button>Play</Button>
+        <Button onClick={handleClick}>Play</Button>
       </InfoContainer>
     </Container>
   );
