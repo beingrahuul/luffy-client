@@ -21,7 +21,7 @@ const InfoContainer = styled.div`
   gap: 20px;
   margin: 40px;
   border-radius: 10px;
-  text-shadow: 10px 4px 10px #000000;
+  text-shadow: 2px 2px 5px #000000;
 `;
 
 const Title = styled.h1`

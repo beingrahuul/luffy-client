@@ -8,8 +8,20 @@ const Container = styled.div`
   height: 100%;
   background-color: #1C1E22;
   color: white;
+  flex-direction: column;
+  align-items: center;
 `
 
+const Heading = styled.p`
+  font-size: 24px;
+  margin: 10px;
+`
+
+const ServerContainer = styled.div`
+  display: flex;
+  height: 100%;
+  width: 100%;
+`
 const Button = styled.div`
   display: flex;
   justify-content: center;
@@ -66,8 +78,10 @@ const Server = () => {
 
   return (
     <Container>
+      <Heading>Available Servers</Heading>
+      <ServerContainer>
       {
-        loading ? <Loader height="100%" width="100%" bgColor={"#1C1E22"} type={"mutatingDots"}/> : 
+        loading ? <Loader height="100%" width="100%" bgcolor={"#1C1E22"} type={"mutatingDots"}/> : 
         error ? <p>{error}</p> : (
           server.map((server, index) => (
             <Button 
@@ -82,6 +96,7 @@ const Server = () => {
           ))
         )
       }
+      </ServerContainer>
     </Container>
   )
 }

@@ -7,14 +7,14 @@ const Container = styled.div`
   align-items: center;
   height: ${({ height }) => height ? height : '100vh'};
   width: ${({ width }) => width ? width : '100vw'};
-  background-color: ${({ bgColor }) => bgColor ? bgColor : 'black'};
+  background-color: ${({ bgcolor }) => bgcolor ? bgcolor : 'black'};
   color: white;
 `
 
 
-const Loader = ({ height, width, bgColor, type }) => {
+const Loader = ({ height, width, bgcolor, type }) => {
   return (
-    <Container height={height} width={width} bgColor={bgColor}>
+    <Container height={height} width={width} bgcolor={bgcolor}>
       {type === 'infinity' &&
         <InfinitySpin
           visible={true}

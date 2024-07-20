@@ -10,8 +10,8 @@ const Container = styled.div`
   display: flex;
   height: 100px;
   width: 100%;
-  background-color: ${({ isHome }) => (isHome ? '#0000004e' : '#000')};
-  position: ${({ isHome }) => (isHome ? 'fixed' : 'relative')};
+  background-color: ${({ ishome }) => (ishome ? '#0000004e' : '#000')};
+  position: ${({ ishome }) => (ishome ? 'fixed' : 'relative')};
   align-items: center;
   z-index: 100;
   gap: 20px;
@@ -102,8 +102,7 @@ const Link = styled.a`
 `
 
 const Navbar = () => {
-
-  const [search, setSearch ] = useState('');
+  const [search, setSearch] = useState('');
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -117,10 +116,10 @@ const Navbar = () => {
     }
   }
 
-  const isHome = location.pathname === '/';
+  const ishome = location.pathname === '/';
 
   return (
-    <Container isHome={isHome}>
+    <Container ishome={ishome}>
       <Group>
         <LogoContainer>
           <LogoImage src={LogoIMG} />
@@ -147,7 +146,7 @@ const Navbar = () => {
         </LinkContainer>
       </Group>
     </Container>
-  )
+  );
 }
 
 export default Navbar;
