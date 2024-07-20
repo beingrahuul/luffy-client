@@ -35,7 +35,7 @@ const BannerSlider = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://luffy-server-production.up.railway.app/banner');
+        const response = await fetch('https://luffy-server-production.up.railway.app/banner');
         const data = await response.json();
         setData(data);
         console.log(data);
