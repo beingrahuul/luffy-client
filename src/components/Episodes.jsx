@@ -14,6 +14,24 @@ const Container = styled.div`
   gap: 20px;
   padding: 20px 0px;
   margin: 20px;
+
+  @media screen and (max-width: 1299px) {
+    
+  }
+
+  @media screen and (max-width: 991px) {
+
+
+  }
+
+  @media screen and (max-width: 640px) {
+
+  }
+
+  @media screen and (max-width: 479px) {
+    width: 100%;
+    border-radius: 0px;
+  }
 `
 
 const SeasonsContainer = styled.div`
@@ -25,6 +43,25 @@ const SeasonsContainer = styled.div`
   gap: 20px;
   overflow-y: scroll;
   scrollbar-width: none;
+
+  @media screen and (max-width: 1299px) {
+    
+  }
+
+  @media screen and (max-width: 991px) {
+
+
+  }
+
+  @media screen and (max-width: 640px) {
+
+  }
+
+  @media screen and (max-width: 479px) {
+    gap: 10px;
+    height: 50px;
+  }
+
 `
 
 const Season = styled.div`
@@ -38,6 +75,24 @@ const Season = styled.div`
   transition: 0.3s ease-in-out;
   padding-top: 3px;
   border-bottom: 3px solid transparent;
+
+  @media screen and (max-width: 1299px) {
+    
+  }
+
+  @media screen and (max-width: 991px) {
+
+
+  }
+
+  @media screen and (max-width: 640px) {
+
+  }
+
+  @media screen and (max-width: 479px) {
+    min-width: 70px;
+    font-size: 12px;
+  }
 `
 
 const EpisodesContainer = styled.div`
@@ -49,6 +104,23 @@ const EpisodesContainer = styled.div`
   width: 90%;
   background-color: #2c2c2c;
   border-radius: 5px;
+
+  @media screen and (max-width: 1299px) {
+    
+  }
+
+  @media screen and (max-width: 991px) {
+
+
+  }
+
+  @media screen and (max-width: 640px) {
+
+  }
+
+  @media screen and (max-width: 479px) {
+    gap: 10px;
+  }
 `
 
 const Episode = styled.div`
@@ -63,6 +135,26 @@ const Episode = styled.div`
   transition: 0.3s ease-in-out;
   &:hover {
     background-color: #4c4c4c;
+  }
+
+  @media screen and (max-width: 1299px) {
+    
+  }
+
+  @media screen and (max-width: 991px) {
+
+
+  }
+
+  @media screen and (max-width: 640px) {
+
+  }
+
+  @media screen and (max-width: 479px) {
+    font-size: 10px;
+    width: 150px;
+    height: 40px;
+    padding: 0px 10px;
   }
 `
 

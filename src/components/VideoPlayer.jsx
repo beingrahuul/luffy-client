@@ -4,8 +4,8 @@ import { InfinitySpin } from "react-loader-spinner";
 
 // player
 import { MediaPlayer, MediaProvider, Track, Poster } from '@vidstack/react';
-//import { defaultLayoutIcons, DefaultVideoLayout, DefaultAudioLayout } from '@vidstack/react/player/layouts/default';
-import { PlyrLayout, plyrLayoutIcons } from '@vidstack/react/player/layouts/plyr';
+import { defaultLayoutIcons, DefaultVideoLayout } from '@vidstack/react/player/layouts/default';
+//import { PlyrLayout, plyrLayoutIcons } from '@vidstack/react/player/layouts/plyr';
 
 import "./style/Videoplayer.css";
 
@@ -116,7 +116,7 @@ const VideoPlayer = ({ cover, title }) => {
                 );
               })}
             </MediaProvider>
-            <PlyrLayout icons={plyrLayoutIcons} />
+            <DefaultVideoLayout icons={defaultLayoutIcons} />
           </MediaPlayer>
         </MainContainer>
       )}

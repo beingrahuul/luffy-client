@@ -5,6 +5,9 @@ import { useNavigate, useLocation } from 'react-router-dom';
 //LOGO
 import LogoIMG from '../images/logo.jpeg';
 
+//Icons
+import Menu from "../icons/Menu.svg"
+
 
 const Container = styled.div`
   display: flex;
@@ -32,6 +35,7 @@ const Container = styled.div`
   @media screen and (max-width: 479px) {
     position: relative;
     width: 100vw;
+    gap: 0px;
   }
 `
 
@@ -60,6 +64,13 @@ const LinkGroup = styled.div`
     display: none;
   }
 `
+
+const MobileLinkGroup = styled.div`
+  display: none;
+  @media screen and (max-width: 479px) {
+    display: flex;
+  }
+`  
 
 const LogoContainer = styled.div`
   display: flex;
@@ -158,7 +169,6 @@ const Search = styled.input`
   }
 `
 
-
 const LinkContainer = styled.div`
   display: flex;
   justify-content: space-around;
@@ -191,8 +201,71 @@ const Link = styled.a`
   font-weight: 500;
 `
 
+const Icons = styled.img`
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  cursor: pointer;
+`
+
+const MobileMenu = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 100px;
+  right: 0;
+  width: 100vw;
+  height: calc(100vh - 150px);
+  background-color: #000000ec;
+  z-index: 100;
+  padding-top: 15px;
+  gap: 15px;
+`
+
+const Part = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  color: white;
+  font-size: 16px;
+  padding: 10px;
+  flex-direction: column;
+  gap: 10px;
+`
+
+const SubPart = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  flex-wrap: wrap;
+  color: white;
+  gap: 10px;
+  font-size: 14px;
+`
+
+const Item = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  width: 60px;
+  height: 15px;
+`
+
+
+
+const Line = styled.div`
+  width: 85%;
+  height: 1px;
+  background-color: #494949;
+  border-radius: 1px;
+`
+
 const Navbar = () => {
   const [search, setSearch] = useState('');
+  const [menu, setMenu] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -210,6 +283,10 @@ const Navbar = () => {
 
   const handleClick = () => {
     navigate('/');
+  }
+
+  const toggleMenu = () => {
+    setMenu(!menu);
   }
 
   return (
@@ -239,6 +316,54 @@ const Navbar = () => {
           <Link href="/">Tv Shows</Link>
         </LinkContainer>
       </LinkGroup>
+
+      <MobileLinkGroup>
+        <Icons src={Menu} onClick={toggleMenu} />
+      </MobileLinkGroup>
+
+      {menu && (
+        <MobileMenu>
+
+          <Part>Home</Part>
+
+          <Line />
+          <Part>
+            Genre
+            <SubPart>
+              <Item>Action</Item>
+              <Item>Comedy</Item>
+              <Item>Animation</Item>
+              <Item>Adventure</Item>
+              <Item>History</Item>
+              <Item>Crime</Item>
+              <Item>Drama</Item>
+              <Item>Music</Item>
+              <Item>Family</Item>
+              <Item>Horror</Item>
+              <Item>Romance</Item>
+              <Item>Mystery</Item>
+              <Item>Kids</Item>
+              <Item>News</Item>
+              <Item>Reality</Item>
+              <Item>Thriller</Item>
+              <Item>Sci Fi</Item>
+              <Item>Talk</Item>
+              <Item>Western</Item>
+              <Item>War</Item>
+            </SubPart>
+          </Part>
+
+          <Line />
+          <Part>Country</Part>
+
+          <Line />
+          <Part>Movies</Part>
+
+          <Line />
+          <Part>Tv Shows</Part>
+
+        </MobileMenu>
+      )}
     </Container>
   );
 }

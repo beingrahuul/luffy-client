@@ -41,6 +41,23 @@ const MainContainer = styled.div`
   background-color:  #000000BF;
   flex-direction: column;
   gap: 20px;
+
+  @media screen and (max-width: 1299px) {
+    
+  }
+
+  @media screen and (max-width: 991px) {
+
+
+  }
+
+  @media screen and (max-width: 640px) {
+
+  }
+
+  @media screen and (max-width: 479px) {
+    gap: 10px;
+  } 
 `
 
 const UpperContainer = styled.div`
@@ -49,6 +66,23 @@ const UpperContainer = styled.div`
   align-items: center;
   width: 100%;
   gap: 50px;
+
+  @media screen and (max-width: 1299px) {
+    
+  }
+
+  @media screen and (max-width: 991px) {
+
+
+  }
+
+  @media screen and (max-width: 640px) {
+
+  }
+
+  @media screen and (max-width: 479px) {
+    gap: 20px;
+  } 
 `
 
 const Group = styled.div`
@@ -70,6 +104,23 @@ const LogoImage = styled.img`
   object-fit: cover;
   margin-right: 5px;
   border-radius: 50%;
+  @media screen and (max-width: 1299px) {
+    
+  }
+
+  @media screen and (max-width: 991px) {
+
+
+  }
+
+  @media screen and (max-width: 640px) {
+
+  }
+
+  @media screen and (max-width: 479px) {
+    width: 40px;
+    height: 40px;
+  } 
 `
 
 const Logo = styled.h1`
@@ -83,6 +134,23 @@ const Logo = styled.h1`
   @media screen and (max-width: 768px) {
     font-size: 16px;
   }
+
+  @media screen and (max-width: 1299px) {
+    
+  }
+
+  @media screen and (max-width: 991px) {
+
+
+  }
+
+  @media screen and (max-width: 640px) {
+
+  }
+
+  @media screen and (max-width: 479px) {
+    font-size: 14px;
+  } 
 `
 
 const MiscContainer = styled.div`
@@ -99,12 +167,46 @@ const Misc = styled.h1`
   &:hover {
     color: #FFD020;
   }
+
+  @media screen and (max-width: 1299px) {
+    
+  }
+
+  @media screen and (max-width: 991px) {
+
+
+  }
+
+  @media screen and (max-width: 640px) {
+
+  }
+
+  @media screen and (max-width: 479px) {
+    font-size: 12px;
+  } 
 `
 
 const Desc  = styled.p`
   font-size: 14px;
   color: #8E8E8E;
   text-align: center;
+
+  @media screen and (max-width: 1299px) {
+    
+  }
+
+  @media screen and (max-width: 991px) {
+
+
+  }
+
+  @media screen and (max-width: 640px) {
+
+  }
+
+  @media screen and (max-width: 479px) {
+    font-size: 10px;
+  } 
 `
 
 const Footer = () => {

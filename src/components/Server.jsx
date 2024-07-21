@@ -38,6 +38,8 @@ const ServerContainer = styled.div`
   display: flex;
   height: 100%;
   width: 100%;
+  align-items: center;
+  justify-content: center;
 
   @media screen and (max-width: 1299px) {
     
@@ -56,6 +58,7 @@ const ServerContainer = styled.div`
     align-items: center;
     width: 100%;
     justify-content: center;
+    flex-wrap: wrap;
   }
 
 `

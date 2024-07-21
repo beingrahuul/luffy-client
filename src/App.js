@@ -1,7 +1,5 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
-
-
 //components
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -10,8 +8,6 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Content from './pages/Content';
 import Search from './pages/Search';
-//import MainVideo from './pages/MainVideo';
-
 
 function App() {
   return (
@@ -22,6 +18,7 @@ function App() {
         <Route path="/tv/:tempId" element={<Content type="tv" />} />
         <Route path="/movie/:tempId" element={<Content type="movie" />} />
         <Route path="/search/:query" element={<Search />} />
+        <Route path="*" element={<h1>Not Found</h1>} />
       </Routes>
       <Footer />
     </BrowserRouter>
