@@ -4,6 +4,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
 //components
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 //pages
 import Home from './pages/Home';
@@ -22,6 +23,7 @@ function App() {
         <Route path="/movie/:tempId" element={<Content type="movie" />} />
         <Route path="/search/:query" element={<Search />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
 
   );

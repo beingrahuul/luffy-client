@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import {useState } from 'react';
-import { useNavigate, useLocation} from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 //LOGO
 import LogoIMG from '../images/logo.jpeg';
@@ -15,6 +15,24 @@ const Container = styled.div`
   align-items: center;
   z-index: 100;
   gap: 20px;
+
+  @media screen and (max-width: 1299px) {
+
+  }
+
+  @media screen and (max-width: 991px) {
+
+
+  }
+
+  @media screen and (max-width: 640px) {
+
+  }
+
+  @media screen and (max-width: 479px) {
+    position: relative;
+    width: 100vw;
+  }
 `
 
 const Group = styled.div`
@@ -23,6 +41,24 @@ const Group = styled.div`
   align-items: center;
   width: 100%;
   margin: 0 40px;
+  
+  @media screen and (max-width: 479px) {
+    gap: 10px;
+    margin: 0px;
+    justify-content: space-around;
+  }
+`
+
+const LinkGroup = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 0 40px;
+  
+  @media screen and (max-width: 479px) {
+    display: none;
+  }
 `
 
 const LogoContainer = styled.div`
@@ -47,7 +83,20 @@ const Logo = styled.h1`
     color: #FFD020;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1299px) {
+
+  }
+
+  @media screen and (max-width: 991px) {
+
+
+  }
+
+  @media screen and (max-width: 640px) {
+
+  }
+
+  @media screen and (max-width: 479px) {
     font-size: 16px;
   }
 `
@@ -61,7 +110,20 @@ const SearchContainer = styled.div`
   width: 480px;
   
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1299px) {
+
+  }
+
+  @media screen and (max-width: 991px) {
+
+
+  }
+
+  @media screen and (max-width: 640px) {
+
+  }
+
+  @media screen and (max-width: 479px) {
     width: 240px;
     height: 40px;
   }
@@ -76,8 +138,23 @@ const Search = styled.input`
   font-size: 16px;
   font-family: "Poppins", sans-serif;
   background-color: #3e3e3ee6;
-  @media screen and (max-width: 768px) {
-    font-size: 12px;
+
+  @media screen and (max-width: 1299px) {
+
+  }
+
+  @media screen and (max-width: 991px) {
+
+
+  }
+
+  @media screen and (max-width: 640px) {
+
+  }
+
+  @media screen and (max-width: 479px) {
+    font-size: 14px;
+    padding: 10px 0px 10px 15px;
   }
 `
 
@@ -89,7 +166,20 @@ const LinkContainer = styled.div`
   align-items: center;
   gap: 20px;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1299px) {
+
+  }
+
+  @media screen and (max-width: 991px) {
+
+
+  }
+
+  @media screen and (max-width: 640px) {
+
+  }
+
+  @media screen and (max-width: 479px) {
     display: none;
   }
 `
@@ -118,25 +208,29 @@ const Navbar = () => {
 
   const ishome = location.pathname === '/';
 
+  const handleClick = () => {
+    navigate('/');
+  }
+
   return (
     <Container ishome={ishome}>
       <Group>
-        <LogoContainer>
+        <LogoContainer onClick={handleClick}>
           <LogoImage src={LogoIMG} />
           <Logo>Luffy.</Logo>
         </LogoContainer>
 
         <SearchContainer>
-          <Search 
-            type="text" 
-            placeholder="Search for Movies and TV shows" 
+          <Search
+            type="text"
+            placeholder="Search for Movies and TV shows"
             value={search}
-            onChange={handleChange}  
+            onChange={handleChange}
           />
         </SearchContainer>
       </Group>
 
-      <Group>
+      <LinkGroup>
         <LinkContainer>
           <Link href="/">Home</Link>
           <Link href="/">Genre</Link>
@@ -144,7 +238,7 @@ const Navbar = () => {
           <Link href="/">Movies</Link>
           <Link href="/">Tv Shows</Link>
         </LinkContainer>
-      </Group>
+      </LinkGroup>
     </Container>
   );
 }

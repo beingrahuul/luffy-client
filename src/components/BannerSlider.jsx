@@ -64,7 +64,7 @@ const BannerSlider = () => {
   return (
     <SliderWrapper>
       {loading ? (
-        <Loader height="100vh" width="100vw" type={"mutatingDots"}/>
+        <Loader height="100vh" width="100vw" type={"mutatingDots"} bgcolor={"#1C1E22"}/>
       ) : error ? (
         <p>Error</p>
       ) : data.length > 0 ? (

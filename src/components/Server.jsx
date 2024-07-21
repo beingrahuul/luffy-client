@@ -7,7 +7,7 @@ const Container = styled.div`
   display: flex;
   height: 100%;
   background-color: #1C1E22;
-  color: white;
+  color: #A7A7A7;
   flex-direction: column;
   align-items: center;
 `
@@ -15,12 +15,49 @@ const Container = styled.div`
 const Heading = styled.p`
   font-size: 24px;
   margin: 10px;
+
+  @media screen and (max-width: 1299px) {
+    
+  }
+
+  @media screen and (max-width: 991px) {
+
+
+  }
+
+  @media screen and (max-width: 640px) {
+
+  }
+
+  @media screen and (max-width: 479px) {
+    font-size: 14px;
+  }
 `
 
 const ServerContainer = styled.div`
   display: flex;
   height: 100%;
   width: 100%;
+
+  @media screen and (max-width: 1299px) {
+    
+  }
+
+  @media screen and (max-width: 991px) {
+
+
+  }
+
+  @media screen and (max-width: 640px) {
+
+  }
+
+  @media screen and (max-width: 479px) {
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+  }
+
 `
 const Button = styled.div`
   display: flex;
@@ -38,6 +75,27 @@ const Button = styled.div`
   &:hover {
     background-color: #45a049;
   }
+
+  @media screen and (max-width: 1299px) {
+    
+  }
+
+  @media screen and (max-width: 991px) {
+
+
+  }
+
+  @media screen and (max-width: 640px) {
+
+  }
+
+  @media screen and (max-width: 479px) {
+    width: 90px;
+    height: 40px;
+    font-size: 14px;
+    margin: 8px;
+  }
+
 `
 
 
@@ -78,7 +136,7 @@ const Server = () => {
 
   return (
     <Container>
-      <Heading>Available Servers</Heading>
+      <Heading>If current server doesn't work please try other server below.</Heading>
       <ServerContainer>
       {
         loading ? <Loader height="100%" width="100%" bgcolor={"#1C1E22"} type={"mutatingDots"}/> : 

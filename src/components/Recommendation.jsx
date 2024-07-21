@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import CardContainer from './CardContainer'
+//import CardContainer from './CardContainer'
 
 const Container = styled.div`
   display: flex;
@@ -12,10 +12,12 @@ const Container = styled.div`
 `
 
 
+
 const Recommendation = ({data}) => {
+  console.log(data)
   return (
     <Container>
-      <CardContainer title={"Recommendation"} data={data} recommedation={true} />
+      
     </Container>
   )
 }

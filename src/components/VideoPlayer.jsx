@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { InfinitySpin } from "react-loader-spinner"
+import { InfinitySpin } from "react-loader-spinner";
 
 // player
-import { MediaPlayer, MediaProvider, Track } from '@vidstack/react';
-import { defaultLayoutIcons, DefaultVideoLayout } from '@vidstack/react/player/layouts/default';
-import '@vidstack/react/player/styles/default/theme.css';
-import '@vidstack/react/player/styles/default/layouts/video.css';
+import { MediaPlayer, MediaProvider, Track, Poster } from '@vidstack/react';
+//import { defaultLayoutIcons, DefaultVideoLayout, DefaultAudioLayout } from '@vidstack/react/player/layouts/default';
+import { PlyrLayout, plyrLayoutIcons } from '@vidstack/react/player/layouts/plyr';
+
+import "./style/Videoplayer.css";
 
 // context
 import { useEpisode } from '../context/EpisodeContext';
-
 
 const Container = styled.div`
   display: flex;
@@ -20,6 +20,26 @@ const Container = styled.div`
   width: 900px;
   aspect-ratio: 16 / 9;
   background-color: #000000;
+
+  @media screen and (max-width: 1299px) {
+    
+  }
+
+  @media screen and (max-width: 991px) {
+
+
+  }
+
+  @media screen and (max-width: 640px) {
+
+  }
+
+  @media screen and (max-width: 479px) {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16 / 9;
+  }
+
 `;
 
 const MainContainer = styled.div`
@@ -30,8 +50,6 @@ const MainContainer = styled.div`
   height: 100%;
   width: 100%;
 `;
-
-
 
 const VideoPlayer = ({ cover, title }) => {
   const { playerData, loading, error } = useEpisode();
@@ -47,6 +65,8 @@ const VideoPlayer = ({ cover, title }) => {
     if (!playerData || !playerData.sources) return null;
     return playerData.sources.find(source => source.quality === currentQuality) || playerData.sources[0];
   };
+
+  let hasSelectedDefault = false;
 
   return (
     <Container>
@@ -64,30 +84,39 @@ const VideoPlayer = ({ cover, title }) => {
           <MediaPlayer
             title={title}
             src={getCurrentSource()?.url}
-            load="idle"
-            posterLoad='visible'
-            viewType='video'
+            aspectRatio='16/9'
+            load='eager'
+            posterLoad='eager'
             streamType='on-demand'
+            storage='storage-key'
+            keyTarget='player'
+            viewType='video'
             logLevel='warn'
             crossOrigin
             playsInline
           >
-            <MediaProvider >
-              
-              {playerData.subtitles.map(sub => (
-                <Track
-                  key={sub.lang}
-                  src={sub.url}
-                  kind="subtitles"
-                  label={sub.lang}
-                  default={sub.lang === "English" && "default"}
-                />
-              ))}
-              
+            <MediaProvider>
+              <Poster className='vds-poster' src={cover} alt='' />
+              {playerData.subtitles.map(sub => {
+                let isDefault = false;
+
+                if (sub.lang.includes("English") && !hasSelectedDefault) {
+                  isDefault = true;
+                  hasSelectedDefault = true;
+                }
+
+                return (
+                  <Track
+                    key={sub.lang}
+                    src={sub.url}
+                    kind="subtitles"
+                    label={sub.lang}
+                    default={isDefault ? "default" : undefined}
+                  />
+                );
+              })}
             </MediaProvider>
-            <DefaultVideoLayout
-              icons={defaultLayoutIcons}
-            />
+            <PlyrLayout icons={plyrLayoutIcons} />
           </MediaPlayer>
         </MainContainer>
       )}

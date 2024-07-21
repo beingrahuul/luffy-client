@@ -7,6 +7,23 @@ const Container = styled.div`
   height: 680px;
   overflow: hidden;
   position: relative;
+
+  @media screen and (max-width: 1299px) {
+ 
+  }
+
+  @media screen and (max-width: 991px) {
+  
+
+  }
+
+  @media screen and (max-width: 640px) {
+
+  }
+
+  @media screen and (max-width: 479px) {
+    height: 300px;
+  }
 `;
 
 const InfoContainer = styled.div`
@@ -22,6 +39,24 @@ const InfoContainer = styled.div`
   margin: 40px;
   border-radius: 10px;
   text-shadow: 2px 2px 5px #000000;
+
+  @media screen and (max-width: 1299px) {
+ 
+  }
+
+  @media screen and (max-width: 991px) {
+
+
+  }
+
+  @media screen and (max-width: 640px) {
+
+  }
+
+  @media screen and (max-width: 479px) {
+    width: 100%;
+    margin: 10px;
+  }
 `;
 
 const Title = styled.h1`
@@ -29,6 +64,22 @@ const Title = styled.h1`
   font-weight: 600;
   margin: 0;
   
+  @media screen and (max-width: 1299px) {
+  
+  }
+
+  @media screen and (max-width: 991px) {
+
+
+  }
+
+  @media screen and (max-width: 640px) {
+
+  }
+
+  @media screen and (max-width: 479px) {
+    font-size: 20px;
+  }
 `;
 
 const Group = styled.div`
@@ -36,6 +87,23 @@ const Group = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 20px;
+
+  @media screen and (max-width: 1299px) {
+  
+  }
+
+  @media screen and (max-width: 991px) {
+
+
+  }
+
+  @media screen and (max-width: 640px) {
+
+  }
+
+  @media screen and (max-width: 479px) {
+    gap: 10px;
+  }
 `;
 
 const IMDB = styled.div`
@@ -45,17 +113,71 @@ const IMDB = styled.div`
   color: black;
   padding: 5px;
   text-shadow: none;
+
+  @media screen and (max-width: 1299px) {
+  
+  }
+
+  @media screen and (max-width: 991px) {
+
+
+  }
+
+  @media screen and (max-width: 640px) {
+
+  }
+
+  @media screen and (max-width: 479px) {
+    font-size: 10px;
+    padding: 5px;
+    font-weight: 500;
+  }
 `;
 
 const Misc = styled.p`
   font-size: 16px;
   font-weight: 500;
   margin: 0;
+
+  @media screen and (max-width: 1299px) {
+  
+  }
+
+  @media screen and (max-width: 991px) {
+
+
+  }
+
+  @media screen and (max-width: 640px) {
+
+  }
+
+  @media screen and (max-width: 479px) {
+    font-size: 12px;
+  }
 `;
 
 const Description = styled.p`
   font-size: 16px;
   margin: 10px 0;
+
+  @media screen and (max-width: 1299px) {
+  
+  }
+
+  @media screen and (max-width: 991px) {
+
+
+  }
+
+  @media screen and (max-width: 640px) {
+
+  }
+
+  @media screen and (max-width: 479px) {
+    font-size: 12px;
+    margin: 5px 0; 
+  }
 `;
 
 const BannerImage = styled.img`
@@ -63,6 +185,23 @@ const BannerImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+
+  @media screen and (max-width: 1299px) {
+  
+  }
+
+  @media screen and (max-width: 991px) {
+
+
+  }
+
+  @media screen and (max-width: 640px) {
+
+  }
+
+  @media screen and (max-width: 479px) {
+
+  }
 `;
 
 const Button = styled.button`
@@ -77,6 +216,24 @@ const Button = styled.button`
   transition: 0.3s;
   &:hover {
     background-color: #f8b838;
+  }
+
+  @media screen and (max-width: 1299px) {
+ 
+  }
+
+  @media screen and (max-width: 991px) {
+
+
+  }
+
+  @media screen and (max-width: 640px) {
+
+  }
+
+  @media screen and (max-width: 479px) {
+    padding: 5px 10px;
+    font-size: 12px;
   }
 `;
 
@@ -98,7 +255,7 @@ const Banner = ({ data }) => {
           <Misc>{data.releaseDate.split('-')[0]}</Misc>
           <Misc>{data.duration}</Misc>
           {data.genres.slice(0, 3).map((item) => (
-            <Misc key={item}>{item}</Misc>
+            <Misc key={item}>{item.length > 10 ? `${item.slice(0, 8)}...` : item}</Misc>
           ))}
         </Group>
         <Description>{data.description.length > 300 ? `${data.description.slice(0, 300)}...` : data.description}</Description>

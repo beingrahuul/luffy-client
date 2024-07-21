@@ -10,8 +10,13 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: #1F1F1F;
+  background-color: #1c1e22;
   gap: 20px;
+
+  @media screen and (max-width: 479px) {
+    
+  }
+
 `
 
 function Home() {
@@ -41,15 +46,15 @@ function Home() {
     <Container>
       <BannerSlider />
       {loading ? (
-        <Loader height="50vh" width="100vw" type={"mutatingDots"}/>
+        <Loader height="50vh" width="100vw" type={"mutatingDots"} bgcolor={"#1C1E22"}/>
       ) : error ? (
         <h1>Error: {error}</h1>
       ) : (
         <>
-          <CardContainer data={home.trendingMovies}  title = "Trending Movies" comingSoon={false}/>
-          <CardContainer data={home.trendingSeries}  title = "Trending Shows" comingSoon={false}/>
-          <CardContainer data={home.latestMovies}  title = "Latest Movies" comingSoon={false}/>
-          <CardContainer data={home.latestSeries}  title = "Latest Series" comingSoon={false}/>
+          <CardContainer data={home.trendingMovies}  title = "Trending Movies" comingSoon={false} home={true}/>
+          <CardContainer data={home.trendingSeries}  title = "Trending Shows" comingSoon={false} home={true}/>
+          <CardContainer data={home.latestMovies}  title = "Latest Movies" comingSoon={false} home={true}/>
+          <CardContainer data={home.latestSeries}  title = "Latest Series" comingSoon={false} home={true}/>
         </>
       )}
     </Container>

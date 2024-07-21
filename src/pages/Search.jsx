@@ -21,9 +21,8 @@ const MainContainer = styled.div`
   display: flex;
   align-items: center;
   height: 100%;
-  width: 90%;
+  width: 100%;
   flex-wrap: wrap;
-  gap: 20px;
   margin: 20px auto;
 `;
 
@@ -83,7 +82,7 @@ const Search = () => {
       <Title>Search Results for {query}</Title>
       <MainContainer>
       {loading ? (
-        <Loader height="400px" width="100vw" bgColor={"1C1E22"} type={"mutatingDots"}/>
+        <Loader height="400px" width="100vw" bgcolor={"#1C1E22"} type={"mutatingDots"}/>
       ) : error ? (
         <h1>{error}</h1>
       ) : results.length === 0 ? (

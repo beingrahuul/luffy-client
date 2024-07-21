@@ -3,48 +3,63 @@ import styled from 'styled-components'
 //image
 
 const Container = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  width: 200px;
-  height: 334.9px;
-  background-color: #303030;
-  border-radius: 5px;
+  flex-shrink: 0;
+  width: calc(12.5% - 20px);
+  background-color: #272B36;
+  margin: 10px;
+  position: relative;
   overflow: hidden;
-  cursor: pointer;
+  font-size: .9em;
+  border-radius: .5rem;
   transition: all 0.3s ease-in-out;
+  cursor: pointer;
 
-  &:hover {
-    transform: scale(1.03);
+  @media screen and (max-width: 1299px) {
+    width: calc(25% - 20px);
   }
 
+  @media screen and (max-width: 991px) {
+    width: calc(25% - 20px) !important;
+  }
+
+  @media screen and (max-width: 640px) {
+    width: calc(33.33% - 20px) !important;    
+  }
+
+  @media screen and (max-width: 479px) {
+    width: calc(50% - 20px) !important;
+  }
 `
 
 const ImageContainer = styled.div`
-  width: 100%;
-  height: 270px;
+    position: relative;
+    width: 100%;
+    padding-bottom: 148%;
+    overflow: hidden;
+    display: block;
 `
 
 const Image = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
 `
 
 const InfoContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-direction: column;
-  width: 85%;
-  margin-top: 10px;
+  position: relative;
+  padding: .5rem;
+  color: white;
 `
 
-const Title = styled.h1`
-  font-size: 14px;
+const Title = styled.h3`
+  font-size: 11px;
   font-weight: 500;
-  color: white;
-  margin: 0;
+  margin: 10px 0px 0px 0px;
 `
 
 const MiscContainer = styled.div`
@@ -61,17 +76,16 @@ const Group = styled.div`
 `
 
 const Misc = styled.p`
-  font-size: 12px;
+  font-size: 10px;
   color: white;
   margin: 0;
 `
 
-const Card = ({item, recommedation}) => {
+const Card = ({ item, recommedation }) => {
 
   const handleClick = () => {
-    window.location.href = `/${
-      item.id
-    }`
+    window.location.href = `/${item.id
+      }`
   }
 
   return (
@@ -88,20 +102,20 @@ const Card = ({item, recommedation}) => {
 
       <InfoContainer>
         {recommedation ? (
-            <MiscContainer>
-              <Misc>{item.type}</Misc>
-            </MiscContainer>
+          <MiscContainer>
+            <Misc>{item.type}</Misc>
+          </MiscContainer>
         ) : (
-            <MiscContainer>
-              <Misc>{item.quality}</Misc>
-              <Group>
-                <Misc>{item.type === "TV" ? item.season : item.duration}</Misc>
-                <Misc>{item.type === "TV" ? item.ep_no : item.releaseDate}</Misc>
-              </Group>
-            </MiscContainer>
-            )  
+          <MiscContainer>
+            <Misc>{item.quality}</Misc>
+            <Group>
+              <Misc>{item.type === "TV" ? item.season : item.duration}</Misc>
+              <Misc>{item.type === "TV" ? item.ep_no : item.releaseDate}</Misc>
+            </Group>
+          </MiscContainer>
+        )
         }
-        <Title>{item.title.length > 20 ? `${item.title.substring(0, 20)}...` : item.title}</Title>
+        <Title>{item.title.length > 24 ? `${item.title.substring(0, 24)}...` : item.title}</Title>
       </InfoContainer>
     </Container>
   )

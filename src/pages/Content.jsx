@@ -8,7 +8,7 @@ import VideoPlayer from '../components/VideoPlayer'
 import InfoCard from '../components/InfoCard'
 import Episodes from '../components/Episodes'
 import Server from '../components/Server'
-import Recommendation from '../components/Recommendation';
+//import Recommendation from '../components/Recommendation';
 import Loader from '../components/Loader';
 
 
@@ -20,6 +20,23 @@ const Container = styled.div`
   background-color: #1C1E22;
   color: white;
   flex-direction: column;
+
+  @media screen and (max-width: 1299px) {
+  
+  }
+
+  @media screen and (max-width: 991px) {
+
+
+  }
+
+  @media screen and (max-width: 640px) {
+
+  }
+
+  @media screen and (max-width: 479px) {
+    padding-top: 0px;
+  }
 `
 
 const MainContainer = styled.div`
@@ -28,6 +45,25 @@ const MainContainer = styled.div`
   width: 100%;
   height: 100%;
   color: white;
+
+
+  @media screen and (max-width: 1299px) {
+  
+  }
+
+  @media screen and (max-width: 991px) {
+
+
+  }
+
+  @media screen and (max-width: 640px) {
+
+  }
+
+  @media screen and (max-width: 479px) {
+    flex-direction: column;
+    gap: 20px;
+  }
 `
 
 const LeftContainer = styled.div`
@@ -39,6 +75,24 @@ const LeftContainer = styled.div`
   height: 100%;
   color: white;
   gap: 40px;
+
+
+  @media screen and (max-width: 1299px) {
+    
+  }
+
+  @media screen and (max-width: 991px) {
+
+
+  }
+
+  @media screen and (max-width: 640px) {
+
+  }
+
+  @media screen and (max-width: 479px) {
+    gap: 20px;
+  }
 `
 
 const RightContainer = styled.div`
@@ -49,6 +103,24 @@ const RightContainer = styled.div`
   width: 100%;
   height: 100%;
   color: white;
+
+
+  @media screen and (max-width: 1299px) {
+    
+  }
+
+  @media screen and (max-width: 991px) {
+
+
+  }
+
+  @media screen and (max-width: 640px) {
+
+  }
+
+  @media screen and (max-width: 479px) {
+
+  }
 `
 
 
@@ -92,7 +164,7 @@ const Content = ({type}) => {
   return (
     <Container>
       {loading ? (
-        <Loader height="100vh" width="100vw" bgColor={"#1C1E22"} type={"mutatingDots"}/>
+        <Loader height="100vh" width="100vw" bgcolor={"#1C1E22"} type={"mutatingDots"}/>
       ) : error ? (
         <h1>Error: {error}</h1>
       ) : (
@@ -112,7 +184,6 @@ const Content = ({type}) => {
             </RightContainer>
 
           </MainContainer>
-          <Recommendation data={content.recommendations}/>
         </>
       )}
     </Container>
