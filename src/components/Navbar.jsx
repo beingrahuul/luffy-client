@@ -7,7 +7,7 @@ import LogoIMG from '../images/logo.jpeg';
 
 //Icons
 import Menu from "../icons/Menu.svg"
-import SEARCH from "../icons/Search.svg"
+import SEARCH from "../icons/search.svg"
 
 
 const Container = styled.div`
