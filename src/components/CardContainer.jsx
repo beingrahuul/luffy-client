@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import Card from './Card'
+import Loader from './Loader'
 
 
 const MainContainer = styled.div`
@@ -119,9 +120,32 @@ const Button = styled.div`
 
 `
 
-function CardContainer({ data, title, recommedation, home }) {
+function CardContainer({ title, url }) {
 
   const [showMore, setShowMore] = useState(false)
+  const [data, setData] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    const fetchData = async (url) => {
+      try {
+        const response = await fetch(url)
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`)
+        }
+        const data = await response.json()
+        setData(data.results)
+      } catch (error) {
+        setError(error.message)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchData(url)
+  }, [url])
+
 
   const handleClick = () => {
     setShowMore(!showMore)
@@ -131,31 +155,30 @@ function CardContainer({ data, title, recommedation, home }) {
     <MainContainer>
       <Container>
         <Title>{title}</Title>
-        <Carousel home={home}>
+        <Carousel>
+          {loading ? (
+            <Loader height="50vh" width="100vw" type={"mutatingDots"} bgcolor={"#1C1E22"} />
+          ) : error ? (
+            <h1>Error: {error}</h1>
+          ) : (
+            showMore === false ?
 
-          {
-            home ?
-              (showMore === false ?
-
-                (data.slice(0, 16).map((item) => (
-                  <Card key={item.id} item={item} recommedation={recommedation} />
-                ))) :
-
-                (data.map((item) => (
-                  <Card key={item.id} item={item} recommedation={recommedation} />
-                )))) :
+              (data.slice(0, 16).map((item) => (
+                <Card key={item.id} item={item} />
+              ))) :
 
               (data.map((item) => (
-                <Card key={item.id} item={item} recommedation={recommedation} />
+                <Card key={item.id} item={item}/>
               )))
+          )
           }
         </Carousel>
 
-        {home === true && <ButtonContainer>
+        <ButtonContainer>
           <Button onClick={handleClick}>
             {showMore ? "Show Less" : "Show More"}
           </Button>
-        </ButtonContainer>}
+        </ButtonContainer>
       </Container>
     </MainContainer>
   )
