@@ -18,7 +18,6 @@ const Container = styled.div`
   gap: 10px;
   max-width: 1440px;
   width: 100%;
-  padding: 0 20px;
 
   @media screen and (max-width: 1299px) {
     padding: 0px;
@@ -41,7 +40,7 @@ const Title = styled.h1`
   font-size: 24px;
   font-weight: 600;
   color: white;
-
+  margin: 16px 10px;
   @media screen and (max-width: 1299px) {
     font-size: 20px;
     margin: 20px 0px 0px 10px;
@@ -71,7 +70,6 @@ const Carousel = styled.div`
   justify-content: flex-start;
   flex-wrap: wrap;
   position: relative;
-  margin: -10px;
   margin-bottom: 0;
   overflow: hidden;
 
@@ -93,36 +91,9 @@ const Carousel = styled.div`
   }
 `
 
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin-top: 20px;
-`
-
-const Button = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 160px;
-  height: 49px;
-  background-color: #1c1c1c;
-  border: 2px solid #FFD020;
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
-  border-radius: 5px;
-  transition: all 0.3s ease-in-out;
-  &:hover {
-    background-color: #333333;
-  }
-
-`
 
 function CardContainer({ title, url }) {
 
-  const [showMore, setShowMore] = useState(false)
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -147,9 +118,6 @@ function CardContainer({ title, url }) {
   }, [url])
 
 
-  const handleClick = () => {
-    setShowMore(!showMore)
-  }
 
   return (
     <MainContainer>
@@ -161,24 +129,12 @@ function CardContainer({ title, url }) {
           ) : error ? (
             <h1>Error: {error}</h1>
           ) : (
-            showMore === false ?
-
-              (data.slice(0, 16).map((item) => (
-                <Card key={item.id} item={item} />
-              ))) :
-
               (data.map((item) => (
                 <Card key={item.id} item={item}/>
               )))
-          )
+              )
           }
         </Carousel>
-
-        <ButtonContainer>
-          <Button onClick={handleClick}>
-            {showMore ? "Show Less" : "Show More"}
-          </Button>
-        </ButtonContainer>
       </Container>
     </MainContainer>
   )

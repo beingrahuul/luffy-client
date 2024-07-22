@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 
-//image
-
 const Container = styled.div`
   flex-shrink: 0;
   width: calc(12.5% - 20px);
@@ -53,11 +51,11 @@ const Image = styled.img`
 const InfoContainer = styled.div`
   position: relative;
   padding: .5rem;
-  color: #e5e5e5;
+  color: white;
 `
 
 const Title = styled.h3`
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 500;
   margin: 10px 0px 0px 0px;
 `
@@ -69,23 +67,15 @@ const MiscContainer = styled.div`
   width: 100%;
 `
 
-const Group = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 20px;
-`
-
 const Misc = styled.p`
   font-size: 10px;
-  color: #bdbdbd;
+  color: white;
   margin: 0;
 `
 
-const Card = ({ item }) => {
-
+const SearchCard = ({item}) => {
   const handleClick = () => {
-    window.location.href = `/${item.id
-      }`
+    window.location.href = `/${item.id}`
   }
 
   return (
@@ -102,16 +92,13 @@ const Card = ({ item }) => {
 
       <InfoContainer>
         <MiscContainer>
-          <Misc>{item.quality}</Misc>
-          <Group>
-            <Misc>{item.type === "TV" ? item.season : item.duration}</Misc>
-            <Misc>{item.type === "TV" ? item.ep_no : item.releaseDate}</Misc>
-          </Group>
+            <Misc>{item.type === "TV Series" ? `${item.seasons === null ? "N/A" : `SS ${item.seasons}`}` : item.releaseDate}</Misc>
+            <Misc>{item.type}</Misc>
         </MiscContainer>
-        <Title>{item.title.length > 21 ? `${item.title.substring(0, 21)}...` : item.title}</Title>
+        <Title>{item.title.length > 24 ? `${item.title.substring(0, 24)}...` : item.title}</Title>
       </InfoContainer>
     </Container>
   )
 }
 
-export default Card
+export default SearchCard

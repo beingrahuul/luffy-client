@@ -1,18 +1,19 @@
 import styled from 'styled-components'
 
 //image
-import BACK from "../images/footer.jpeg"
+import BACK from "../images/footer.png"
 import LogoIMG from '../images/logo.jpeg';
 
 const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 300px;
+  height: 284px;
   width: 100%;
   background-image: url(${BACK});
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
   margin-top: 50px;
 
   @media screen and (max-width: 1299px) {
@@ -34,7 +35,7 @@ const Container = styled.div`
 `
 const MainContainer = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   height: 100%;
   width: 100%;
@@ -85,11 +86,36 @@ const UpperContainer = styled.div`
   } 
 `
 
-const Group = styled.div`
+const LowerContainer = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   width: 100%;
+  gap: 20px;
+
+  @media screen and (max-width: 1299px) {
+    
+  }
+
+  @media screen and (max-width: 991px) {
+
+
+  }
+
+  @media screen and (max-width: 640px) {
+
+  }
+
+  @media screen and (max-width: 479px) {
+    gap: 20px;
+  } 
+`
+
+const Group = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-left: 40px;
 `
 
 const LogoContainer = styled.div`
@@ -125,11 +151,8 @@ const LogoImage = styled.img`
 
 const Logo = styled.h1`
   font-size: 24px;
-  color: white;
-  cursor: pointer;
-  &:hover {
-    color: #FFD020;
-  }
+  color: #FFD020;
+
 
   @media screen and (max-width: 768px) {
     font-size: 16px;
@@ -187,7 +210,7 @@ const Misc = styled.h1`
 `
 
 const Desc  = styled.p`
-  font-size: 14px;
+  font-size: 12px;
   color: #8E8E8E;
   text-align: center;
 
@@ -221,7 +244,7 @@ const Footer = () => {
             </LogoContainer>
           </Group>
 
-          <Group>
+          <Group style={{justifyContent: "center", margin:"0px"}}>
             <MiscContainer>
               <Misc>Contact</Misc>
               <Misc>Request</Misc>
@@ -232,12 +255,10 @@ const Footer = () => {
           </Group>
         </UpperContainer>
 
-        <UpperContainer>
+        <LowerContainer>
           <Desc>Copyright © luffy.to. All Rights Reserved</Desc>
-        </UpperContainer>
-        <UpperContainer>
           <Desc>Disclaimer: This site does not store any files on its server. All contents are provided by non-affiliated third parties.</Desc>
-        </UpperContainer>
+        </LowerContainer>
         
       </MainContainer>
     </Container>

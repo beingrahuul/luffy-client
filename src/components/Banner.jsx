@@ -1,10 +1,14 @@
 import styled from 'styled-components';
 
+//icons
+import PLAY from '../icons/Play.svg';
+
+
 
 const Container = styled.div`
   display: flex;
   width: 100vw;
-  height: 680px;
+  height: 580px;
   overflow: hidden;
   position: relative;
 
@@ -26,6 +30,15 @@ const Container = styled.div`
   }
 `;
 
+const MainContainer = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  z-index: 1;
+`
+
 const InfoContainer = styled.div`
   display: flex;
   padding: 20px;
@@ -38,7 +51,6 @@ const InfoContainer = styled.div`
   gap: 20px;
   margin: 40px;
   border-radius: 10px;
-  text-shadow: 2px 2px 5px #000000;
 
   @media screen and (max-width: 1299px) {
  
@@ -87,6 +99,7 @@ const Group = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 20px;
+  color: #adb5bd;
 
   @media screen and (max-width: 1299px) {
   
@@ -112,7 +125,6 @@ const IMDB = styled.div`
   background-color: #f6be4f;
   color: black;
   padding: 5px;
-  text-shadow: none;
 
   @media screen and (max-width: 1299px) {
   
@@ -135,7 +147,7 @@ const IMDB = styled.div`
 `;
 
 const Misc = styled.p`
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 500;
   margin: 0;
 
@@ -158,8 +170,9 @@ const Misc = styled.p`
 `;
 
 const Description = styled.p`
-  font-size: 16px;
+  font-size: 15px;
   margin: 10px 0;
+  color: #adb5bd;
 
   @media screen and (max-width: 1299px) {
   
@@ -204,19 +217,19 @@ const BannerImage = styled.img`
   }
 `;
 
-const Button = styled.button`
-  background-color: #f6be4f;
+const Button = styled.div`
+  background-color: #ffd020;
   color: black;
-  padding: 10px 20px;
-  border: none;
   border-radius: 2px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   transition: 0.3s;
-  &:hover {
-    background-color: #f8b838;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 26px;
+  gap: 15px;
 
   @media screen and (max-width: 1299px) {
  
@@ -237,6 +250,17 @@ const Button = styled.button`
   }
 `;
 
+const ButtonImage = styled.img`
+  width: 20px;
+  height: 22px;
+  margin-right: 10px;
+`;
+
+const ButtonText = styled.p`
+  margin: 0;
+  font-size: 16px;
+`
+
 const Banner = ({ data }) => {
 
   const handleClick = () => {
@@ -248,6 +272,7 @@ const Banner = ({ data }) => {
   return (
     <Container>
       <BannerImage src={data.cover} alt="banner" />
+      <MainContainer>
       <InfoContainer>
         <Title>{data.title}</Title>
         <Group>
@@ -259,8 +284,12 @@ const Banner = ({ data }) => {
           ))}
         </Group>
         <Description>{data.description.length > 300 ? `${data.description.slice(0, 300)}...` : data.description}</Description>
-        <Button onClick={handleClick}>Play</Button>
+        <Button onClick={handleClick}>
+          <ButtonImage src={PLAY} alt="play" />
+          <ButtonText>Watch Now</ButtonText>
+        </Button>
       </InfoContainer>
+      </MainContainer>
     </Container>
   );
 };

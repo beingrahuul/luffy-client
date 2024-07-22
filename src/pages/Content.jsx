@@ -14,6 +14,8 @@ import Loader from '../components/Loader';
 
 const Container = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100vw;
   height: 100%;
   padding-top: 40px;
@@ -42,8 +44,9 @@ const Container = styled.div`
 const MainContainer = styled.div`
   display: flex;
   justify-content: space-around;
-  width: 100%;
-  height: 100%;
+  width: 95%;
+  height: 95%;
+  gap: 20px;
   color: white;
 
 
@@ -68,7 +71,7 @@ const MainContainer = styled.div`
 
 const LeftContainer = styled.div`
   display: flex;
-  flex: 2;
+  flex: 3;
   flex-direction: column;
   align-items: center;
   width: 100%;
@@ -128,6 +131,7 @@ const RightContainer = styled.div`
 const Content = ({type}) => {
 
   const {tempId} = useParams()
+  console.log(type)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [content, setContent] = useState(null)
@@ -135,10 +139,11 @@ const Content = ({type}) => {
   const { setEpisodeId, setMediaId } = useEpisode();
 
   const id = `${type}/${tempId}`
+
   useEffect(() => {
     const fetchData = async () => {
       try {        
-        const response = await fetch("https://luffy-server-production.up.railway.app/info", {
+        const response = await fetch("http://localhost:8080/info", {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -149,7 +154,12 @@ const Content = ({type}) => {
           throw new Error(`HTTP error! status: ${response.status}`)
         }
         const data = await response.json()
-        setEpisodeId(data.episodes[0].id)
+        console.log(data.episodes.length)
+        if(data.episodes.length !== 0){
+          setEpisodeId(data.episodes[0].id)
+        }else{
+          setEpisodeId(null)
+        }
         setMediaId(data.id)
         setContent(data)
       } catch (error) {

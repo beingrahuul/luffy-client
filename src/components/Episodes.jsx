@@ -160,6 +160,8 @@ const Episode = styled.div`
 
 const Episodes = ({data}) => {
 
+  console.log(data)
+
   const groupEpisodesBySeason = (episodes) => {
     return episodes.reduce((acc, episode) => {
         const { season } = episode;
@@ -183,29 +185,33 @@ const Episodes = ({data}) => {
 
   return (
     <Container>
-      <SeasonsContainer>
-        {Object.keys(groupedEpisodes).map((seasonNumber, index) => (
-          <Season
-            key={index}
-            style={{ borderBottom: season === Number(seasonNumber) ? '3px solid #4CAF50' : '3px solid transparent' }}
-            onClick={() => setSeason(Number(seasonNumber))}
-          >
-            Season {seasonNumber}
-          </Season>
-        ))}
-      </SeasonsContainer>
+      {data.length === 0 ? <h1>No episodes found</h1> : (
+        <>
+          <SeasonsContainer>
+            {Object.keys(groupedEpisodes).map((seasonNumber, index) => (
+              <Season
+                key={index}
+                style={{ borderBottom: season === Number(seasonNumber) ? '3px solid #4CAF50' : '3px solid transparent' }}
+                onClick={() => setSeason(Number(seasonNumber))}
+              >
+                Season {seasonNumber}
+              </Season>
+            ))}
+          </SeasonsContainer>
 
-      <EpisodesContainer>
-        {(groupedEpisodes[season] || []).map((episode, index) => (
-          <Episode 
-            key={index} 
-            onClick={() => handleClick(episode.id)}
-            style={{ backgroundColor: episode.id === ep ? '#4CAF50' : '#3c3c3c' }}
-          >
-            <p>{episode.title.length > 25 ? episode.title.slice(0, 25) + "..." : episode.title}</p>
-          </Episode>
-        ))}
-      </EpisodesContainer>
+          <EpisodesContainer>
+            {(groupedEpisodes[season] || []).map((episode, index) => (
+              <Episode 
+                key={index} 
+                onClick={() => handleClick(episode.id)}
+                style={{ backgroundColor: episode.id === ep ? '#4CAF50' : '#3c3c3c' }}
+              >
+                <p>{episode.title.length > 25 ? episode.title.slice(0, 25) + "..." : episode.title}</p>
+              </Episode>
+            ))}
+          </EpisodesContainer>
+        </>
+      )}
     </Container>
   )
 }

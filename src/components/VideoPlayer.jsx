@@ -16,8 +16,8 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 500px;
-  width: 900px;
+  width: 100%;
+  height: 100%;
   aspect-ratio: 16 / 9;
   background-color: #000000;
 

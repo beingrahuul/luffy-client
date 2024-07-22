@@ -4,13 +4,13 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   height: 100%;
-  width: 385px;
+  width: 100%;
+  max-width: 340px;
   color: #A7A7A7;
   background-color: #272B36;
   flex-direction: column;
   margin-bottom: 20px;
   padding-bottom: 20px;
-  border-radius: 10px;
 
   @media screen and (max-width: 1299px) {
     
@@ -36,8 +36,9 @@ const PosterContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 425px;
-  width: 345px;
+  height: 350px;
+  width: 220px;
+  margin: 25px 0;
   @media screen and (max-width: 1299px) {
     
   }
@@ -58,8 +59,8 @@ const PosterContainer = styled.div`
 `
 
 const Poster = styled.img`
-  width: 80%;
-  height: 85%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   @media screen and (max-width: 1299px) {
     
@@ -83,8 +84,9 @@ const InfoContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 325px;
-  gap: 10px;
+  width: 300px;
+  gap: 25px;
+  color: #a7a7a7;
   @media screen and (max-width: 1299px) {
     
   }
@@ -103,8 +105,18 @@ const InfoContainer = styled.div`
   } 
 `
 
+const ExtraInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  gap: 15px;
+  align-items: center;
+
+`
+
 const Title = styled.h1`
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 500;
   color: white;
   margin: 0;
@@ -155,7 +167,7 @@ const Group = styled.div`
 const IMDB = styled.div`
   font-size: 14px;
   font-weight: 600;
-  background-color: #F6BE4F;
+  background-color: #ffd020;
   color: black;
   padding: 5px;
 
@@ -269,10 +281,18 @@ const Description = styled.p`
 `
 
 const InfoCard = ({content}) => {
+
+  console.log(content)
   return (
     <Container>
       <PosterContainer>
-        <Poster src={content.image} />
+        {
+          content.image === "N/A" ? (
+            <Poster src="https://i.imgur.com/CVBcGsU.jpeg" />
+          ) : (
+            <Poster src={content.image} />
+          )
+        }
       </PosterContainer>
 
       <InfoContainer>
@@ -282,43 +302,44 @@ const InfoCard = ({content}) => {
           <Misc>{content.duration}</Misc>
         </Group>
         <Description>
-          {content.description.length > 200 ? content.description.slice(0, 200) + "..." : content.description}
+          {content.description.length > 150 ? content.description.slice(0, 150) + "..." : content.description}
         </Description>
-
+        <ExtraInfo>
         <Extra>
-          <Misc>Release Date :</Misc>
+          <Misc style={{color:"white"}}>Release Date :</Misc>
           <ExtraContainer>
             <Misc>{content.releaseDate}</Misc>
           </ExtraContainer>
         </Extra>
 
         <Extra>
-          <Misc>Genre :</Misc>
+          <Misc style={{color:"white"}}>Genre :</Misc>
           <ExtraContainer>
             <Misc>{content.genres.sort().join(", ")}</Misc>
           </ExtraContainer>
         </Extra>
 
         <Extra>
-          <Misc>Casts :</Misc>
+          <Misc style={{color:"white"}}>Casts :</Misc>
           <ExtraContainer>
             <Misc>{content.casts.sort().join(", ")}</Misc>
           </ExtraContainer>
         </Extra>
 
         <Extra>
-          <Misc>Production :</Misc>
+          <Misc style={{color:"white"}}>Production :</Misc>
           <ExtraContainer>
             <Misc>{content.production}</Misc>
           </ExtraContainer>
         </Extra>
 
         <Extra>
-          <Misc>country :</Misc>
+          <Misc style={{color:"white"}}>country :</Misc>
           <ExtraContainer>
             <Misc>{content.country}</Misc>
           </ExtraContainer>
         </Extra>
+        </ExtraInfo>
       </InfoContainer>
     </Container>
   )

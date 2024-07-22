@@ -7,14 +7,15 @@ import LogoIMG from '../images/logo.jpeg';
 
 //Icons
 import Menu from "../icons/Menu.svg"
+import SEARCH from "../icons/Search.svg"
 
 
 const Container = styled.div`
   display: flex;
-  height: 100px;
+  height: 80px;
   width: 100%;
-  background-color: ${({ ishome }) => (ishome ? '#0000004e' : '#000')};
-  position: ${({ ishome }) => (ishome ? 'fixed' : 'relative')};
+  background-color: #000000;
+  position: relative;
   align-items: center;
   z-index: 100;
   gap: 20px;
@@ -88,11 +89,8 @@ const LogoImage = styled.img`
 
 const Logo = styled.h1`
   font-size: 24px;
-  color: white;
+  color: #FFD020;
   cursor: pointer;
-  &:hover {
-    color: #FFD020;
-  }
 
   @media screen and (max-width: 1299px) {
 
@@ -117,8 +115,9 @@ const SearchContainer = styled.div`
   align-items: center;
   border-radius: 30px;
   overflow: hidden;
-  height: 50px;
-  width: 480px;
+  height: 46px;
+  width: 450px;
+  background-color: #1c1e22;
   
 
   @media screen and (max-width: 1299px) {
@@ -143,12 +142,13 @@ const SearchContainer = styled.div`
 const Search = styled.input`
   height: 100%;
   width: 100%;
-  padding: 10px 0px 10px 20px;
+  padding: 10px 0px 10px 30px;
   outline: none;
   border: none;
-  font-size: 16px;
-  font-family: "Poppins", sans-serif;
-  background-color: #3e3e3ee6;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  background-color: #1c1e22;
+
 
   @media screen and (max-width: 1299px) {
 
@@ -169,12 +169,17 @@ const Search = styled.input`
   }
 `
 
+const SearchIcon = styled.img`
+  width: 16px;
+  height: 16px;
+  margin: 0px 30px;
+`
+
 const LinkContainer = styled.div`
   display: flex;
   justify-content: space-around;
   width: 90%;
   align-items: center;
-  gap: 20px;
 
   @media screen and (max-width: 1299px) {
 
@@ -197,8 +202,8 @@ const LinkContainer = styled.div`
 const Link = styled.a`
   color: white;
   text-decoration: none;
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 400;
 `
 
 const Icons = styled.img`
@@ -216,7 +221,7 @@ const MobileMenu = styled.div`
   top: 100px;
   right: 0;
   width: 100vw;
-  height: calc(100vh - 150px);
+  height: 650px;
   background-color: #000000ec;
   z-index: 100;
   padding-top: 15px;
@@ -294,7 +299,7 @@ const Navbar = () => {
       <Group>
         <LogoContainer onClick={handleClick}>
           <LogoImage src={LogoIMG} />
-          <Logo>Luffy.</Logo>
+          <Logo>Luffy</Logo>
         </LogoContainer>
 
         <SearchContainer>
@@ -304,6 +309,7 @@ const Navbar = () => {
             value={search}
             onChange={handleChange}
           />
+          <SearchIcon src={SEARCH} />
         </SearchContainer>
       </Group>
 

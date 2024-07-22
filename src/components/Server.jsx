@@ -110,10 +110,12 @@ const Server = () => {
 
   const { episodeId, mediaId, selectedServer, setSelectedServer } = useEpisode();
 
+  console.log(episodeId, mediaId)
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://luffy-server-production.up.railway.app/server", {
+        const response = await fetch("http://localhost:8080/server", {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
