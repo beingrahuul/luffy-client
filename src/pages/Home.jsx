@@ -10,11 +10,6 @@ const Container = styled.div`
   flex-direction: column;
   background-color: #1c1e22;
   gap: 20px;
-
-  @media screen and (max-width: 479px) {
-    
-  }
-
 `
 
 
