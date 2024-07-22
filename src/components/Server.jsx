@@ -115,7 +115,7 @@ const Server = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:8080/server", {
+        const response = await fetch("https://luffy-server-production.up.railway.app/server", {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

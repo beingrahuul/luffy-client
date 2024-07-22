@@ -112,7 +112,7 @@ const Search = () => {
       setLoading(true);
       setError(null);
       try {
-        const response = await fetch("http://localhost:8080/search", {
+        const response = await fetch("https://luffy-server-production.up.railway.app/search", {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
