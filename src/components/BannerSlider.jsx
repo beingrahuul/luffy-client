@@ -15,6 +15,18 @@ const SliderWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  .slick-dots {
+    bottom: 10px; /* Adjust position if needed */
+  }
+
+  .slick-dots li button:before {
+    color: white; /* Dots color */
+  }
+
+  .slick-dots li.slick-active button:before {
+    color: #ffc800; /* Active dot color (optional) */
+  }
 `;
 
 const StyledSlider = styled(Slider)`
