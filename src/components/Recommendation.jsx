@@ -1,24 +1,43 @@
 import styled from 'styled-components'
-//import CardContainer from './CardContainer'
+import RecommendCard from './RecommendCard'
 
 const Container = styled.div`
   display: flex;
-  justify-content: center; 
+  width: 95%;
   align-items: center;
-  flex-direction: column;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  position: relative;
+  margin-bottom: 0;
+  overflow: hidden;
+`
+const TitleContainer  = styled.div`
+  display: flex;
+  align-items: center;
+  width: 95%;
   height: 100%;
-  width: 100%;
-  margin-bottom: 100px;
+`
+
+const Title = styled.h1`
+  font-size: 24px;
+  font-weight: 600;
+  color: white;
 `
 
 
 
 const Recommendation = ({data}) => {
-  console.log(data)
   return (
+    <>
+    <TitleContainer>
+      <Title>Watch Next</Title>
+    </TitleContainer>
     <Container>
-      
+      {data.map((item, index) => (
+          <RecommendCard key={index} item={item} />
+      ))}
     </Container>
+    </>
   )
 }
 

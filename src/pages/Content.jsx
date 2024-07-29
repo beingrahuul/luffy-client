@@ -10,6 +10,7 @@ import Episodes from '../components/Episodes'
 import Server from '../components/Server'
 //import Recommendation from '../components/Recommendation';
 import Loader from '../components/Loader';
+import Recommendation from '../components/Recommendation';
 
 
 const Container = styled.div`
@@ -186,15 +187,16 @@ const Content = ({type}) => {
 
               <Server />
               {type === "tv" && <Episodes data={content.episodes} />}
-
+              
             </LeftContainer>
             
             <RightContainer>
               <InfoCard content={content}/>
             </RightContainer>
-
           </MainContainer>
+          <Recommendation data={content.recommendations} />
         </>
+        
       )}
     </Container>
   )

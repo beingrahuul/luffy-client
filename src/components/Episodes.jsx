@@ -2,18 +2,20 @@ import styled from 'styled-components'
 import { useState } from 'react'
 import { useEpisode } from '../context/EpisodeContext';
 
+
+
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 900px;
-  background-color: #2c2c2c;
+  width: 100%;
+  max-width: 1000px;
   border-radius: 5px;
   color: white;
   gap: 20px;
   padding: 20px 0px;
-  margin: 20px;
 
   @media screen and (max-width: 1299px) {
     
@@ -38,7 +40,7 @@ const SeasonsContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  width: 90%;
+  width: 95%;
   height: 60px;
   gap: 20px;
   overflow-y: scroll;
@@ -97,13 +99,13 @@ const Season = styled.div`
 
 const EpisodesContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  width: 100%;
   align-items: center;
-  justify-content: left;
-  gap: 20px;
-  width: 90%;
-  background-color: #2c2c2c;
-  border-radius: 5px;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  position: relative;
+  margin-bottom: 0;
+  overflow: hidden;
 
   @media screen and (max-width: 1299px) {
     
@@ -124,15 +126,19 @@ const EpisodesContainer = styled.div`
 `
 
 const Episode = styled.div`
+  flex-shrink: 0;
   display: flex;
   align-items: center;
-  width: 210px;
+  padding: 10px;
+  width: calc(16.6% - 40px);
+  background-color: #272B36;
+  margin: 10px;
+  position: relative;
+  overflow: hidden;
   font-size: 14px;
-  height: 50px;
-  padding: 0 20px;
-  border-radius: 5px;
+  border-radius: 3px;
+  transition: all 0.3s ease-in-out;
   cursor: pointer;
-  transition: 0.3s ease-in-out;
   &:hover {
     background-color: #4c4c4c;
   }
@@ -157,6 +163,17 @@ const Episode = styled.div`
     padding: 0px 10px;
   }
 `
+
+const EpisodeTitle = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-weight: 500;
+  p{
+    margin: 0;
+  }
+`
+
 
 const Episodes = ({data}) => {
 
@@ -204,9 +221,19 @@ const Episodes = ({data}) => {
               <Episode 
                 key={index} 
                 onClick={() => handleClick(episode.id)}
-                style={{ backgroundColor: episode.id === ep ? '#4CAF50' : '#3c3c3c' }}
+                style={{ 
+                  backgroundColor: episode.id === ep ? '#ffd020' : '#272b36' , 
+                  color: episode.id === ep ? '#323232' : '#a7a7a7'
+                }}
               >
-                <p>{episode.title.length > 25 ? episode.title.slice(0, 25) + "..." : episode.title}</p>
+
+                <EpisodeTitle>
+                {episode.title.split(":").map((item, index) => (
+                  <p key={index}>
+                    {item}
+                  </p>
+                ))}
+                </EpisodeTitle>
               </Episode>
             ))}
           </EpisodesContainer>
