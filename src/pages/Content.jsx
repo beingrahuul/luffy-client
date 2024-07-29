@@ -8,7 +8,6 @@ import VideoPlayer from '../components/VideoPlayer'
 import InfoCard from '../components/InfoCard'
 import Episodes from '../components/Episodes'
 import Server from '../components/Server'
-//import Recommendation from '../components/Recommendation';
 import Loader from '../components/Loader';
 import Recommendation from '../components/Recommendation';
 import ShareThis from '../components/ShareThis';

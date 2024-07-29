@@ -3,8 +3,6 @@ import { useState } from 'react'
 import { useEpisode } from '../context/EpisodeContext';
 
 
-
-
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -62,6 +60,9 @@ const SeasonsContainer = styled.div`
   @media screen and (max-width: 479px) {
     gap: 10px;
     height: 50px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+
   }
 
 `
@@ -93,6 +94,7 @@ const Season = styled.div`
 
   @media screen and (max-width: 479px) {
     min-width: 70px;
+    height: 89%;
     font-size: 12px;
   }
 `
@@ -143,24 +145,13 @@ const Episode = styled.div`
     background-color: #4c4c4c;
   }
 
-  @media screen and (max-width: 1299px) {
-    
-  }
-
-  @media screen and (max-width: 991px) {
-
-
-  }
-
-  @media screen and (max-width: 640px) {
-
-  }
 
   @media screen and (max-width: 479px) {
+    width: calc(50% - 45px);
     font-size: 10px;
     width: 150px;
     height: 40px;
-    padding: 0px 10px;
+    padding: 10px;
   }
 `
 
@@ -228,9 +219,9 @@ const Episodes = ({data}) => {
               >
 
                 <EpisodeTitle>
-                {episode.title.split(":").map((item, index) => (
+                {episode.title.split(":").slice(0,2).map((item, index) => (
                   <p key={index}>
-                    {item}
+                    {item.length > 16 ? `${item.substring(0, 16)}..` : item}
                   </p>
                 ))}
                 </EpisodeTitle>

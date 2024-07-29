@@ -22,6 +22,10 @@ const Title = styled.h1`
   font-size: 24px;
   font-weight: 600;
   color: white;
+
+  @media screen and (max-width: 479px) {
+    margin-left: 10px;
+  }
 `
 
 

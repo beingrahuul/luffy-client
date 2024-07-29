@@ -1,5 +1,8 @@
 import styled from 'styled-components'
 
+//icons
+import WATCH from '../icons/Watch.svg'
+
 const Container = styled.div`
   display: flex;
   align-items: center;
@@ -56,7 +59,7 @@ const PosterContainer = styled.div`
   @media screen and (max-width: 479px) {
     height: 107px;
     width: 70px;
-    margin-left: 20px;
+    margin: 15px 0px 10px 20px;
 } 
 `
 
@@ -104,6 +107,7 @@ const InfoContainer = styled.div`
 
   @media screen and (max-width: 479px) {
     margin-left: 20px;
+    gap: 10px;
   } 
 `
 
@@ -191,9 +195,13 @@ const IMDB = styled.div`
   } 
 `
 
-const Misc = styled.p`
+const Misc = styled.div`
+  display: flex;
   font-size: 14px;
   margin: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 
   @media screen and (max-width: 1299px) {
     
@@ -210,6 +218,16 @@ const Misc = styled.p`
 
   @media screen and (max-width: 479px) {
     font-size: 12px;
+  } 
+
+  img{
+    height: 15px;
+    width: 15px;
+
+    @media screen and (max-width: 479px) {
+      height: 13px;
+      width: 13px;
+    }
   } 
 `
 
@@ -301,7 +319,7 @@ const InfoCard = ({content}) => {
         <Title>{content.title}</Title>
         <Group>
           <IMDB>{`IMDb ${content.rating === null ? 'N/A' : content.rating}`}</IMDB>
-          <Misc>{content.duration}</Misc>
+          <Misc><img src={WATCH} alt='watch' />{content.duration}</Misc>
         </Group>
         <Description>
           {content.description.length > 150 ? content.description.slice(0, 150) + "..." : content.description}
