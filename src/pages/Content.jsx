@@ -11,6 +11,7 @@ import Server from '../components/Server'
 //import Recommendation from '../components/Recommendation';
 import Loader from '../components/Loader';
 import Recommendation from '../components/Recommendation';
+import ShareThis from '../components/ShareThis';
 
 
 const Container = styled.div`
@@ -186,6 +187,7 @@ const Content = ({type}) => {
               <VideoPlayer cover={content.cover} title={content.title}/>
 
               <Server />
+              <ShareThis  url={window.location.href}/>
               {type === "tv" && <Episodes data={content.episodes} />}
               
             </LeftContainer>

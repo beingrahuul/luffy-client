@@ -3,6 +3,7 @@ import styled from 'styled-components'
 //components
 import CardContainer from '../components/CardContainer'
 import BannerSlider from '../components/BannerSlider'
+import ShareThis from '../components/ShareThis'
 
 const Container = styled.div`
   display: flex;
@@ -15,9 +16,12 @@ const Container = styled.div`
 
 function Home() {
 
+  const url = window.location.href
+
   return (
     <Container>
-      <BannerSlider />
+      <BannerSlider/>
+      <ShareThis  url={url}/>
       <CardContainer url ="https://luffy-server-production.up.railway.app/home/trending-movies"  title = "Trending Movies"  />
       <CardContainer url ="https://luffy-server-production.up.railway.app/home/trending-series"  title = "Trending Shows" />
       <CardContainer url ="https://luffy-server-production.up.railway.app/home/latest-movies"  title = "Latest Movies"  />
