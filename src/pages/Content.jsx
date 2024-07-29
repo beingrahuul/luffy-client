@@ -68,6 +68,7 @@ const MainContainer = styled.div`
   @media screen and (max-width: 479px) {
     flex-direction: column;
     gap: 20px;
+    width: 100%;
   }
 `
 
@@ -124,7 +125,8 @@ const RightContainer = styled.div`
   }
 
   @media screen and (max-width: 479px) {
-
+    width: 100%;
+    
   }
 `
 

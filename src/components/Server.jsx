@@ -14,6 +14,10 @@ const Container = styled.div`
   color: #A7A7A7;
   flex-direction: column;
   align-items: center;
+
+  @media screen and (max-width: 479px) {
+    padding: 10px;
+  }
 `
 
 const Heading = styled.p`
@@ -34,7 +38,7 @@ const Heading = styled.p`
   }
 
   @media screen and (max-width: 479px) {
-    font-size: 14px;
+    font-size: 12px;
   }
 `
 
@@ -94,9 +98,9 @@ const Button = styled.div`
   }
 
   @media screen and (max-width: 479px) {
-    width: 90px;
-    height: 40px;
-    font-size: 14px;
+    width: 80px;
+    height: 30px;
+    font-size: 12px;
     margin: 8px;
   }
 
@@ -106,6 +110,12 @@ const BtnImage = styled.img`
   width: 15px;
   height: 15px;
   margin-right: 5px;
+
+  @media screen and (max-width: 479px) {
+    width: 10px;
+    height: 10px;
+
+  }
 `
 
 const ButtonTwo = styled.div`
@@ -136,9 +146,9 @@ const ButtonTwo = styled.div`
   }
 
   @media screen and (max-width: 479px) {
-    width: 90px;
-    height: 40px;
-    font-size: 14px;
+    width: 80px;
+    height: 30px;
+    font-size: 12px;
     margin: 8px;
   }
 

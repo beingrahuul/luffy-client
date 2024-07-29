@@ -27,8 +27,9 @@ const Container = styled.div`
 
   @media screen and (max-width: 479px) {
     border-radius: 0px;
-    width: 100%;
+    max-width: 100%;
     margin-bottom: 0px;
+    align-items: flex-start;
   } 
 `
 
@@ -53,9 +54,10 @@ const PosterContainer = styled.div`
   }
 
   @media screen and (max-width: 479px) {
-    height: 325px;
-    width: 245px;
-  } 
+    height: 107px;
+    width: 70px;
+    margin-left: 20px;
+} 
 `
 
 const Poster = styled.img`
@@ -101,7 +103,7 @@ const InfoContainer = styled.div`
   }
 
   @media screen and (max-width: 479px) {
-
+    margin-left: 20px;
   } 
 `
 
