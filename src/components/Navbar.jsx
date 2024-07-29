@@ -77,6 +77,8 @@ const LogoContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+
 `
 
 const LogoImage = styled.img`
@@ -118,6 +120,7 @@ const SearchContainer = styled.div`
   height: 46px;
   width: 450px;
   background-color: #1c1e22;
+  color: white;
   
 
   @media screen and (max-width: 1299px) {
@@ -148,6 +151,7 @@ const Search = styled.input`
   font-size: 14px;
   font-family: "Roboto", sans-serif;
   background-color: #1c1e22;
+  color: white;
 
 
   @media screen and (max-width: 1299px) {
@@ -319,7 +323,7 @@ const Navbar = () => {
           <Link href="/">Genre</Link>
           <Link href="/">Country</Link>
           <Link href="/">Movies</Link>
-          <Link href="/">Tv Shows</Link>
+          <Link href="/">TV Shows</Link>
         </LinkContainer>
       </LinkGroup>
 

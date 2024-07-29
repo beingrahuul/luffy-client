@@ -74,7 +74,7 @@ const VideoPlayer = ({ cover, title }) => {
         <InfinitySpin
           visible={true}
           width="200"
-          color="#4fa94d"
+          color="#FFD020"
           ariaLabel="infinity-spin-loading"
         />
       ) : error ? (

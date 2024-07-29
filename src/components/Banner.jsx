@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 //icons
 import PLAY from '../icons/Play.svg';
+import STAR from '../icons/star.svg';
 
 
 
@@ -122,9 +123,11 @@ const Group = styled.div`
 const IMDB = styled.div`
   font-size: 14px;
   font-weight: 600;
-  background-color: #f6be4f;
-  color: black;
   padding: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  justify-content: center;
 
   @media screen and (max-width: 1299px) {
   
@@ -143,6 +146,11 @@ const IMDB = styled.div`
     font-size: 10px;
     padding: 5px;
     font-weight: 500;
+  }
+
+  img {
+    width: 15px;
+    height: 15px;
   }
 `;
 
@@ -276,7 +284,10 @@ const Banner = ({ data }) => {
       <InfoContainer>
         <Title>{data.title}</Title>
         <Group>
-          <IMDB>IMDb {data.rating}</IMDB>
+          <IMDB>
+            <img src = {STAR} alt="imdb" />
+            {data.rating}
+          </IMDB>
           <Misc>{data.releaseDate.split('-')[0]}</Misc>
           <Misc>{data.duration}</Misc>
           {data.genres.slice(0, 3).map((item) => (

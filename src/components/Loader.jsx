@@ -19,7 +19,7 @@ const Loader = ({ height, width, bgcolor, type }) => {
         <InfinitySpin
           visible={true}
           width="200"
-          color="#4fa94d"
+          color="#FFD020"
           ariaLabel="infinity-spin-loading"
         />}
 
@@ -29,7 +29,7 @@ const Loader = ({ height, width, bgcolor, type }) => {
           visible={true}
           height="80"
           width="80"
-          color="#4fa94d"
+          color="#FFD020"
           ariaLabel="rings-loading"
           wrapperStyle={{}}
           wrapperClass=""
@@ -41,8 +41,8 @@ const Loader = ({ height, width, bgcolor, type }) => {
           visible={true}
           height="100"
           width="100"
-          color="#4fa94d"
-          secondaryColor="#4fa94d"
+          color="#FFD020"
+          secondaryColor="#FFD020"
           radius="12.5"
           ariaLabel="mutating-dots-loading"
           wrapperStyle={{}}

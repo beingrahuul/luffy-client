@@ -3,6 +3,10 @@ import styled from 'styled-components'
 import { useEpisode } from '../context/EpisodeContext'
 import Loader from './Loader'
 
+//icons
+import PLAY from '../icons/Play.svg'
+
+
 const Container = styled.div`
   display: flex;
   height: 100%;
@@ -13,7 +17,7 @@ const Container = styled.div`
 `
 
 const Heading = styled.p`
-  font-size: 24px;
+  font-size: 15px;
   margin: 10px;
 
   @media screen and (max-width: 1299px) {
@@ -66,18 +70,57 @@ const Button = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 150px;
-  height: 50px;
-  background-color: #4CAF50;
-  color: white;
-  font-size: 20px;
+  width: 109px;
+  height: 43px;
+  background-color: #FFFFFF;
+  color: #323232;
+  font-size: 16px;
   cursor: pointer;
   margin: 10px;
-  border-radius: 5px;
+  border-radius: 3px;
   transition: 0.3s ease-in-out;
-  &:hover {
-    background-color: #45a049;
+
+  @media screen and (max-width: 1299px) {
+    
   }
+
+  @media screen and (max-width: 991px) {
+
+
+  }
+
+  @media screen and (max-width: 640px) {
+
+  }
+
+  @media screen and (max-width: 479px) {
+    width: 90px;
+    height: 40px;
+    font-size: 14px;
+    margin: 8px;
+  }
+
+`
+
+const BtnImage = styled.img`
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+`
+
+const ButtonTwo = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 109px;
+  height: 43px;
+  color: white;
+  border: 1.5px solid #FFFFFF;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 10px;
+  border-radius: 3px;
+  transition: 0.3s ease-in-out;
 
   @media screen and (max-width: 1299px) {
     
@@ -147,17 +190,15 @@ const Server = () => {
         loading ? <Loader height="100%" width="100%" bgcolor={"#1C1E22"} type={"mutatingDots"}/> : 
         error ? <p>{error}</p> : (
           server.map((server, index) => (
-            <Button 
-              key={index}
-              onClick={() => {
-                setSelectedServer(server)
-              }}
-              style={{backgroundColor: selectedServer === server ? '#45a049' : '#4CAF50', color: selectedServer === server ? 'black' : 'white'  }}
-            >
-              {server.name}
-            </Button>
-          ))
-        )
+            selectedServer === server ? 
+              <Button key={index}>
+                <BtnImage src={PLAY} alt="play" />
+                {server.name} 
+              </Button> :
+              <ButtonTwo key={index} onClick={() => setSelectedServer(server)}> {server.name} </ButtonTwo>
+
+          )
+        ))
       }
       </ServerContainer>
     </Container>

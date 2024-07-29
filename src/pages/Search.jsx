@@ -73,7 +73,7 @@ const Icon = styled.img`
 
 const PageNumber = styled.div`
   color: black;
-  background-color: #78c141;
+  background-color: #ffd020;
   margin: 0 10px;
   height: 30px;
   width: 30px;
@@ -163,7 +163,7 @@ const Search = () => {
 
   return (
     <Container>
-      <Title>Search Results for {query}</Title>
+      <Title>Search Results for "{query}"</Title>
       <MainContainer>
       {loading ? (
         <Loader height="400px" width="100vw" bgcolor={"#1C1E22"} type={"mutatingDots"}/>
@@ -185,7 +185,7 @@ const Search = () => {
           <Button onClick={handlePrevPage} disabled={pageno === 1}>
             <Icon src={LEFT} alt="prev" />
           </Button>
-          {!hasNextPage && <Extra onClick={handlePrevPage}>{pageno - 1}</Extra>}
+          {!hasNextPage && pageno !== 1 && <Extra onClick={handlePrevPage}>{pageno - 1}</Extra>}
           <PageNumber>{pageno}</PageNumber>
           {hasNextPage && <Extra onClick={handleNextPage}>{pageno + 1}</Extra>}
           <Button onClick={handleNextPage} disabled={!hasNextPage}>
