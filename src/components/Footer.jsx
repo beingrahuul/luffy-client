@@ -31,6 +31,7 @@ const Container = styled.div`
 
   @media screen and (max-width: 479px) {
     margin-top: 20px;
+    height: 200px;
   } 
 `
 const MainContainer = styled.div`
@@ -58,6 +59,7 @@ const MainContainer = styled.div`
 
   @media screen and (max-width: 479px) {
     gap: 10px;
+    justify-content: center;
   } 
 `
 
@@ -82,7 +84,8 @@ const UpperContainer = styled.div`
   }
 
   @media screen and (max-width: 479px) {
-    gap: 20px;
+    flex-direction: column;
+    gap: 5px;
   } 
 `
 
@@ -107,7 +110,7 @@ const LowerContainer = styled.div`
   }
 
   @media screen and (max-width: 479px) {
-    gap: 20px;
+    gap: 5px;
   } 
 `
 
@@ -116,6 +119,11 @@ const Group = styled.div`
   align-items: center;
   width: 100%;
   margin-left: 40px;
+
+  @media screen and (max-width: 479px) {
+    margin-left: 0px;
+    justify-content: center;
+  }
 `
 
 const LogoContainer = styled.div`
@@ -229,6 +237,7 @@ const Desc  = styled.p`
 
   @media screen and (max-width: 479px) {
     font-size: 10px;
+    width: 80%;
   } 
 `
 

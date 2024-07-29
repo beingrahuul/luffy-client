@@ -11,6 +11,7 @@ const Container = styled.div`
   flex-direction: column;
   background-color: #1c1e22;
   gap: 20px;
+  z-index: -1;
 `
 
 

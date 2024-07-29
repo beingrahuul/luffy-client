@@ -20,6 +20,10 @@ const Container = styled.div`
   width: 100%;
   flex-direction: column;
   margin-top: 40px;
+
+  @media screen and (max-width: 479px) {
+    margin-top: 120px;
+  }
   
 `;
 

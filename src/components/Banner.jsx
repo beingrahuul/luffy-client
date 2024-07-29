@@ -151,6 +151,11 @@ const IMDB = styled.div`
   img {
     width: 15px;
     height: 15px;
+
+    @media screen and (max-width: 479px) {
+      width: 10px;
+      height: 10px;
+    }
   }
 `;
 
@@ -253,8 +258,9 @@ const Button = styled.div`
   }
 
   @media screen and (max-width: 479px) {
-    padding: 5px 10px;
+    padding: 12px;
     font-size: 12px;
+    gap: 10px;
   }
 `;
 
@@ -262,6 +268,12 @@ const ButtonImage = styled.img`
   width: 20px;
   height: 22px;
   margin-right: 10px;
+
+  @media screen and (max-width: 479px) {
+    width: 13px;
+    height: 14px;
+    margin: 0;
+  }
 `;
 
 const ButtonText = styled.p`
@@ -294,7 +306,7 @@ const Banner = ({ data }) => {
             <Misc key={item}>{item.length > 10 ? `${item.slice(0, 8)}...` : item}</Misc>
           ))}
         </Group>
-        <Description>{data.description.length > 300 ? `${data.description.slice(0, 300)}...` : data.description}</Description>
+        <Description>{data.description.length > 150 ? `${data.description.slice(0, 150)}...` : data.description}</Description>
         <Button onClick={handleClick}>
           <ButtonImage src={PLAY} alt="play" />
           <ButtonText>Watch Now</ButtonText>

@@ -8,6 +8,7 @@ import LogoIMG from '../images/logo.jpeg';
 //Icons
 import Menu from "../icons/Menu.svg"
 import SEARCH from "../icons/search.svg"
+import CROSS from "../icons/Cross.svg"
 
 
 const Container = styled.div`
@@ -49,8 +50,8 @@ const Group = styled.div`
   
   @media screen and (max-width: 479px) {
     gap: 10px;
-    margin: 0px;
-    justify-content: space-around;
+    margin: 20px;
+    justify-content: space-between;
   }
 `
 
@@ -137,10 +138,55 @@ const SearchContainer = styled.div`
   }
 
   @media screen and (max-width: 479px) {
-    width: 240px;
-    height: 40px;
+    display: none;
   }
 `
+
+const CopyMobileSearchContainer = styled.div`
+  display: none;
+  @media screen and (max-width: 479px) {
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+    overflow: hidden;
+    height: 46px;
+    width: 90%;
+    background-color: #1c1e22;
+    color: white;
+  }
+`
+
+const MobileSearchContainer = styled.div`
+  display: none;
+  @media screen and (max-width: 479px) {
+    display: flex;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+  }
+`
+
+const MobileSearch = styled.div`
+  display: none;
+
+  @media screen and (max-width: 479px) {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 80px;
+    right: 0;
+    width: 100vw;
+    height: 100%;
+    background-color: #000000;
+    z-index: 100;
+    padding-top: 15px;
+    gap: 15px;
+  }
+`
+
 
 const Search = styled.input`
   height: 100%;
@@ -168,8 +214,8 @@ const Search = styled.input`
   }
 
   @media screen and (max-width: 479px) {
-    font-size: 14px;
-    padding: 10px 0px 10px 15px;
+    width: 100%;
+    height: 40px;
   }
 `
 
@@ -218,18 +264,22 @@ const Icons = styled.img`
 `
 
 const MobileMenu = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: absolute;
-  top: 100px;
-  right: 0;
-  width: 100vw;
-  height: 650px;
-  background-color: #000000ec;
-  z-index: 100;
-  padding-top: 15px;
-  gap: 15px;
+  display: none;
+
+  @media screen and (max-width: 479px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 80px;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000;
+    z-index: 100;
+    padding-top: 15px;
+    gap: 15px;
+  }
 `
 
 const Part = styled.div`
@@ -263,8 +313,6 @@ const Item = styled.div`
   height: 15px;
 `
 
-
-
 const Line = styled.div`
   width: 85%;
   height: 1px;
@@ -275,12 +323,18 @@ const Line = styled.div`
 const Navbar = () => {
   const [search, setSearch] = useState('');
   const [menu, setMenu] = useState(false);
+  const [searchToggle, setSearchToggle] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+
+  const ishome = location.pathname === '/';
 
   const handleChange = (e) => {
     const value = e.target.value;
     setSearch(value);
+    
+    
+
     if (value === '') {
       navigate(`/`);
     } else {
@@ -288,14 +342,27 @@ const Navbar = () => {
     }
   }
 
-  const ishome = location.pathname === '/';
 
   const handleClick = () => {
     navigate('/');
+    setSearch('');
+    setSearchToggle(false);
+    setMenu(false);
   }
 
   const toggleMenu = () => {
     setMenu(!menu);
+    if(searchToggle) {
+      setSearchToggle(!searchToggle);
+   }
+  }
+
+  const handleSearch = () => {
+    setSearchToggle(!searchToggle);
+
+    if(menu) {
+      setMenu(!menu);
+    }
   }
 
   return (
@@ -315,6 +382,10 @@ const Navbar = () => {
           />
           <SearchIcon src={SEARCH} />
         </SearchContainer>
+
+        <MobileSearchContainer>
+          <SearchIcon src={SEARCH} onClick={handleSearch}/>
+        </MobileSearchContainer>
       </Group>
 
       <LinkGroup>
@@ -373,6 +444,20 @@ const Navbar = () => {
           <Part>Tv Shows</Part>
 
         </MobileMenu>
+      )}
+
+      {searchToggle && (
+        <MobileSearch>
+          <CopyMobileSearchContainer>
+            <Search
+              type="text"
+              placeholder="Search for Movies and TV shows"
+              value={search}
+              onChange={handleChange}
+            />
+            <SearchIcon src={CROSS} onClick={handleSearch} style={{height: "30px", width: "30px"}} />
+          </CopyMobileSearchContainer>
+        </MobileSearch>
       )}
     </Container>
   );
