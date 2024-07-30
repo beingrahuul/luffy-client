@@ -2,14 +2,13 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
-//LOGO
+// LOGO
 import LogoIMG from '../images/logo.jpeg';
 
-//Icons
+// Icons
 import Menu from "../icons/Menu.svg"
 import SEARCH from "../icons/search.svg"
 import CROSS from "../icons/Cross.svg"
-
 
 const Container = styled.div`
   display: flex;
@@ -20,27 +19,13 @@ const Container = styled.div`
   align-items: center;
   z-index: 100;
   gap: 20px;
-
-  @media screen and (max-width: 1299px) {
-
-  }
-
-  @media screen and (max-width: 991px) {
-
-
-  }
-
-  @media screen and (max-width: 640px) {
-
-  }
-
   @media screen and (max-width: 479px) {
     position: relative;
     width: 100vw;
     gap: 0px;
     z-index: 999999;
   }
-`
+`;
 
 const Group = styled.div`
   display: flex;
@@ -48,13 +33,12 @@ const Group = styled.div`
   align-items: center;
   width: 100%;
   margin: 0 40px;
-  
   @media screen and (max-width: 479px) {
     gap: 10px;
     margin: 20px;
     justify-content: space-between;
   }
-`
+`;
 
 const LinkGroup = styled.div`
   display: flex;
@@ -62,26 +46,24 @@ const LinkGroup = styled.div`
   align-items: center;
   width: 100%;
   margin: 0 40px;
-  
   @media screen and (max-width: 479px) {
     display: none;
   }
-`
+`;
 
 const MobileLinkGroup = styled.div`
   display: none;
   @media screen and (max-width: 479px) {
     display: flex;
   }
-`  
+`;
 
 const LogoContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-
-`
+`;
 
 const LogoImage = styled.img`
   width: 50px;
@@ -89,30 +71,16 @@ const LogoImage = styled.img`
   object-fit: cover;
   margin-right: 5px;
   border-radius: 50%;
-`
+`;
 
 const Logo = styled.h1`
   font-size: 24px;
   color: #FFD020;
   cursor: pointer;
-
-  @media screen and (max-width: 1299px) {
-
-  }
-
-  @media screen and (max-width: 991px) {
-
-
-  }
-
-  @media screen and (max-width: 640px) {
-
-  }
-
   @media screen and (max-width: 479px) {
     font-size: 16px;
   }
-`
+`;
 
 const SearchContainer = styled.div`
   display: flex;
@@ -123,25 +91,10 @@ const SearchContainer = styled.div`
   width: 450px;
   background-color: #1c1e22;
   color: white;
-  
-
-  @media screen and (max-width: 1299px) {
-
-  }
-
-  @media screen and (max-width: 991px) {
-
-
-  }
-
-  @media screen and (max-width: 640px) {
-
-  }
-
   @media screen and (max-width: 479px) {
     display: none;
   }
-`
+`;
 
 const CopyMobileSearchContainer = styled.div`
   display: none;
@@ -155,7 +108,7 @@ const CopyMobileSearchContainer = styled.div`
     background-color: #1c1e22;
     color: white;
   }
-`
+`;
 
 const MobileSearchContainer = styled.div`
   display: none;
@@ -168,11 +121,10 @@ const MobileSearchContainer = styled.div`
     justify-content: center;
     background-color: transparent;
   }
-`
+`;
 
 const MobileSearch = styled.div`
   display: none;
-
   @media screen and (max-width: 479px) {
     display: flex;
     justify-content: center;
@@ -186,8 +138,7 @@ const MobileSearch = styled.div`
     padding-top: 15px;
     gap: 15px;
   }
-`
-
+`;
 
 const Search = styled.input`
   height: 100%;
@@ -199,74 +150,82 @@ const Search = styled.input`
   font-family: "Roboto", sans-serif;
   background-color: #1c1e22;
   color: white;
-
-
-  @media screen and (max-width: 1299px) {
-
-  }
-
-  @media screen and (max-width: 991px) {
-
-
-  }
-
-  @media screen and (max-width: 640px) {
-
-  }
-
   @media screen and (max-width: 479px) {
     width: 100%;
     height: 40px;
   }
-`
+`;
 
 const SearchIcon = styled.img`
   width: 16px;
   height: 16px;
   margin: 0px 30px;
-`
+`;
 
 const LinkContainer = styled.div`
   display: flex;
   justify-content: space-around;
   width: 90%;
   align-items: center;
-
-  @media screen and (max-width: 1299px) {
-
-  }
-
-  @media screen and (max-width: 991px) {
-
-
-  }
-
-  @media screen and (max-width: 640px) {
-
-  }
-
+  position: relative;
   @media screen and (max-width: 479px) {
     display: none;
   }
-`
+`;
 
-const Link = styled.a`
+const Link = styled.div`
   color: white;
-  text-decoration: none;
   font-size: 14px;
   font-weight: 400;
-`
+  width: 100px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+
+  &:hover .dropdown {
+    display: flex;
+  }
+`;
+
+const Dropdown = styled.div`
+  display: none;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 360px;
+  background-color: #1c1e22;
+  padding: 10px;
+  border-radius: 2px;
+  z-index: 100;
+`;
+
+const DropdownItem = styled.div`
+  color: white;
+  text-decoration: none;
+  width: calc(33.3% - 30px);
+  font-size: 14px;
+  padding: 5px 10px;
+  cursor: pointer;
+  &:hover {
+    color: #FFD020;
+  }
+`;
 
 const Icons = styled.img`
   width: 40px;
   height: 40px;
   object-fit: cover;
   cursor: pointer;
-`
+`;
 
 const MobileMenu = styled.div`
   display: none;
-
   @media screen and (max-width: 479px) {
     display: flex;
     flex-direction: column;
@@ -280,7 +239,7 @@ const MobileMenu = styled.div`
     padding-top: 15px;
     gap: 15px;
   }
-`
+`;
 
 const Part = styled.div`
   display: flex;
@@ -291,7 +250,7 @@ const Part = styled.div`
   padding: 10px;
   flex-direction: column;
   gap: 10px;
-`
+`;
 
 const SubPart = styled.div`
   display: flex;
@@ -302,7 +261,7 @@ const SubPart = styled.div`
   color: white;
   gap: 10px;
   font-size: 14px;
-`
+`;
 
 const Item = styled.div`
   display: flex;
@@ -311,14 +270,14 @@ const Item = styled.div`
   padding: 10px;
   width: 60px;
   height: 15px;
-`
+`;
 
 const Line = styled.div`
   width: 85%;
   height: 1px;
   background-color: #494949;
   border-radius: 1px;
-`
+`;
 
 const Navbar = () => {
   const [search, setSearch] = useState('');
@@ -327,48 +286,42 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const ishome = location.pathname === '/';
 
   const handleChange = (e) => {
     const value = e.target.value;
     setSearch(value);
-    
-    
-
     if (value === '') {
       navigate(`/`);
     } else {
       navigate(`/search/${value}`);
     }
-  }
+  };
 
-
-  const handleClick = () => {
-    navigate('/');
+  const handleClick = (to) => {
+    navigate(to);
     setSearch('');
     setSearchToggle(false);
     setMenu(false);
-  }
+  };
 
   const toggleMenu = () => {
     setMenu(!menu);
-    if(searchToggle) {
+    if (searchToggle) {
       setSearchToggle(!searchToggle);
-   }
-  }
+    }
+  };
 
   const handleSearch = () => {
     setSearchToggle(!searchToggle);
-
-    if(menu) {
+    if (menu) {
       setMenu(!menu);
     }
-  }
+  };
 
   return (
-    <Container ishome={ishome}>
+    <Container>
       <Group>
-        <LogoContainer onClick={handleClick}>
+        <LogoContainer onClick={() => handleClick('/')}>
           <LogoImage src={LogoIMG} />
           <Logo>Luffy</Logo>
         </LogoContainer>
@@ -384,17 +337,46 @@ const Navbar = () => {
         </SearchContainer>
 
         <MobileSearchContainer>
-          <SearchIcon src={SEARCH} onClick={handleSearch}/>
+          <SearchIcon src={SEARCH} onClick={handleSearch} />
         </MobileSearchContainer>
       </Group>
 
       <LinkGroup>
         <LinkContainer>
-          <Link href="/">Home</Link>
-          <Link href="/">Genre</Link>
-          <Link href="/">Country</Link>
-          <Link href="/">Movies</Link>
-          <Link href="/">TV Shows</Link>
+          <Link onClick={() => handleClick('/')}>Home</Link>
+          <Link className="genre">
+            Genre
+            <Dropdown className="dropdown">
+              <DropdownItem onClick={() => handleClick('/genre/action')}>Action</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/adventure')}>Adventure</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/animation')}>Animation</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/biography')}>Biography</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/comedy')}>Comedy</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/crime')}>Crime</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/documentary')}>Documentary</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/drama')}>Drama</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/family')}>Family</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/kids')}>Kids</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/fantasy')}>Fantasy</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/history')}>History</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/horror')}>Horror</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/music')}>Music</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/mystery')}>Mystery</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/news')}>News</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/reality')}>Reality</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/romance')}>Romance</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/science-fiction')}>Sci-Fi</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/soap')}>Soap</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/talk')}>Talk</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/thriller')}>Thriller</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/tv-movie')}>TV Movie</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/war')}>War</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/wastern')}>Western</DropdownItem>
+            </Dropdown>
+          </Link>
+          <Link onClick={() => handleClick('/')}>Movies</Link>
+          <Link onClick={() => handleClick('/')}>TV Shows</Link>
+          <Link onClick={() => handleClick('/')}>Popular</Link>
         </LinkContainer>
       </LinkGroup>
 
@@ -404,45 +386,44 @@ const Navbar = () => {
 
       {menu && (
         <MobileMenu>
-
           <Part>Home</Part>
-
           <Line />
           <Part>
             Genre
             <SubPart>
-              <Item>Action</Item>
-              <Item>Comedy</Item>
-              <Item>Animation</Item>
-              <Item>Adventure</Item>
-              <Item>History</Item>
-              <Item>Crime</Item>
-              <Item>Drama</Item>
-              <Item>Music</Item>
-              <Item>Family</Item>
-              <Item>Horror</Item>
-              <Item>Romance</Item>
-              <Item>Mystery</Item>
-              <Item>Kids</Item>
-              <Item>News</Item>
-              <Item>Reality</Item>
-              <Item>Thriller</Item>
-              <Item>Sci Fi</Item>
-              <Item>Talk</Item>
-              <Item>Western</Item>
-              <Item>War</Item>
+              <DropdownItem onClick={() => handleClick('/genre/action')}>Action</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/adventure')}>Adventure</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/animation')}>Animation</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/biography')}>Biography</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/comedy')}>Comedy</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/crime')}>Crime</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/documentary')}>Documentary</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/drama')}>Drama</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/family')}>Family</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/kids')}>Kids</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/fantasy')}>Fantasy</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/history')}>History</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/horror')}>Horror</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/music')}>Music</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/mystery')}>Mystery</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/news')}>News</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/reality')}>Reality</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/romance')}>Romance</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/science-fiction')}>Sci-Fi</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/soap')}>Soap</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/talk')}>Talk</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/thriller')}>Thriller</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/tv-movie')}>TV Movie</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/war')}>War</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/wastern')}>Western</DropdownItem>
             </SubPart>
           </Part>
-
           <Line />
           <Part>Country</Part>
-
           <Line />
           <Part>Movies</Part>
-
           <Line />
           <Part>Tv Shows</Part>
-
         </MobileMenu>
       )}
 
@@ -455,12 +436,12 @@ const Navbar = () => {
               value={search}
               onChange={handleChange}
             />
-            <SearchIcon src={CROSS} onClick={handleSearch} style={{height: "30px", width: "30px"}} />
+            <SearchIcon src={CROSS} onClick={handleSearch} />
           </CopyMobileSearchContainer>
         </MobileSearch>
       )}
     </Container>
   );
-}
+};
 
 export default Navbar;

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { useNavigate } from 'react-router-dom'
 
 //icons
 import WATCH from '../icons/Watch.svg'
@@ -200,8 +201,8 @@ const Misc = styled.div`
   font-size: 14px;
   margin: 0;
   align-items: center;
-  justify-content: center;
   gap: 5px;
+  flex-wrap: wrap;
 
   @media screen and (max-width: 1299px) {
     
@@ -229,6 +230,17 @@ const Misc = styled.div`
       width: 13px;
     }
   } 
+
+  span {
+    font-size: 14px;
+    color: #A7A7A7;
+    font-weight: 400;
+    cursor: pointer;
+
+    &:hover {
+      color: #ffd020;
+    }
+  }
 `
 
 const ExtraContainer = styled.div`
@@ -300,7 +312,13 @@ const Description = styled.p`
   } 
 `
 
-const InfoCard = ({content}) => {
+const InfoCard = ({ content }) => {
+  
+  const navigate = useNavigate()
+
+  const handleClick = (type) => {
+    navigate(`/genre/${type}`)
+  }
 
   return (
     <Container>
@@ -324,40 +342,53 @@ const InfoCard = ({content}) => {
           {content.description.length > 150 ? content.description.slice(0, 150) + "..." : content.description}
         </Description>
         <ExtraInfo>
-        <Extra>
-          <Misc style={{color:"white"}}>Release Date :</Misc>
-          <ExtraContainer>
-            <Misc>{content.releaseDate}</Misc>
-          </ExtraContainer>
-        </Extra>
+          <Extra>
+            <Misc style={{ color: "white" }}>Release Date :</Misc>
+            <ExtraContainer>
+              <Misc>{content.releaseDate}</Misc>
+            </ExtraContainer>
+          </Extra>
 
-        <Extra>
-          <Misc style={{color:"white"}}>Genre :</Misc>
-          <ExtraContainer>
-            <Misc>{content.genres.sort().join(", ")}</Misc>
-          </ExtraContainer>
-        </Extra>
+          <Extra>
+            <Misc style={{ color: "white" }}>Genre :</Misc>
+            <ExtraContainer>
+              <Misc>
+                {content.genres.map((s, index) => (
+                  <span key={index} onClick={() => handleClick(s)}>
+                    {`${s}${index < content.genres.length - 1 ? ', ' : ''}`}
+                  </span>
+                ))}
+              </Misc>
+            </ExtraContainer>
+          </Extra>
 
-        <Extra>
-          <Misc style={{color:"white"}}>Casts :</Misc>
-          <ExtraContainer>
-            <Misc>{content.casts.sort().join(", ")}</Misc>
-          </ExtraContainer>
-        </Extra>
+          <Extra>
+            <Misc style={{ color: "white" }}>Casts :</Misc>
+            <ExtraContainer>
+              <Misc>{content.casts.sort().join(", ")}</Misc>
+            </ExtraContainer>
+          </Extra>
 
-        <Extra>
-          <Misc style={{color:"white"}}>Production :</Misc>
-          <ExtraContainer>
-            <Misc>{content.production}</Misc>
-          </ExtraContainer>
-        </Extra>
+          <Extra>
+            <Misc style={{ color: "white" }}>Production :</Misc>
+            <ExtraContainer>
+              <Misc>{content.production}</Misc>
+            </ExtraContainer>
+          </Extra>
 
-        <Extra>
-          <Misc style={{color:"white"}}>country :</Misc>
-          <ExtraContainer>
-            <Misc>{content.country}</Misc>
-          </ExtraContainer>
-        </Extra>
+          <Extra>
+            <Misc style={{ color: "white" }}>Country :</Misc>
+            <ExtraContainer>
+              <Misc>{content.country}</Misc>
+            </ExtraContainer>
+          </Extra>
+
+          <Extra>
+            <Misc style={{ color: "white" }}>Views :</Misc>
+            <ExtraContainer>
+              <Misc>{content.views}</Misc>
+            </ExtraContainer>
+          </Extra>
         </ExtraInfo>
       </InfoContainer>
     </Container>

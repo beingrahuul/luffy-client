@@ -87,12 +87,11 @@ const Card = ({ item }) => {
     window.location.href = `/${item.id
       }`
   }
-
   return (
     <Container onClick={handleClick}>
       <ImageContainer>
         {
-          item.poster === "/images/no_thumbnail.jpg" || item.image === "/images/no_thumbnail.jpg" ? (
+          item.poster === "/images/no_thumbnail.jpg" || item.image === "/images/no_thumbnail.jpg" ||  item.poster === "N/A"? (
             <Image src="https://i.imgur.com/CVBcGsU.jpeg" />
           ) : (
             <Image src={item.poster ? item.poster : item.image} />

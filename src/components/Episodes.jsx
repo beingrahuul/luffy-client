@@ -168,8 +168,6 @@ const EpisodeTitle = styled.div`
 
 const Episodes = ({data}) => {
 
-  console.log(data)
-
   const groupEpisodesBySeason = (episodes) => {
     return episodes.reduce((acc, episode) => {
         const { season } = episode;

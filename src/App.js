@@ -8,6 +8,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Content from './pages/Content';
 import Search from './pages/Search';
+import Genre from './pages/Genre';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/tv/:tempId" element={<Content type="tv" />} />
         <Route path="/movie/:tempId" element={<Content type="movie" />} />
         <Route path="/search/:query" element={<Search />} />
+        <Route path="/genre/:type" element={<Genre />} />
         <Route path="*" element={<h1>Not Found</h1>} />
       </Routes>
       <Footer />
