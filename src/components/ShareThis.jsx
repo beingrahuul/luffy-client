@@ -8,15 +8,15 @@ const ShareThis = ({url}) => {
             color: 'social',      // set the color of buttons (social, white)
             enabled: true,        // show/hide buttons (true, false)
             font_size: 14,        // font size for the buttons
-            labels: 'count',        // button labels (cta, counts, null)
+            labels: 'cta',        // button labels (cta, counts, null)
             language: 'en',       // which language to use (see LANGUAGES)
             networks: [   
               'twitter',
               'whatsapp',
+              'reddit',
               "telegram",
               'facebook',
               'messenger',
-              'reddit',
             ],
             padding: 12,          
             radius: 4,            
