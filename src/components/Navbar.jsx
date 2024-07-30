@@ -341,7 +341,7 @@ const Navbar = () => {
               <DropdownItem onClick={() => handleClick('/genre/action')}>Action</DropdownItem>
               <DropdownItem onClick={() => handleClick('/genre/adventure')}>Adventure</DropdownItem>
               <DropdownItem onClick={() => handleClick('/genre/animation')}>Animation</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/biography')}>Biography</DropdownItem>
+              {/*<DropdownItem onClick={() => handleClick('/genre/biography')}>Biography</DropdownItem>*/}
               <DropdownItem onClick={() => handleClick('/genre/comedy')}>Comedy</DropdownItem>
               <DropdownItem onClick={() => handleClick('/genre/crime')}>Crime</DropdownItem>
               <DropdownItem onClick={() => handleClick('/genre/documentary')}>Documentary</DropdownItem>
@@ -362,7 +362,7 @@ const Navbar = () => {
               <DropdownItem onClick={() => handleClick('/genre/thriller')}>Thriller</DropdownItem>
               <DropdownItem onClick={() => handleClick('/genre/tv-movie')}>TV Movie</DropdownItem>
               <DropdownItem onClick={() => handleClick('/genre/war')}>War</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/wastern')}>Western</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/western')}>Western</DropdownItem>
             </Dropdown>
           </Link>
           <Link>
