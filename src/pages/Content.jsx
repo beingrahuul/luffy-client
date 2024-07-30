@@ -134,7 +134,6 @@ const RightContainer = styled.div`
 const Content = ({type}) => {
 
   const {tempId} = useParams()
-  console.log(type)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [content, setContent] = useState(null)

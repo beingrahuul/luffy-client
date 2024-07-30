@@ -302,7 +302,6 @@ const Description = styled.p`
 
 const InfoCard = ({content}) => {
 
-  console.log(content)
   return (
     <Container>
       <PosterContainer>

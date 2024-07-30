@@ -38,6 +38,7 @@ const Container = styled.div`
     position: relative;
     width: 100vw;
     gap: 0px;
+    z-index: 999999;
   }
 `
 
@@ -276,7 +277,6 @@ const MobileMenu = styled.div`
     width: 100vw;
     height: 100vh;
     background-color: #000000;
-    z-index: 100;
     padding-top: 15px;
     gap: 15px;
   }

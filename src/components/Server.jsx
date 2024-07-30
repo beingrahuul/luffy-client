@@ -163,7 +163,6 @@ const Server = () => {
 
   const { episodeId, mediaId, selectedServer, setSelectedServer } = useEpisode();
 
-  console.log(episodeId, mediaId)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -179,8 +178,14 @@ const Server = () => {
           throw new Error(`HTTP error! status: ${response.status}`)
         }
         const data = await response.json()
-        setServer(data)
-        setSelectedServer(data[0])
+        if(data.success){
+          setServer(data.data)
+          setSelectedServer(data.data[0])
+        }
+
+        if(data.success === false){
+          setError(data.message)
+        }
       } catch (error) {
         setError(error.message)
       } finally {
