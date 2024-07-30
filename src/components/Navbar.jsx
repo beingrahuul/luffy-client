@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 // LOGO
 import LogoIMG from '../images/logo.jpeg';
@@ -199,14 +199,14 @@ const Dropdown = styled.div`
   top: 100%;
   left: 0;
   width: 360px;
-  background-color: #1c1e22;
+  background-color: #43454B;
   padding: 10px;
   border-radius: 2px;
   z-index: 100;
 `;
 
 const DropdownItem = styled.div`
-  color: white;
+  color: #EBEBEB;
   text-decoration: none;
   width: calc(33.3% - 30px);
   font-size: 14px;
@@ -263,14 +263,6 @@ const SubPart = styled.div`
   font-size: 14px;
 `;
 
-const Item = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
-  width: 60px;
-  height: 15px;
-`;
 
 const Line = styled.div`
   width: 85%;
@@ -283,7 +275,6 @@ const Navbar = () => {
   const [search, setSearch] = useState('');
   const [menu, setMenu] = useState(false);
   const [searchToggle, setSearchToggle] = useState(false);
-  const location = useLocation();
   const navigate = useNavigate();
 
 
@@ -374,9 +365,38 @@ const Navbar = () => {
               <DropdownItem onClick={() => handleClick('/genre/wastern')}>Western</DropdownItem>
             </Dropdown>
           </Link>
+          <Link>
+            Country
+            <Dropdown className="dropdown">
+              <DropdownItem onClick={() => handleClick('/genre/action')}>Action</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/adventure')}>Adventure</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/animation')}>Animation</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/biography')}>Biography</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/comedy')}>Comedy</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/crime')}>Crime</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/documentary')}>Documentary</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/drama')}>Drama</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/family')}>Family</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/kids')}>Kids</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/fantasy')}>Fantasy</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/history')}>History</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/horror')}>Horror</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/music')}>Music</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/mystery')}>Mystery</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/news')}>News</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/reality')}>Reality</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/romance')}>Romance</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/science-fiction')}>Sci-Fi</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/soap')}>Soap</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/talk')}>Talk</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/thriller')}>Thriller</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/tv-movie')}>TV Movie</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/war')}>War</DropdownItem>
+              <DropdownItem onClick={() => handleClick('/genre/wastern')}>Western</DropdownItem>
+            </Dropdown>
+          </Link>
           <Link onClick={() => handleClick('/')}>Movies</Link>
           <Link onClick={() => handleClick('/')}>TV Shows</Link>
-          <Link onClick={() => handleClick('/')}>Popular</Link>
         </LinkContainer>
       </LinkGroup>
 
