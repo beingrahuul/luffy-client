@@ -298,7 +298,7 @@ const Banner = ({ data }) => {
         <Group>
           <IMDB>
             <img src = {STAR} alt="imdb" />
-            {data.rating}
+            {data.rating === null ? 'N/A' : data.rating}
           </IMDB>
           <Misc>{data.releaseDate.split('-')[0]}</Misc>
           <Misc>{data.duration}</Misc>
