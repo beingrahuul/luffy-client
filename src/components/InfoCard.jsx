@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { useNavigate } from 'react-router-dom'
+//import { useNavigate } from 'react-router-dom'
 
 //icons
 import WATCH from '../icons/Watch.svg'
@@ -314,10 +314,10 @@ const Description = styled.p`
 
 const InfoCard = ({ content }) => {
   
-  const navigate = useNavigate()
+  //const navigate = useNavigate()
 
   const handleClick = (type) => {
-    navigate(`/genre/${type}`)
+    console(`/genre/${type}`)
   }
 
   return (
