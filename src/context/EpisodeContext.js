@@ -26,19 +26,27 @@ export const EpisodeProvider = ({ children }) => {
   const fetchEpisodeDetails = async (episodeId, mediaId, selectedServer) => {
     setLoading(true);
     setError(null);
+    //const url = "https://luffy-server-production.up.railway.app/watch";
+    const testurl = "http://localhost:8080/watch";
     try {
-      const response = await fetch("https://luffy-server-production.up.railway.app/watch", {
+      const response = await fetch(testurl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({ episodeId, mediaId, selectedServer })
       });
+
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
+
       const data = await response.json();
-      setPlayerData(data);
+      if(data.success){
+        console.log("Success");
+      }
+      console.log(data);
+      setPlayerData(data.result);
     } catch (error) {
       setError(error.message);
     } finally {
