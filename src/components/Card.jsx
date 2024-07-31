@@ -90,13 +90,15 @@ const Card = ({ item }) => {
   return (
     <Container onClick={handleClick}>
       <ImageContainer>
-        {
-          item.poster === "/images/no_thumbnail.jpg" || item.image === "/images/no_thumbnail.jpg" ||  item.poster === "N/A"? (
-            <Image src="https://i.imgur.com/CVBcGsU.jpeg" />
-          ) : (
-            <Image src={item.poster ? item.poster : item.image} />
-          )
-        }
+      <Image
+          src={
+            item.poster === "/images/no_thumbnail.jpg" || item.image === "/images/no_thumbnail.jpg" || item.poster === "N/A"
+              ? "https://i.imgur.com/CVBcGsU.jpeg"
+              : item.poster || item.image
+          }
+          alt={item.title}
+          loading="lazy"
+        />
       </ImageContainer>
 
       <InfoContainer>

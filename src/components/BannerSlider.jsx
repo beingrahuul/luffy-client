@@ -46,10 +46,15 @@ const BannerSlider = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      const URL = "https://luffy-server-production.up.railway.app/banner";
+      //const TEST_URL = "http://localhost:8080/banner";
       try {
-        const response = await fetch('https://luffy-server-production.up.railway.app/banner');
+        const response = await fetch(URL);
         const data = await response.json();
-        setData(data);
+        if(!data.success){
+          throw new Error(data.message);
+        }
+        setData(data.result);
       } catch (error) {
         setError(error);
       } finally {

@@ -113,8 +113,10 @@ const Genre = () => {
     const fetchSearchResults = async () => {
       setLoading(true);
       setError(null);
+      const URL = "https://luffy-server-production.up.railway.app/genre";
+      //const TEST_URL = "http://localhost:8080/genre";
       try {
-        const response = await fetch("https://luffy-server-production.up.railway.app/genre", {
+        const response = await fetch(URL, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -129,9 +131,12 @@ const Genre = () => {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        setResults(data.results);
-        setPageno(Number(data.currentPage));
-        setHasNextPage(data.hasNextPage);
+        if(!data.success){
+          throw new Error(data.message);
+        }
+        setResults(data.result.results);
+        setPageno(Number(data.result.currentPage));
+        setHasNextPage(data.result.hasNextPage);
       } catch (error) {
         if (error.name !== 'AbortError') {
           setError(error.message);
