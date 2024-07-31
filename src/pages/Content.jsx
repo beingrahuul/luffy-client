@@ -85,9 +85,9 @@ const Content = ({ type }) => {
     const fetchData = async () => {
 
       const URL = "https://luffy-server-production.up.railway.app/info";
-      const TEST_URL = "http://localhost:8080/info";
+      //const TEST_URL = "http://localhost:8080/info";
       try {
-        const response = await fetch(TEST_URL, {
+        const response = await fetch(URL, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
