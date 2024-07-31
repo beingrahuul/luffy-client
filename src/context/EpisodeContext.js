@@ -45,7 +45,6 @@ export const EpisodeProvider = ({ children }) => {
       if(data.success){
         console.log("Success");
       }
-      console.log(data);
       setPlayerData(data.result);
     } catch (error) {
       setError(error.message);
