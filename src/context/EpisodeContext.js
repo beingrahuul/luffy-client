@@ -26,10 +26,10 @@ export const EpisodeProvider = ({ children }) => {
   const fetchEpisodeDetails = async (episodeId, mediaId, selectedServer) => {
     setLoading(true);
     setError(null);
-    //const url = "https://luffy-server-production.up.railway.app/watch";
-    const testurl = "http://localhost:8080/watch";
+    const url = "https://luffy-server-production.up.railway.app/watch";
+    //const testurl = "http://localhost:8080/watch";
     try {
-      const response = await fetch(testurl, {
+      const response = await fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
