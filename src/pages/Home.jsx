@@ -18,15 +18,16 @@ const Container = styled.div`
 function Home() {
 
   const url = window.location.href
-
+  const URL = "https://luffy-server-production.up.railway.app/home";
+  const TEST_URL = "http://localhost:8080/home";
   return (
     <Container>
       <BannerSlider/>
       <ShareThis  url={url}/>
-      <CardContainer url ="https://luffy-server-production.up.railway.app/home/trending-movies"  title = "Trending Movies"  />
-      <CardContainer url ="https://luffy-server-production.up.railway.app/home/trending-series"  title = "Trending Shows" />
-      <CardContainer url ="https://luffy-server-production.up.railway.app/home/latest-movies"  title = "Latest Movies"  />
-      <CardContainer url ="https://luffy-server-production.up.railway.app/home/latest-series"  title = "Latest Series" />
+      <CardContainer url ="http://localhost:8080/home/trending-movies"  title = "Trending Movies"  />
+      <CardContainer url ="http://localhost:8080/trending-series"  title = "Trending Shows" />
+      <CardContainer url ="http://localhost:8080/home/latest-movies"  title = "Latest Movies"  />
+      <CardContainer url ="http://localhost:8080/home/latest-series"  title = "Latest Series" />
     </Container>
   )
 }

@@ -12,6 +12,7 @@ const Container = styled.div`
   height: 580px;
   overflow: hidden;
   position: relative;
+  background: #f0f0f0;
 
   @media screen and (max-width: 1299px) {
     /* Add specific styles for this breakpoint if needed */

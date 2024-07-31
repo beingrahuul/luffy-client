@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 //image
-import BACK from "../images/footer.png"
+//import BACK from "../images/footer.png"
 import LogoIMG from '../images/logo.jpeg';
 
 const Container = styled.div`
@@ -10,7 +10,7 @@ const Container = styled.div`
   align-items: center;
   height: 284px;
   width: 100%;
-  background-image: url(${BACK});
+  background-image: url("https://res.cloudinary.com/dtpb5qjjf/image/upload/f_auto/v1722446390/nocqzawov5pf3gs8cy0s.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -248,7 +248,7 @@ const Footer = () => {
         <UpperContainer>
           <Group>
             <LogoContainer>
-              <LogoImage src={LogoIMG} alt="Logo" />
+              <LogoImage src={LogoIMG} alt="Logo" loading="lazy"/>
               <Logo>Luffy</Logo>
             </LogoContainer>
           </Group>
