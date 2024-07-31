@@ -83,8 +83,11 @@ const Content = ({ type }) => {
 
   useEffect(() => {
     const fetchData = async () => {
+
+      const URL = "https://luffy-server-production.up.railway.app/info";
+      //const TEST_URL = "http://localhost:8080/info";
       try {
-        const response = await fetch("https://luffy-server-production.up.railway.app/info", {
+        const response = await fetch(URL, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -95,13 +98,17 @@ const Content = ({ type }) => {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        if (data.episodes.length !== 0) {
-          setEpisodeId(data.episodes[0].id);
+
+        if (!data.success) {
+          throw new Error(data.message);
+        }
+        if (data.result.episodes.length !== 0) {
+          setEpisodeId(data.result.episodes[0].id);
         } else {
           setEpisodeId(null);
         }
-        setMediaId(data.id);
-        setContent(data);
+        setMediaId(data.result.id);
+        setContent(data.result);
       } catch (error) {
         setError(error.message);
       } finally {
