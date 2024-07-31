@@ -1,10 +1,10 @@
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
-//icons
+// Icons
 import PLAY from '../icons/Play.svg';
 import STAR from '../icons/star.svg';
-
-
 
 const Container = styled.div`
   display: flex;
@@ -14,16 +14,15 @@ const Container = styled.div`
   position: relative;
 
   @media screen and (max-width: 1299px) {
- 
+    /* Add specific styles for this breakpoint if needed */
   }
 
   @media screen and (max-width: 991px) {
-  
-
+    /* Add specific styles for this breakpoint if needed */
   }
 
   @media screen and (max-width: 640px) {
-
+    /* Add specific styles for this breakpoint if needed */
   }
 
   @media screen and (max-width: 479px) {
@@ -38,7 +37,7 @@ const MainContainer = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
   z-index: 1;
-`
+`;
 
 const InfoContainer = styled.div`
   display: flex;
@@ -54,16 +53,15 @@ const InfoContainer = styled.div`
   border-radius: 10px;
 
   @media screen and (max-width: 1299px) {
- 
+    /* Add specific styles for this breakpoint if needed */
   }
 
   @media screen and (max-width: 991px) {
-
-
+    /* Add specific styles for this breakpoint if needed */
   }
 
   @media screen and (max-width: 640px) {
-
+    /* Add specific styles for this breakpoint if needed */
   }
 
   @media screen and (max-width: 479px) {
@@ -76,19 +74,6 @@ const Title = styled.h1`
   font-size: 40px;
   font-weight: 600;
   margin: 0;
-  
-  @media screen and (max-width: 1299px) {
-  
-  }
-
-  @media screen and (max-width: 991px) {
-
-
-  }
-
-  @media screen and (max-width: 640px) {
-
-  }
 
   @media screen and (max-width: 479px) {
     font-size: 20px;
@@ -101,19 +86,6 @@ const Group = styled.div`
   align-items: center;
   gap: 20px;
   color: #adb5bd;
-
-  @media screen and (max-width: 1299px) {
-  
-  }
-
-  @media screen and (max-width: 991px) {
-
-
-  }
-
-  @media screen and (max-width: 640px) {
-
-  }
 
   @media screen and (max-width: 479px) {
     gap: 10px;
@@ -128,19 +100,6 @@ const IMDB = styled.div`
   align-items: center;
   gap: 5px;
   justify-content: center;
-
-  @media screen and (max-width: 1299px) {
-  
-  }
-
-  @media screen and (max-width: 991px) {
-
-
-  }
-
-  @media screen and (max-width: 640px) {
-
-  }
 
   @media screen and (max-width: 479px) {
     font-size: 10px;
@@ -164,19 +123,6 @@ const Misc = styled.p`
   font-weight: 500;
   margin: 0;
 
-  @media screen and (max-width: 1299px) {
-  
-  }
-
-  @media screen and (max-width: 991px) {
-
-
-  }
-
-  @media screen and (max-width: 640px) {
-
-  }
-
   @media screen and (max-width: 479px) {
     font-size: 12px;
   }
@@ -187,22 +133,9 @@ const Description = styled.p`
   margin: 10px 0;
   color: #adb5bd;
 
-  @media screen and (max-width: 1299px) {
-  
-  }
-
-  @media screen and (max-width: 991px) {
-
-
-  }
-
-  @media screen and (max-width: 640px) {
-
-  }
-
   @media screen and (max-width: 479px) {
     font-size: 12px;
-    margin: 5px 0; 
+    margin: 5px 0;
   }
 `;
 
@@ -211,23 +144,6 @@ const BannerImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-
-  @media screen and (max-width: 1299px) {
-  
-  }
-
-  @media screen and (max-width: 991px) {
-
-
-  }
-
-  @media screen and (max-width: 640px) {
-
-  }
-
-  @media screen and (max-width: 479px) {
-
-  }
 `;
 
 const Button = styled.div`
@@ -244,17 +160,8 @@ const Button = styled.div`
   padding: 20px 26px;
   gap: 15px;
 
-  @media screen and (max-width: 1299px) {
- 
-  }
-
-  @media screen and (max-width: 991px) {
-
-
-  }
-
-  @media screen and (max-width: 640px) {
-
+  &:focus {
+    outline: 2px solid #ffd020;
   }
 
   @media screen and (max-width: 479px) {
@@ -279,39 +186,40 @@ const ButtonImage = styled.img`
 const ButtonText = styled.p`
   margin: 0;
   font-size: 16px;
-`
+`;
 
 const Banner = ({ data }) => {
+  const navigate = useNavigate();
 
-  const handleClick = () => {
-    window.location.href = `/${
-      data.id
-    }`
-  }
+  const handleClick = useCallback(() => {
+    navigate(`/${data.rel_id}`);
+  }, [navigate, data.rel_id]);
 
   return (
     <Container>
-      <BannerImage src={data.cover} alt="banner" />
+      <BannerImage src={data.cover} alt={`Cover image of ${data.title}`} />
       <MainContainer>
-      <InfoContainer>
-        <Title>{data.title}</Title>
-        <Group>
-          <IMDB>
-            <img src = {STAR} alt="imdb" />
-            {data.rating === null ? 'N/A' : data.rating}
-          </IMDB>
-          <Misc>{data.releaseDate.split('-')[0]}</Misc>
-          <Misc>{data.duration}</Misc>
-          {data.genres.slice(0, 3).map((item) => (
-            <Misc key={item}>{item.length > 10 ? `${item.slice(0, 8)}...` : item}</Misc>
-          ))}
-        </Group>
-        <Description>{data.description.length > 150 ? `${data.description.slice(0, 150)}...` : data.description}</Description>
-        <Button onClick={handleClick}>
-          <ButtonImage src={PLAY} alt="play" />
-          <ButtonText>Watch Now</ButtonText>
-        </Button>
-      </InfoContainer>
+        <InfoContainer>
+          <Title>{data.title}</Title>
+          <Group>
+            <IMDB>
+              <img src={STAR} alt="IMDB rating" />
+              {data.rating === null ? 'N/A' : data.rating}
+            </IMDB>
+            <Misc>{data.releaseDate.split('-')[0]}</Misc>
+            <Misc>{data.duration}</Misc>
+            {data.genres.slice(0, 3).map((item) => (
+              <Misc key={item}>{item.length > 10 ? `${item.slice(0, 8)}...` : item}</Misc>
+            ))}
+          </Group>
+          <Description>
+            {data.description ? (data.description.length > 150 ? `${data.description.slice(0, 150)}...` : data.description) : 'No description available'}
+          </Description>
+          <Button onClick={handleClick}>
+            <ButtonImage src={PLAY} alt="Play" />
+            <ButtonText>Watch Now</ButtonText>
+          </Button>
+        </InfoContainer>
       </MainContainer>
     </Container>
   );
