@@ -9,10 +9,7 @@ import ErrorBoundary from './components/ErrorBoundary'; // Make sure to create a
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from "@vercel/speed-insights/react"
 
-//piwikpro
-import PiwikPro from '@piwikpro/react-piwik-pro';
 
-PiwikPro.initialize('675c94b6-b68e-4c00-816f-638ac034510b', 'https://luffyhq.piwik.pro');
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
