@@ -1,8 +1,5 @@
-import styled from 'styled-components'
-//import { useNavigate } from 'react-router-dom'
-
-//icons
-import WATCH from '../icons/Watch.svg'
+import styled from 'styled-components';
+import WATCH from '../icons/Watch.svg';
 
 const Container = styled.div`
   display: flex;
@@ -16,26 +13,13 @@ const Container = styled.div`
   margin-bottom: 20px;
   padding-bottom: 20px;
 
-  @media screen and (max-width: 1299px) {
-    
-  }
-
-  @media screen and (max-width: 991px) {
-
-
-  }
-
-  @media screen and (max-width: 640px) {
-
-  }
-
   @media screen and (max-width: 479px) {
     border-radius: 0px;
     max-width: 100%;
     margin-bottom: 0px;
     align-items: flex-start;
   } 
-`
+`;
 
 const PosterContainer = styled.div`
   display: flex;
@@ -44,47 +28,19 @@ const PosterContainer = styled.div`
   height: 350px;
   width: 220px;
   margin: 25px 0;
-  @media screen and (max-width: 1299px) {
-    
-  }
-
-  @media screen and (max-width: 991px) {
-
-
-  }
-
-  @media screen and (max-width: 640px) {
-
-  }
 
   @media screen and (max-width: 479px) {
     height: 107px;
     width: 70px;
     margin: 15px 0px 10px 20px;
-} 
-`
+  } 
+`;
 
 const Poster = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  @media screen and (max-width: 1299px) {
-    
-  }
-
-  @media screen and (max-width: 991px) {
-
-
-  }
-
-  @media screen and (max-width: 640px) {
-
-  }
-
-  @media screen and (max-width: 479px) {
-
-  } 
-`
+`;
 
 const InfoContainer = styled.div`
   display: flex;
@@ -93,24 +49,12 @@ const InfoContainer = styled.div`
   width: 300px;
   gap: 25px;
   color: #a7a7a7;
-  @media screen and (max-width: 1299px) {
-    
-  }
-
-  @media screen and (max-width: 991px) {
-
-
-  }
-
-  @media screen and (max-width: 640px) {
-
-  }
 
   @media screen and (max-width: 479px) {
     margin-left: 20px;
     gap: 10px;
   } 
-`
+`;
 
 const ExtraInfo = styled.div`
   display: flex;
@@ -119,32 +63,14 @@ const ExtraInfo = styled.div`
   width: 100%;
   gap: 15px;
   align-items: center;
-
-`
+`;
 
 const Title = styled.h1`
   font-size: 20px;
   font-weight: 500;
   color: white;
   margin: 0;
-
-  @media screen and (max-width: 1299px) {
-    
-  }
-
-  @media screen and (max-width: 991px) {
-
-
-  }
-
-  @media screen and (max-width: 640px) {
-
-  }
-
-  @media screen and (max-width: 479px) {
-    font-size: 20px;
-  }   
-`
+`;
 
 const Group = styled.div`
   display: flex;
@@ -152,24 +78,11 @@ const Group = styled.div`
   align-items: center;
   width: 100%;
 
-  @media screen and (max-width: 1299px) {
-    
-  }
-
-  @media screen and (max-width: 991px) {
-
-
-  }
-
-  @media screen and (max-width: 640px) {
-
-  }
-
   @media screen and (max-width: 479px) {
     justify-content: flex-start;
     gap: 20px;
   } 
-`
+`;
 
 const IMDB = styled.div`
   font-size: 14px;
@@ -178,23 +91,10 @@ const IMDB = styled.div`
   color: black;
   padding: 5px;
 
-  @media screen and (max-width: 1299px) {
-    
-  }
-
-  @media screen and (max-width: 991px) {
-
-
-  }
-
-  @media screen and (max-width: 640px) {
-
-  }
-
   @media screen and (max-width: 479px) {
     font-size: 12px;
   } 
-`
+`;
 
 const Misc = styled.div`
   display: flex;
@@ -204,24 +104,7 @@ const Misc = styled.div`
   gap: 5px;
   flex-wrap: wrap;
 
-  @media screen and (max-width: 1299px) {
-    
-  }
-
-  @media screen and (max-width: 991px) {
-
-
-  }
-
-  @media screen and (max-width: 640px) {
-
-  }
-
-  @media screen and (max-width: 479px) {
-    font-size: 12px;
-  } 
-
-  img{
+  img {
     height: 15px;
     width: 15px;
 
@@ -241,102 +124,50 @@ const Misc = styled.div`
       color: #ffd020;
     }
   }
-`
+`;
 
 const ExtraContainer = styled.div`
   display: flex;
   width: 50%;
   gap: 10px;
   align-items: center;
-
-  @media screen and (max-width: 1299px) {
-    
-  }
-
-  @media screen and (max-width: 991px) {
-
-
-  }
-
-  @media screen and (max-width: 640px) {
-
-  }
-
-  @media screen and (max-width: 479px) {
-
-  } 
-`
+`;
 
 const Extra = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-
-  @media screen and (max-width: 1299px) {
-    
-  }
-
-  @media screen and (max-width: 991px) {
-
-
-  }
-
-  @media screen and (max-width: 640px) {
-
-  }
-
-  @media screen and (max-width: 479px) {
-
-  } 
-`
+`;
 
 const Description = styled.p`
   font-size: 14px;
   margin: 10px 0;
 
-  @media screen and (max-width: 1299px) {
-    
-  }
-
-  @media screen and (max-width: 991px) {
-
-
-  }
-
-  @media screen and (max-width: 640px) {
-
-  }
-
   @media screen and (max-width: 479px) {
     font-size: 12px;
   } 
-`
+`;
 
 const InfoCard = ({ content }) => {
   
-  //const navigate = useNavigate()
+  // const navigate = useNavigate();
 
   const handleClick = (type) => {
-    console(`/genre/${type}`)
-  }
+    // navigate(`/genre/${type}`);
+    console.log(`/genre/${type}`);
+  };
 
   return (
     <Container>
       <PosterContainer>
-        {
-          content.image === "N/A" ? (
-            <Poster src="https://i.imgur.com/CVBcGsU.jpeg" />
-          ) : (
-            <Poster src={content.image} />
-          )
-        }
+        <Poster src={content.image === "N/A" ? "https://i.imgur.com/CVBcGsU.jpeg" : content.image} alt={content.title || 'Poster'} />
       </PosterContainer>
 
       <InfoContainer>
         <Title>{content.title}</Title>
         <Group>
           <IMDB>{`IMDb ${content.rating === null ? 'N/A' : content.rating}`}</IMDB>
-          <Misc><img src={WATCH} alt='watch' />{content.duration}</Misc>
+          <Misc><img src={WATCH} alt='Watch icon' />{content.duration}</Misc>
         </Group>
         <Description>
           {content.description.length > 150 ? content.description.slice(0, 150) + "..." : content.description}
@@ -392,7 +223,7 @@ const InfoCard = ({ content }) => {
         </ExtraInfo>
       </InfoContainer>
     </Container>
-  )
-}
+  );
+};
 
-export default InfoCard
+export default InfoCard;

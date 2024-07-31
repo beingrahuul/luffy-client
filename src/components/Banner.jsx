@@ -188,7 +188,7 @@ const ButtonText = styled.p`
   font-size: 16px;
 `;
 
-const Banner = ({ data }) => {
+const Banner = React.memo(({ data }) => {
   const navigate = useNavigate();
 
   const handleClick = useCallback(() => {
@@ -197,7 +197,11 @@ const Banner = ({ data }) => {
 
   return (
     <Container>
-      <BannerImage src={data.cover} alt={`Cover image of ${data.title}`} />
+      <picture>
+        <source media="(max-width: 479px)" srcSet={data.coverSmall} />
+        <source media="(max-width: 991px)" srcSet={data.coverMedium} />
+        <BannerImage src={data.cover} alt={`Cover image of ${data.title}`} loading="lazy" />
+      </picture>
       <MainContainer>
         <InfoContainer>
           <Title>{data.title}</Title>
@@ -223,6 +227,6 @@ const Banner = ({ data }) => {
       </MainContainer>
     </Container>
   );
-};
+});
 
 export default Banner;

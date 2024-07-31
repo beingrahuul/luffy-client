@@ -1,17 +1,16 @@
-import {useEffect, useState} from 'react'
-import {useParams} from 'react-router-dom'
-import styled from 'styled-components'
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
 import { useEpisode } from '../context/EpisodeContext';
 
-//components
-import VideoPlayer from '../components/VideoPlayer'
-import InfoCard from '../components/InfoCard'
-import Episodes from '../components/Episodes'
-import Server from '../components/Server'
+// components
+import VideoPlayer from '../components/VideoPlayer';
+import InfoCard from '../components/InfoCard';
+import Episodes from '../components/Episodes';
+import Server from '../components/Server';
 import Loader from '../components/Loader';
 import Recommendation from '../components/Recommendation';
 import ShareThis from '../components/ShareThis';
-
 
 const Container = styled.div`
   display: flex;
@@ -24,23 +23,10 @@ const Container = styled.div`
   color: white;
   flex-direction: column;
 
-  @media screen and (max-width: 1299px) {
-  
-  }
-
-  @media screen and (max-width: 991px) {
-
-
-  }
-
-  @media screen and (max-width: 640px) {
-
-  }
-
   @media screen and (max-width: 479px) {
     padding-top: 0px;
   }
-`
+`;
 
 const MainContainer = styled.div`
   display: flex;
@@ -50,26 +36,12 @@ const MainContainer = styled.div`
   gap: 20px;
   color: white;
 
-
-  @media screen and (max-width: 1299px) {
-  
-  }
-
-  @media screen and (max-width: 991px) {
-
-
-  }
-
-  @media screen and (max-width: 640px) {
-
-  }
-
   @media screen and (max-width: 479px) {
     flex-direction: column;
     gap: 20px;
     width: 100%;
   }
-`
+`;
 
 const LeftContainer = styled.div`
   display: flex;
@@ -81,24 +53,10 @@ const LeftContainer = styled.div`
   color: white;
   gap: 40px;
 
-
-  @media screen and (max-width: 1299px) {
-    
-  }
-
-  @media screen and (max-width: 991px) {
-
-
-  }
-
-  @media screen and (max-width: 640px) {
-
-  }
-
   @media screen and (max-width: 479px) {
     gap: 20px;
   }
-`
+`;
 
 const RightContainer = styled.div`
   display: flex;
@@ -109,99 +67,74 @@ const RightContainer = styled.div`
   height: 100%;
   color: white;
 
-
-  @media screen and (max-width: 1299px) {
-    
-  }
-
-  @media screen and (max-width: 991px) {
-
-
-  }
-
-  @media screen and (max-width: 640px) {
-
-  }
-
   @media screen and (max-width: 479px) {
     width: 100%;
-    
   }
-`
+`;
 
-
-
-const Content = ({type}) => {
-
-  const {tempId} = useParams()
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
-  const [content, setContent] = useState(null)
+const Content = ({ type }) => {
+  const { tempId } = useParams();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [content, setContent] = useState(null);
 
   const { setEpisodeId, setMediaId } = useEpisode();
-
-  const id = `${type}/${tempId}`
+  const id = `${type}/${tempId}`;
 
   useEffect(() => {
     const fetchData = async () => {
-      try {        
+      try {
         const response = await fetch("https://luffy-server-production.up.railway.app/info", {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({id})
-        })
+          body: JSON.stringify({ id })
+        });
         if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`)
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const data = await response.json()
-        console.log(data.episodes.length)
-        if(data.episodes.length !== 0){
-          setEpisodeId(data.episodes[0].id)
-        }else{
-          setEpisodeId(null)
+        const data = await response.json();
+        if (data.episodes.length !== 0) {
+          setEpisodeId(data.episodes[0].id);
+        } else {
+          setEpisodeId(null);
         }
-        setMediaId(data.id)
-        setContent(data)
+        setMediaId(data.id);
+        setContent(data);
       } catch (error) {
-        setError(error.message)
+        setError(error.message);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
-    }
-    fetchData()
-  }, [id, setEpisodeId, setMediaId])
+    };
+    fetchData();
+  }, [id, setEpisodeId, setMediaId]);
 
   return (
     <Container>
       {loading ? (
-        <Loader height="100vh" width="100vw" bgcolor={"#1C1E22"} type={"mutatingDots"}/>
+        <Loader height="100vh" width="100vw" bgcolor="#1C1E22" type="mutatingDots" />
       ) : error ? (
-        <h1>Error: {error}</h1>
+        <h1 style={{ color: 'red' }}>Error: {error}</h1> // Style error message
       ) : (
         <>
           <MainContainer>
-
             <LeftContainer>
-              <VideoPlayer cover={content.cover} title={content.title}/>
-
+              <VideoPlayer cover={content.cover} title={content.title} />
               <Server />
-              <ShareThis  url={window.location.href}/>
+              <ShareThis url={window.location.href} />
               {type === "tv" && <Episodes data={content.episodes} />}
-              
             </LeftContainer>
-            
             <RightContainer>
-              <InfoCard content={content}/>
+              <InfoCard content={content} />
             </RightContainer>
           </MainContainer>
-          <Recommendation data={content.recommendations} />
+          {content.recommendations && <Recommendation data={content.recommendations} />}
         </>
-        
       )}
     </Container>
-  )
-}
+  );
+};
 
-export default Content
+export default Content;

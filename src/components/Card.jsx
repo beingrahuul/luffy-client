@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-
-//image
+import React, { memo } from 'react';
+import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 const Container = styled.div`
   flex-shrink: 0;
@@ -9,8 +9,8 @@ const Container = styled.div`
   margin: 10px;
   position: relative;
   overflow: hidden;
-  font-size: .9em;
-  border-radius: .5rem;
+  font-size: 0.9em;
+  border-radius: 0.5rem;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 
@@ -29,68 +29,69 @@ const Container = styled.div`
   @media screen and (max-width: 479px) {
     width: calc(50% - 20px) !important;
   }
-`
+`;
 
 const ImageContainer = styled.div`
-    position: relative;
-    width: 100%;
-    padding-bottom: 148%;
-    overflow: hidden;
-    display: block;
-`
+  position: relative;
+  width: 100%;
+  padding-bottom: 148%;
+  overflow: hidden;
+  display: block;
+`;
 
 const Image = styled.img`
   position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-`
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+`;
 
 const InfoContainer = styled.div`
   position: relative;
-  padding: .5rem;
+  padding: 0.5rem;
   color: #e5e5e5;
-`
+`;
 
 const Title = styled.h3`
   font-size: 12px;
   font-weight: 500;
-  margin: 10px 0px 0px 0px;
-`
+  margin: 10px 0 0 0;
+`;
 
 const MiscContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-`
+`;
 
 const Group = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
-`
+`;
 
 const Misc = styled.p`
   font-size: 10px;
   color: #bdbdbd;
   margin: 0;
-`
+`;
 
 const Card = ({ item }) => {
+  const navigate = useNavigate();
 
   const handleClick = () => {
-    window.location.href = `/${item.id
-      }`
-  }
+    navigate(`/${item.id}`);
+  };
+
   return (
-    <Container onClick={handleClick}>
+    <Container onClick={handleClick} role="button" aria-label={`Go to ${item.title}`}>
       <ImageContainer>
-      <Image
+        <Image
           src={
             item.poster === "/images/no_thumbnail.jpg" || item.image === "/images/no_thumbnail.jpg" || item.poster === "N/A"
               ? "https://i.imgur.com/CVBcGsU.jpeg"
@@ -100,7 +101,6 @@ const Card = ({ item }) => {
           loading="lazy"
         />
       </ImageContainer>
-
       <InfoContainer>
         <MiscContainer>
           <Misc>{item.quality}</Misc>
@@ -112,7 +112,7 @@ const Card = ({ item }) => {
         <Title>{item.title.length > 21 ? `${item.title.substring(0, 21)}...` : item.title}</Title>
       </InfoContainer>
     </Container>
-  )
-}
+  );
+};
 
-export default Card
+export default memo(Card);

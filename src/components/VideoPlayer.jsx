@@ -19,26 +19,6 @@ const Container = styled.div`
   height: 100%;
   aspect-ratio: 16 / 9;
   background-color: #000000;
-
-  @media screen and (max-width: 1299px) {
-    
-  }
-
-  @media screen and (max-width: 991px) {
-
-
-  }
-
-  @media screen and (max-width: 640px) {
-
-  }
-
-  @media screen and (max-width: 479px) {
-    width: 100%;
-    height: 100%;
-    aspect-ratio: 16 / 9;
-  }
-
 `;
 
 const MainContainer = styled.div`
@@ -56,7 +36,8 @@ const VideoPlayer = ({ cover, title }) => {
 
   useEffect(() => {
     if (playerData && playerData.sources) {
-      setCurrentQuality(playerData.sources.find(source => source.quality === 'auto')?.quality || playerData.sources[0].quality);
+      const autoQualitySource = playerData.sources.find(source => source.quality === 'auto');
+      setCurrentQuality(autoQualitySource ? autoQualitySource.quality : playerData.sources[0].quality);
     }
   }, [playerData]);
 
@@ -66,7 +47,6 @@ const VideoPlayer = ({ cover, title }) => {
   };
 
   let hasSelectedDefault = false;
-
 
   return (
     <Container>
@@ -79,7 +59,7 @@ const VideoPlayer = ({ cover, title }) => {
         />
       ) : error ? (
         <h1>{error}</h1>
-      ) : playerData && (
+      ) : playerData ? (
         <MainContainer>
           <MediaPlayer
             title={title}
@@ -96,7 +76,7 @@ const VideoPlayer = ({ cover, title }) => {
             playsInline
           >
             <MediaProvider>
-              <Poster className='vds-poster' src={cover} alt='' />
+              <Poster className='vds-poster' src={cover} alt={title} />
               {playerData.subtitles.map(sub => {
                 let isDefault = false;
 
@@ -119,7 +99,7 @@ const VideoPlayer = ({ cover, title }) => {
             <DefaultVideoLayout icons={defaultLayoutIcons} />
           </MediaPlayer>
         </MainContainer>
-      )}
+      ) : null}
     </Container>
   );
 };

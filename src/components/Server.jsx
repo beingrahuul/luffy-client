@@ -1,11 +1,10 @@
-import {useEffect, useState} from 'react'
-import styled from 'styled-components'
-import { useEpisode } from '../context/EpisodeContext'
-import Loader from './Loader'
+import { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import { useEpisode } from '../context/EpisodeContext';
+import Loader from './Loader';
 
-//icons
-import PLAY from '../icons/Play.svg'
-
+// Icons
+import PLAY from '../icons/Play.svg';
 
 const Container = styled.div`
   display: flex;
@@ -14,33 +13,21 @@ const Container = styled.div`
   color: #A7A7A7;
   flex-direction: column;
   align-items: center;
+  padding: 10px;
 
   @media screen and (max-width: 479px) {
     padding: 10px;
   }
-`
+`;
 
 const Heading = styled.p`
   font-size: 15px;
   margin: 10px;
 
-  @media screen and (max-width: 1299px) {
-    
-  }
-
-  @media screen and (max-width: 991px) {
-
-
-  }
-
-  @media screen and (max-width: 640px) {
-
-  }
-
   @media screen and (max-width: 479px) {
     font-size: 12px;
   }
-`
+`;
 
 const ServerContainer = styled.div`
   display: flex;
@@ -48,19 +35,7 @@ const ServerContainer = styled.div`
   width: 100%;
   align-items: center;
   justify-content: center;
-
-  @media screen and (max-width: 1299px) {
-    
-  }
-
-  @media screen and (max-width: 991px) {
-
-
-  }
-
-  @media screen and (max-width: 640px) {
-
-  }
+  flex-wrap: wrap;
 
   @media screen and (max-width: 479px) {
     align-items: center;
@@ -68,8 +43,8 @@ const ServerContainer = styled.div`
     justify-content: center;
     flex-wrap: wrap;
   }
+`;
 
-`
 const Button = styled.div`
   display: flex;
   justify-content: center;
@@ -84,27 +59,13 @@ const Button = styled.div`
   border-radius: 3px;
   transition: 0.3s ease-in-out;
 
-  @media screen and (max-width: 1299px) {
-    
-  }
-
-  @media screen and (max-width: 991px) {
-
-
-  }
-
-  @media screen and (max-width: 640px) {
-
-  }
-
   @media screen and (max-width: 479px) {
     width: 80px;
     height: 30px;
     font-size: 12px;
     margin: 8px;
   }
-
-`
+`;
 
 const BtnImage = styled.img`
   width: 15px;
@@ -114,9 +75,8 @@ const BtnImage = styled.img`
   @media screen and (max-width: 479px) {
     width: 10px;
     height: 10px;
-
   }
-`
+`;
 
 const ButtonTwo = styled.div`
   display: flex;
@@ -132,37 +92,20 @@ const ButtonTwo = styled.div`
   border-radius: 3px;
   transition: 0.3s ease-in-out;
 
-  @media screen and (max-width: 1299px) {
-    
-  }
-
-  @media screen and (max-width: 991px) {
-
-
-  }
-
-  @media screen and (max-width: 640px) {
-
-  }
-
   @media screen and (max-width: 479px) {
     width: 80px;
     height: 30px;
     font-size: 12px;
     margin: 8px;
   }
-
-`
-
+`;
 
 const Server = () => {
-
-  const [server, setServer] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
+  const [server, setServer] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const { episodeId, mediaId, selectedServer, setSelectedServer } = useEpisode();
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -170,54 +113,58 @@ const Server = () => {
         const response = await fetch("https://luffy-server-production.up.railway.app/server", {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
           },
-          body: JSON.stringify({episodeId, mediaId})
-        })
+          body: JSON.stringify({ episodeId, mediaId }),
+        });
+
         if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`)
-        }
-        const data = await response.json()
-        if(data.success){
-          setServer(data.data)
-          setSelectedServer(data.data[0])
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        if(data.success === false){
-          setError(data.message)
+        const data = await response.json();
+
+        if (data.success) {
+          setServer(data.data);
+          setSelectedServer(data.data[0]);
+        } else {
+          setError(data.message);
         }
       } catch (error) {
-        setError(error.message)
+        setError(error.message);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
-    }
-    fetchData()
-  }
-  , [episodeId, mediaId, setSelectedServer])
+    };
 
+    fetchData();
+  }, [episodeId, mediaId, setSelectedServer]);
 
   return (
     <Container>
-      <Heading>If current server doesn't work please try other server below.</Heading>
+      <Heading>If the current server doesn't work, please try another server below.</Heading>
       <ServerContainer>
-      {
-        loading ? <Loader height="100%" width="100%" bgcolor={"#1C1E22"} type={"mutatingDots"}/> : 
-        error ? <p>{error}</p> : (
+        {loading ? (
+          <Loader height="100%" width="100%" bgcolor="#1C1E22" type="mutatingDots" />
+        ) : error ? (
+          <p>{error}</p>
+        ) : (
           server.map((server, index) => (
-            selectedServer === server ? 
-              <Button key={index}>
+            selectedServer === server ? (
+              <Button key={index} aria-label={`Selected server: ${server.name}`}>
                 <BtnImage src={PLAY} alt="play" />
-                {server.name} 
-              </Button> :
-              <ButtonTwo key={index} onClick={() => setSelectedServer(server)}> {server.name} </ButtonTwo>
-
-          )
-        ))
-      }
+                {server.name}
+              </Button>
+            ) : (
+              <ButtonTwo key={index} onClick={() => setSelectedServer(server)} aria-label={`Select server: ${server.name}`}>
+                {server.name}
+              </ButtonTwo>
+            )
+          ))
+        )}
       </ServerContainer>
     </Container>
-  )
-}
+  );
+};
 
-export default Server
+export default Server;

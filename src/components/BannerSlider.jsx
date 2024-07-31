@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -7,7 +7,6 @@ import 'slick-carousel/slick/slick-theme.css';
 // components
 import Banner from './Banner';
 import Loader from './Loader';
-
 
 const SliderWrapper = styled.div`
   width: 100vw;
@@ -39,6 +38,18 @@ const StyledSlider = styled(Slider)`
   }
 `;
 
+const ErrorMessage = styled.p`
+  color: red;
+  font-size: 18px;
+  text-align: center;
+`;
+
+const NoDataMessage = styled.p`
+  color: white;
+  font-size: 18px;
+  text-align: center;
+`;
+
 const BannerSlider = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -51,12 +62,12 @@ const BannerSlider = () => {
       try {
         const response = await fetch(URL);
         const data = await response.json();
-        if(!data.success){
+        if (!data.success) {
           throw new Error(data.message);
         }
         setData(data.result);
       } catch (error) {
-        setError(error);
+        setError(error.message);
       } finally {
         setLoading(false);
       }
@@ -80,9 +91,9 @@ const BannerSlider = () => {
   return (
     <SliderWrapper>
       {loading ? (
-        <Loader height="100vh" width="100vw" type={"mutatingDots"} bgcolor={"#1C1E22"}/>
+        <Loader height="100vh" width="100vw" type={"mutatingDots"} bgcolor={"#1C1E22"} />
       ) : error ? (
-        <p>Error</p>
+        <ErrorMessage>Error: {error}</ErrorMessage>
       ) : data.length > 0 ? (
         <StyledSlider {...settings}>
           {data.map((item, index) => (
@@ -90,7 +101,7 @@ const BannerSlider = () => {
           ))}
         </StyledSlider>
       ) : (
-        <p>No Data Available</p>
+        <NoDataMessage>No Data Available</NoDataMessage>
       )}
     </SliderWrapper>
   );

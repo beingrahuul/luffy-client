@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, { createContext, useState, useContext, useEffect, useMemo } from 'react';
 
 // Create a context for the episode ID
 const EpisodeContext = createContext();
@@ -16,7 +16,6 @@ export const EpisodeProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [search, setSearch] = useState('');
 
-
   useEffect(() => {
     if (episodeId && mediaId && selectedServer) {
       fetchEpisodeDetails(episodeId, mediaId, selectedServer);
@@ -27,14 +26,14 @@ export const EpisodeProvider = ({ children }) => {
     setLoading(true);
     setError(null);
     const URL = "https://luffy-server-production.up.railway.app/watch";
-    //const TEST_URL = "http://localhost:8080/watch";
+    // const TEST_URL = "http://localhost:8080/watch";
     try {
       const response = await fetch(URL, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ episodeId, mediaId, selectedServer })
+        body: JSON.stringify({ episodeId, mediaId, selectedServer }),
       });
 
       if (!response.ok) {
@@ -42,9 +41,10 @@ export const EpisodeProvider = ({ children }) => {
       }
 
       const data = await response.json();
-      if(data.success){
-        console.log("Success");
+      if (!data.success) {
+        throw new Error(data.message || 'Failed to fetch episode details');
       }
+
       setPlayerData(data.result);
     } catch (error) {
       setError(error.message);
@@ -53,20 +53,22 @@ export const EpisodeProvider = ({ children }) => {
     }
   };
 
+  const value = useMemo(() => ({
+    episodeId,
+    setEpisodeId,
+    mediaId,
+    setMediaId,
+    selectedServer,
+    setSelectedServer,
+    playerData,
+    search,
+    setSearch,
+    loading,
+    error,
+  }), [episodeId, mediaId, selectedServer, playerData, search, loading, error]);
+
   return (
-    <EpisodeContext.Provider value={{ 
-      episodeId, 
-      setEpisodeId, 
-      mediaId, 
-      setMediaId, 
-      selectedServer, 
-      setSelectedServer, 
-      playerData,
-      search,
-      setSearch,
-      loading,
-      error
-      }}>
+    <EpisodeContext.Provider value={value}>
       {children}
     </EpisodeContext.Provider>
   );

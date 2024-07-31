@@ -1,7 +1,6 @@
-import styled from 'styled-components'
-import { useState } from 'react'
+import React, { useState, useMemo } from 'react';
+import styled from 'styled-components';
 import { useEpisode } from '../context/EpisodeContext';
-
 
 const Container = styled.div`
   display: flex;
@@ -15,24 +14,11 @@ const Container = styled.div`
   gap: 20px;
   padding: 20px 0px;
 
-  @media screen and (max-width: 1299px) {
-    
-  }
-
-  @media screen and (max-width: 991px) {
-
-
-  }
-
-  @media screen and (max-width: 640px) {
-
-  }
-
   @media screen and (max-width: 479px) {
     width: 100%;
     border-radius: 0px;
   }
-`
+`;
 
 const SeasonsContainer = styled.div`
   display: flex;
@@ -44,28 +30,13 @@ const SeasonsContainer = styled.div`
   overflow-y: scroll;
   scrollbar-width: none;
 
-  @media screen and (max-width: 1299px) {
-    
-  }
-
-  @media screen and (max-width: 991px) {
-
-
-  }
-
-  @media screen and (max-width: 640px) {
-
-  }
-
   @media screen and (max-width: 479px) {
     gap: 10px;
     height: 50px;
     overflow-y: scroll;
     scrollbar-width: none;
-
   }
-
-`
+`;
 
 const Season = styled.div`
   display: flex;
@@ -79,25 +50,12 @@ const Season = styled.div`
   padding-top: 3px;
   border-bottom: 3px solid transparent;
 
-  @media screen and (max-width: 1299px) {
-    
-  }
-
-  @media screen and (max-width: 991px) {
-
-
-  }
-
-  @media screen and (max-width: 640px) {
-
-  }
-
   @media screen and (max-width: 479px) {
     min-width: 70px;
     height: 89%;
     font-size: 12px;
   }
-`
+`;
 
 const EpisodesContainer = styled.div`
   display: flex;
@@ -109,23 +67,10 @@ const EpisodesContainer = styled.div`
   margin-bottom: 0;
   overflow: hidden;
 
-  @media screen and (max-width: 1299px) {
-    
-  }
-
-  @media screen and (max-width: 991px) {
-
-
-  }
-
-  @media screen and (max-width: 640px) {
-
-  }
-
   @media screen and (max-width: 479px) {
     gap: 10px;
   }
-`
+`;
 
 const Episode = styled.div`
   flex-shrink: 0;
@@ -141,62 +86,60 @@ const Episode = styled.div`
   border-radius: 3px;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
+
   &:hover {
     background-color: #4c4c4c;
   }
 
-
   @media screen and (max-width: 479px) {
     width: calc(50% - 45px);
     font-size: 10px;
-    width: 150px;
     height: 40px;
     padding: 10px;
   }
-`
+`;
 
 const EpisodeTitle = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5px;
   font-weight: 500;
-  p{
+  p {
     margin: 0;
   }
-`
+`;
 
-
-const Episodes = ({data}) => {
-
-  const groupEpisodesBySeason = (episodes) => {
-    return episodes.reduce((acc, episode) => {
-        const { season } = episode;
-        if (!acc[season]) {
-            acc[season] = [];
-        }
-        acc[season].push(episode);
-        return acc;
-    }, {});
-  };
-
-  const groupedEpisodes = groupEpisodesBySeason(data);
-  const { episodeId, setEpisodeId } = useEpisode(); 
+const Episodes = ({ data }) => {
+  const { episodeId, setEpisodeId } = useEpisode();
   const [season, setSeason] = useState(1);
   const [ep, setEp] = useState(null || episodeId);
 
+  const groupedEpisodes = useMemo(() => {
+    return data.reduce((acc, episode) => {
+      const { season } = episode;
+      if (!acc[season]) {
+        acc[season] = [];
+      }
+      acc[season].push(episode);
+      return acc;
+    }, {});
+  }, [data]);
+
   const handleClick = (episodeId) => {
-    setEp(episodeId)
-    setEpisodeId(episodeId)
-  }
+    setEp(episodeId);
+    setEpisodeId(episodeId);
+  };
 
   return (
     <Container>
-      {data.length === 0 ? <h1>No episodes found</h1> : (
+      {data.length === 0 ? (
+        <h1>No episodes found</h1>
+      ) : (
         <>
           <SeasonsContainer>
-            {Object.keys(groupedEpisodes).map((seasonNumber, index) => (
+            {Object.keys(groupedEpisodes).map((seasonNumber) => (
               <Season
-                key={index}
+                key={seasonNumber}
                 style={{ borderBottom: season === Number(seasonNumber) ? '3px solid #4CAF50' : '3px solid transparent' }}
                 onClick={() => setSeason(Number(seasonNumber))}
               >
@@ -206,22 +149,19 @@ const Episodes = ({data}) => {
           </SeasonsContainer>
 
           <EpisodesContainer>
-            {(groupedEpisodes[season] || []).map((episode, index) => (
-              <Episode 
-                key={index} 
+            {(groupedEpisodes[season] || []).map((episode) => (
+              <Episode
+                key={episode.id}
                 onClick={() => handleClick(episode.id)}
-                style={{ 
-                  backgroundColor: episode.id === ep ? '#ffd020' : '#272b36' , 
-                  color: episode.id === ep ? '#323232' : '#a7a7a7'
+                style={{
+                  backgroundColor: episode.id === ep ? '#ffd020' : '#272b36',
+                  color: episode.id === ep ? '#323232' : '#a7a7a7',
                 }}
               >
-
                 <EpisodeTitle>
-                {episode.title.split(":").slice(0,2).map((item, index) => (
-                  <p key={index}>
-                    {item.length > 16 ? `${item.substring(0, 16)}..` : item}
-                  </p>
-                ))}
+                  {episode.title.split(':').slice(0, 2).map((item, index) => (
+                    <p key={index}>{item.length > 16 ? `${item.substring(0, 16)}..` : item}</p>
+                  ))}
                 </EpisodeTitle>
               </Episode>
             ))}
@@ -229,7 +169,7 @@ const Episodes = ({data}) => {
         </>
       )}
     </Container>
-  )
-}
+  );
+};
 
-export default Episodes
+export default Episodes;

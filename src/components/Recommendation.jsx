@@ -10,6 +10,9 @@ const Container = styled.div`
   position: relative;
   margin-bottom: 0;
   overflow: hidden;
+  @media screen and (max-width: 640px) {
+    width: 100%;
+  }
 `
 const TitleContainer  = styled.div`
   display: flex;
