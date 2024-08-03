@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { useEpisode } from '../context/EpisodeContext';
+import { TMDB_POSTER_BASE_URL, TMDB_BACKDROP_BASE_URL } from '../contants';
 
 // components
 import VideoPlayer from '../components/VideoPlayer';
 import InfoCard from '../components/InfoCard';
-import Episodes from '../components/Episodes';
-import Server from '../components/Server';
 import Loader from '../components/Loader';
 import Recommendation from '../components/Recommendation';
 import ShareThis from '../components/ShareThis';
@@ -73,42 +71,24 @@ const RightContainer = styled.div`
 `;
 
 const Content = ({ type }) => {
-  const { tempId } = useParams();
+  const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [content, setContent] = useState(null);
 
-  const { setEpisodeId, setMediaId } = useEpisode();
-  const id = `${type}/${tempId}`;
-
   useEffect(() => {
     const fetchData = async () => {
 
-      const URL = "https://luffy-server-production.up.railway.app/info";
-      //const TEST_URL = "http://localhost:8080/info";
+      //const URL = "https://luffy-server-production.up.railway.app/info";
+      const TEST_URL = `http://localhost:6969/tmdb/details/${type}/${id}`;
+      console.log(TEST_URL);
       try {
-        const response = await fetch(URL, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ id })
-        });
+        const response = await fetch(TEST_URL);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-
-        if (!data.success) {
-          throw new Error(data.message);
-        }
-        if (data.result.episodes.length !== 0) {
-          setEpisodeId(data.result.episodes[0].id);
-        } else {
-          setEpisodeId(null);
-        }
-        setMediaId(data.result.id);
-        setContent(data.result);
+        setContent(data);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -116,7 +96,7 @@ const Content = ({ type }) => {
       }
     };
     fetchData();
-  }, [id, setEpisodeId, setMediaId]);
+  }, [id]);
 
   return (
     <Container>
@@ -128,16 +108,14 @@ const Content = ({ type }) => {
         <>
           <MainContainer>
             <LeftContainer>
-              <VideoPlayer cover={content.cover} title={content.title} />
-              <Server />
+              <VideoPlayer cover={`${TMDB_POSTER_BASE_URL}${content.backdrop_path}`} title={content.title} />
               <ShareThis url={window.location.href} />
-              {type === "tv" && <Episodes data={content.episodes} />}
             </LeftContainer>
             <RightContainer>
               <InfoCard content={content} />
             </RightContainer>
           </MainContainer>
-          {content.recommendations && <Recommendation data={content.recommendations} />}
+          <Recommendation id={id} type={type} />
         </>
       )}
     </Container>

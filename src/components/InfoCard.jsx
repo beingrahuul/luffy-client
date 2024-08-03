@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import WATCH from '../icons/Watch.svg';
+import { TMDB_POSTER_BASE_URL } from '../contants';
 
 const Container = styled.div`
   display: flex;
@@ -25,8 +26,8 @@ const PosterContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 350px;
-  width: 220px;
+  width: 240px;
+  height: calc(220 * 1.5);
   margin: 25px 0;
 
   @media screen and (max-width: 479px) {
@@ -137,6 +138,7 @@ const Extra = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+  align-items: flex-start;
 `;
 
 const Description = styled.p`
@@ -150,8 +152,8 @@ const Description = styled.p`
 
 const InfoCard = ({ content }) => {
   
-  // const navigate = useNavigate();
 
+  console.log(content);
   const handleClick = (type) => {
     // navigate(`/genre/${type}`);
     console.log(`/genre/${type}`);
@@ -160,23 +162,33 @@ const InfoCard = ({ content }) => {
   return (
     <Container>
       <PosterContainer>
-        <Poster src={content.image === "N/A" ? "https://i.imgur.com/CVBcGsU.jpeg" : content.image} alt={content.title || 'Poster'} />
+        <Poster 
+          src={content.poster_path === null ? "https://i.imgur.com/CVBcGsU.jpeg" : `${TMDB_POSTER_BASE_URL}${content.poster_path}`} 
+          alt= {content.title || 'Poster'}
+          />
       </PosterContainer>
 
       <InfoContainer>
-        <Title>{content.title}</Title>
+        <Title>
+          {
+            content.title ? content.title : content.name
+          }     
+        </Title>
         <Group>
-          <IMDB>{`IMDb ${content.rating === null ? 'N/A' : content.rating}`}</IMDB>
-          <Misc><img src={WATCH} alt='Watch icon' />{content.duration}</Misc>
+          <IMDB>{`IMDb ${content.vote_average === null ? 'N/A' : content.vote_average.toFixed(1)}`}</IMDB>
+          <Misc>
+            <img src={WATCH} alt='Watch icon' />
+            {content.runtime ? content.runtime : "N/A"}
+          </Misc>
         </Group>
         <Description>
-          {content.description.length > 150 ? content.description.slice(0, 150) + "..." : content.description}
+          {content.overview.length > 150 ? content.overview.slice(0, 150) + "..." : content.overview}
         </Description>
         <ExtraInfo>
           <Extra>
             <Misc style={{ color: "white" }}>Release Date :</Misc>
             <ExtraContainer>
-              <Misc>{content.releaseDate}</Misc>
+              <Misc>{content.release_date ? content.release_date : content.first_air_date}</Misc>
             </ExtraContainer>
           </Extra>
 
@@ -185,8 +197,8 @@ const InfoCard = ({ content }) => {
             <ExtraContainer>
               <Misc>
                 {content.genres.map((s, index) => (
-                  <span key={index} onClick={() => handleClick(s)}>
-                    {`${s}${index < content.genres.length - 1 ? ', ' : ''}`}
+                  <span key={index} onClick={() => handleClick(s.name)}>
+                    {`${s.name}${index < content.genres.length - 1 ? ', ' : ''}`}
                   </span>
                 ))}
               </Misc>
@@ -194,30 +206,47 @@ const InfoCard = ({ content }) => {
           </Extra>
 
           <Extra>
-            <Misc style={{ color: "white" }}>Casts :</Misc>
+            <Misc style={{ color: "white" }}>Language :</Misc>
             <ExtraContainer>
-              <Misc>{content.casts.sort().join(", ")}</Misc>
+              <Misc>
+                {
+                  content.spoken_languages.map((s, index) => (
+                    <span key={index}>
+                      {`${s.name}${index < content.spoken_languages.length - 1 ? ', ' : ''}`}
+                    </span>
+                  ))
+                }
+              </Misc>
             </ExtraContainer>
           </Extra>
 
           <Extra>
             <Misc style={{ color: "white" }}>Production :</Misc>
             <ExtraContainer>
-              <Misc>{content.production}</Misc>
+              <Misc>
+                {
+                  content.production_companies.map((s, index) => (
+                    <span key={index} onClick={() => handleClick(s.name)}>
+                      {`${s.name}${index < content.production_companies.length - 1 ? ', ' : ''}`}
+                    </span>
+                  ))
+                }
+              </Misc>
             </ExtraContainer>
           </Extra>
 
           <Extra>
             <Misc style={{ color: "white" }}>Country :</Misc>
             <ExtraContainer>
-              <Misc>{content.country}</Misc>
-            </ExtraContainer>
-          </Extra>
-
-          <Extra>
-            <Misc style={{ color: "white" }}>Views :</Misc>
-            <ExtraContainer>
-              <Misc>{content.views}</Misc>
+              <Misc>
+                {
+                  content.production_countries.map((s, index) => (
+                    <span key={index} onClick={() => handleClick(s.name)}>
+                      {`${s.name}${index < content.production_countries.length - 1 ? ', ' : ''}`}
+                    </span>
+                  ))
+                }
+              </Misc>
             </ExtraContainer>
           </Extra>
         </ExtraInfo>

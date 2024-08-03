@@ -76,10 +76,23 @@ const Misc = styled.p`
   margin: 0;
 `;
 
-const Card = ({ item }) => {
+const PersonCard = ({ item }) => {
+  const navigate = useNavigate();
+
+  const getGender = (id) => {
+    switch (id) {
+      case 1:
+        return "Female";
+      case 2:
+        return "Male";
+      default:
+        return "-";
+  }
+  };
 
   const handleClick = () => {
-    window.location.href = `/${item.media_type}/${item.id}`
+    const type = item.media_type ? item.media_type : 'movie';
+    console.log(type);
   };
 
   return (
@@ -87,9 +100,9 @@ const Card = ({ item }) => {
       <ImageContainer>
         <Image
           src={
-            item.poster_path === null
+            item.profile_path === null
               ? "https://i.imgur.com/CVBcGsU.jpeg"
-              : `${TMDB_POSTER_BASE_URL}${item.poster_path}`
+              : `${TMDB_POSTER_BASE_URL}${item.profile_path}` 
           }
           alt={item.title}
           loading="lazy"
@@ -97,11 +110,10 @@ const Card = ({ item }) => {
       </ImageContainer>
       <InfoContainer>
         <MiscContainer>
-          <Misc>{item.vote_average ? item.vote_average.toFixed(1) : "N/A"}</Misc>
+          <Misc>{getGender(item.gender)}</Misc>
           <Misc>
             {
-              item.release_date ? item.release_date.split('-')[0] : 
-              item.first_air_date ?  item.first_air_date.split("-")[0] : "N/A"
+              item.known_for_department
             }
           </Misc>
         </MiscContainer>
@@ -116,4 +128,4 @@ const Card = ({ item }) => {
   );
 };
 
-export default memo(Card);
+export default memo(PersonCard);

@@ -17,8 +17,8 @@ function App() {
       <Navbar  />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/tv/:tempId" element={<Content type="tv" />} />
-        <Route path="/movie/:tempId" element={<Content type="movie" />} />
+        <Route path="/tv/:id" element={<Content type="tv" />} />
+        <Route path="/movie/:id" element={<Content type="movie" />} />
         <Route path="/search/:query" element={<Search />} />
         <Route path="/genre/:type" element={<Genre />} />
         <Route path="*" element={<NotFound />} />
