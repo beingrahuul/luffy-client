@@ -42,13 +42,13 @@ const Recommendation = ({id, type}) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      //const URL = "https://luffy-server-production.up.railway.app/search";
-      const TEST_URL = `http://localhost:6969/tmdb/recommendations/${type}/${id}`;
+      const URL = `https://luffy-server-20-production.up.railway.app/tmdb/recommendations/${type}/${id}`;
+      //const TEST_URL = `http://localhost:6969/tmdb/recommendations/${type}/${id}`;
 
       setLoading(true);
       setError(null);
       try {
-        const res = await fetch(TEST_URL)
+        const res = await fetch(URL)
         const data = await res.json()
         setData(data.results)
         setLoading(false)

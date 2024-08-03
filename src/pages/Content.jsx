@@ -79,11 +79,10 @@ const Content = ({ type }) => {
   useEffect(() => {
     const fetchData = async () => {
 
-      //const URL = "https://luffy-server-production.up.railway.app/info";
-      const TEST_URL = `http://localhost:6969/tmdb/details/${type}/${id}`;
-      console.log(TEST_URL);
+      const URL = `https://luffy-server-20-production.up.railway.app/tmdb/details/${type}/${id}`;
+      //const TEST_URL = `http://localhost:6969/tmdb/details/${type}/${id}`;
       try {
-        const response = await fetch(TEST_URL);
+        const response = await fetch(URL);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }

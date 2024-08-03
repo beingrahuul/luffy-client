@@ -116,10 +116,10 @@ const Search = () => {
     const fetchSearchResults = async () => {
       setLoading(true);
       setError(null);
-      //const URL = "https://luffy-server-production.up.railway.app/search";
-      const TEST_URL = "http://localhost:6969/search";
+      const URL = `https://luffy-server-20-production.up.railway.app/search`;
+      //const TEST_URL = "http://localhost:6969/search";
       try {
-        const response = await fetch(TEST_URL, {
+        const response = await fetch(URL, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
