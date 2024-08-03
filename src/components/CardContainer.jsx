@@ -92,7 +92,7 @@ const Carousel = styled.div`
 `
 
 
-function CardContainer({ title, url }) {
+function CardContainer({ title, url, type }) {
 
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
@@ -129,8 +129,8 @@ function CardContainer({ title, url }) {
           ) : error ? (
             <h1>Error: {error}</h1>
           ) : (
-              (data.map((item) => (
-                <Card key={item.id} item={item}/>
+              (data.slice(0, 16).map((item) => (
+                <Card key={item.id} item={item} type={type}/>
               )))
               )
           }

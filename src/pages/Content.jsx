@@ -107,7 +107,7 @@ const Content = ({ type }) => {
         <>
           <MainContainer>
             <LeftContainer>
-              <VideoPlayer cover={`${TMDB_POSTER_BASE_URL}${content.backdrop_path}`} title={content.title} />
+              <VideoPlayer cover={`${TMDB_BACKDROP_BASE_URL}${content.backdrop_path}`} title={content.title} />
               <ShareThis url={window.location.href} />
             </LeftContainer>
             <RightContainer>

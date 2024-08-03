@@ -20,11 +20,16 @@ function Home() {
   const url = window.location.href
   return (
     <Container>
+      <BannerSlider/>
       <ShareThis  url={url}/>
-      <CardContainer url ="https://luffy-server-20-production.up.railway.app/tmdb/trending/movie/en-us/1"  title = "Trending Movies"  />
-      <CardContainer url ="https://luffy-server-20-production.up.railway.app/tmdb/trending/tv/en-us/1"  title = "Trending TV"  />
-      <CardContainer url ="https://luffy-server-20-production.up.railway.app/tmdb/Latest/movie/en-us/1"  title = "Latest Movies"  />
-      <CardContainer url ="https://luffy-server-20-production.up.railway.app/tmdb/Latest/tv/en-us/1"  title = "Latest TV"  />
+      <CardContainer url ="https://luffy-server-20-production.up.railway.app/tmdb/trending/movie/en-us/1"  title = "Trending Movies"  type="movie"/>
+      <CardContainer url ="https://luffy-server-20-production.up.railway.app/tmdb/trending/tv/en-us/1"  title = "Trending TV"  type="tv"/>
+      <CardContainer url ="https://luffy-server-20-production.up.railway.app/tmdb/Latest/movie/en-us/1"  title = "Latest Movies"  type="movie"/>
+      <CardContainer url ="https://luffy-server-20-production.up.railway.app/tmdb/Latest/tv/en-us/1"  title = "Latest TV"  type="tv"/>
+      <CardContainer url ="https://luffy-server-20-production.up.railway.app/tmdb/withKeywords/tv/,/first_air_date.desc/1?country=KR"  title = "Latest K-Drama"  type="tv"/>
+      <CardContainer url ="https://luffy-server-20-production.up.railway.app/tmdb/withKeywords/tv/,/vote_count.desc/1?country=KR"  title = "Popular K-Drama"  type="tv"/>
+      <CardContainer url ="https://luffy-server-20-production.up.railway.app/tmdb/withKeywords/tv/210024/first_air_date.desc/1"  title = "Latest Anime"  type="tv"/>
+      <CardContainer url ="https://luffy-server-20-production.up.railway.app/tmdb/withKeywords/tv/210024/vote_count.desc/1"  title = "Popular Anime"  type="tv"/>
     </Container>
   )
 }

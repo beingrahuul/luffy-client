@@ -50,20 +50,10 @@ const VideoPlayer = ({ cover, title }) => {
 
   return (
     <Container>
-      {loading ? (
-        <InfinitySpin
-          visible={true}
-          width="200"
-          color="#FFD020"
-          ariaLabel="infinity-spin-loading"
-        />
-      ) : error ? (
-        <h1>{error}</h1>
-      ) : playerData ? (
         <MainContainer>
           <MediaPlayer
             title={title}
-            src={getCurrentSource()?.url}
+            src="https://live-hls-abr-cdn.livepush.io/live/bigbuckbunnyclip/index.m3u8"
             aspectRatio='16/9'
             load='eager'
             posterLoad='eager'
@@ -77,29 +67,10 @@ const VideoPlayer = ({ cover, title }) => {
           >
             <MediaProvider>
               <Poster className='vds-poster' src={cover} alt={title} />
-              {playerData.subtitles.map(sub => {
-                let isDefault = false;
-
-                if (sub.lang.includes("English") && !hasSelectedDefault) {
-                  isDefault = true;
-                  hasSelectedDefault = true;
-                }
-
-                return (
-                  <Track
-                    key={sub.lang}
-                    src={sub.url}
-                    kind="subtitles"
-                    label={sub.lang}
-                    default={isDefault ? "default" : undefined}
-                  />
-                );
-              })}
             </MediaProvider>
             <DefaultVideoLayout icons={defaultLayoutIcons} />
           </MediaPlayer>
         </MainContainer>
-      ) : null}
     </Container>
   );
 };

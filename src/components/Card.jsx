@@ -76,10 +76,10 @@ const Misc = styled.p`
   margin: 0;
 `;
 
-const Card = ({ item }) => {
+const Card = ({ item, type }) => {
 
   const handleClick = () => {
-    window.location.href = `/${item.media_type}/${item.id}`
+    window.location.href = `/${item.media_type ? item.media_type : type}/${item.id}`
   };
 
   return (
@@ -107,8 +107,8 @@ const Card = ({ item }) => {
         </MiscContainer>
         <Title>
           {
-            item.title ? item.title.length > 21 ? `${item.title.substring(0, 21)}...` : item.title : 
-            item.name.length > 21 ? `${item.name.substring(0, 21)}...` : item.name
+            item.title ? item.title.length > 20 ? `${item.title.substring(0, 20)}...` : item.title : 
+            item.name.length > 20 ? `${item.name.substring(0, 20)}...` : item.name
           }
         </Title>
       </InfoContainer>
