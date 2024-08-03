@@ -20,7 +20,6 @@ function Home() {
   const url = window.location.href
   return (
     <Container>
-      <BannerSlider/>
       <ShareThis  url={url}/>
       <CardContainer url ="https://luffy-server-20-production.up.railway.app/tmdb/trending/movie/en-us/1"  title = "Trending Movies"  />
       <CardContainer url ="https://luffy-server-20-production.up.railway.app/tmdb/trending/tv/en-us/1"  title = "Trending TV"  />
