@@ -22,10 +22,7 @@ function Home() {
     <Container>
       <BannerSlider/>
       <ShareThis  url={url}/>
-      <CardContainer url ="https://luffy-server-production.up.railway.app/home/trending-movies"  title = "Trending Movies"  />
-      <CardContainer url ="https://luffy-server-production.up.railway.app/home/trending-series"  title = "Trending Shows" />
-      <CardContainer url ="https://luffy-server-production.up.railway.app/home/latest-movies"  title = "Latest Movies"  />
-      <CardContainer url ="https://luffy-server-production.up.railway.app/home/latest-series"  title = "Latest Series" />
+      <CardContainer url ="http://localhost:6969/tmdb/trending/movie/en-us/1"  title = "Trending Movies"  />
     </Container>
   )
 }
