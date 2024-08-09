@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { TMDB_POSTER_BASE_URL, TMDB_BACKDROP_BASE_URL } from '../contants';
+import { useEpisode } from '../context/EpisodeContext';
 
 // components
 import VideoPlayer from '../components/VideoPlayer';
 import InfoCard from '../components/InfoCard';
+import Episodes from '../components/Episodes';
+import Server from '../components/Server';
 import Loader from '../components/Loader';
 import Recommendation from '../components/Recommendation';
 import ShareThis from '../components/ShareThis';
@@ -76,39 +78,100 @@ const Content = ({ type }) => {
   const [error, setError] = useState(null);
   const [content, setContent] = useState(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
+  const [seasons, setSeasons] = useState(null);
+  const [seasonsLoading, setSeasonsLoading] = useState(true);
+  const [seasonsError, setSeasonsError] = useState(null);
 
-      const URL = `https://luffy-server-20-production.up.railway.app/tmdb/details/${type}/${id}`;
-      //const TEST_URL = `http://localhost:6969/tmdb/details/${type}/${id}`;
+  const { setEpisodeId, setMediaId } = useEpisode();
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const fetchContent = async () => {
+      const URL = `https://luffy-server-20-production.up.railway.app/tmdb/details/${type}/${id}/`;
+
       try {
         const response = await fetch(URL);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        setContent(data);
+        if (isMounted) setContent(data);
       } catch (error) {
-        setError(error.message);
+        if (isMounted) setError(error.message);
       } finally {
-        setLoading(false);
+        if (isMounted) setLoading(false);
       }
     };
+
+    fetchContent();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [id, type]);
+
+  useEffect(() => {
+
+    let isMounted = true;
+
+    const fetchData = async () => {
+
+      setSeasonsLoading(true);
+      setSeasonsError(null);
+      const URL = `https://consumet-api-production-5b89.up.railway.app/meta/tmdb/info/${id}?type=${type}`;
+      try {
+        const response = await fetch(URL);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log(data);
+        if (isMounted) {
+          setMediaId(data.id);
+
+          if (type === 'movie') {
+            setEpisodeId(data.episodeId);
+          } else {
+            setSeasons(data.seasons);
+            setEpisodeId(data.seasons[0]?.episodes[0]?.id || null);
+          }
+        }
+      } catch (error) {
+        if (isMounted) setSeasonsError(error.message);
+      }finally {
+        if (isMounted) setSeasonsLoading(false);
+      }
+    };
+
     fetchData();
-  }, [id]);
+
+    return () => {
+      isMounted = false;
+    };
+  }, [id, type, setEpisodeId, setMediaId]);
 
   return (
     <Container>
       {loading ? (
         <Loader height="100vh" width="100vw" bgcolor="#1C1E22" type="mutatingDots" />
       ) : error ? (
-        <h1 style={{ color: 'red' }}>Error: {error}</h1> // Style error message
+        <h1 style={{ color: 'red' }}>Error: {error}</h1>
       ) : (
         <>
           <MainContainer>
             <LeftContainer>
-              <VideoPlayer cover={`${TMDB_BACKDROP_BASE_URL}${content.backdrop_path}`} title={content.title} />
+              <VideoPlayer cover={content.backdrop_path} title={content.title} />
+              <Server />
               <ShareThis url={window.location.href} />
+              {type === 'tv' && (
+                <Episodes
+                  data={seasons}
+                  loading={seasonsLoading}
+                  error={seasonsError}
+                />
+              )  
+              }
             </LeftContainer>
             <RightContainer>
               <InfoCard content={content} />

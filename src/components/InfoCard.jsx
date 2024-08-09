@@ -151,9 +151,10 @@ const Description = styled.p`
 `;
 
 const InfoCard = ({ content }) => {
-  
 
   console.log(content);
+  
+
   const handleClick = (type) => {
     // navigate(`/genre/${type}`);
     console.log(`/genre/${type}`);
@@ -178,7 +179,7 @@ const InfoCard = ({ content }) => {
           <IMDB>{`IMDb ${content.vote_average === null ? 'N/A' : content.vote_average.toFixed(1)}`}</IMDB>
           <Misc>
             <img src={WATCH} alt='Watch icon' />
-            {content.runtime ? content.runtime : "N/A"}
+            {content.runtime ? `${content.runtime} min` : "N/A"}
           </Misc>
         </Group>
         <Description>
@@ -211,7 +212,7 @@ const InfoCard = ({ content }) => {
               <Misc>
                 {
                   content.spoken_languages.map((s, index) => (
-                    <span key={index}>
+                    <span key={`${s.name}`}>
                       {`${s.name}${index < content.spoken_languages.length - 1 ? ', ' : ''}`}
                     </span>
                   ))

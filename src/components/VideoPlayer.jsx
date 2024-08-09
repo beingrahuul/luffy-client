@@ -10,6 +10,7 @@ import "./style/Videoplayer.css";
 
 // context
 import { useEpisode } from '../context/EpisodeContext';
+import { TMDB_BACKDROP_BASE_URL } from '../contants';
 
 const Container = styled.div`
   display: flex;
@@ -50,10 +51,20 @@ const VideoPlayer = ({ cover, title }) => {
 
   return (
     <Container>
+      {loading ? (
+        <InfinitySpin
+          visible={true}
+          width="200"
+          color="#FFD020"
+          ariaLabel="infinity-spin-loading"
+        />
+      ) : error ? (
+        <h1>{error}</h1>
+      ) : playerData ? (
         <MainContainer>
           <MediaPlayer
             title={title}
-            src="https://live-hls-abr-cdn.livepush.io/live/bigbuckbunnyclip/index.m3u8"
+            src={getCurrentSource()?.url}
             aspectRatio='16/9'
             load='eager'
             posterLoad='eager'
@@ -66,11 +77,30 @@ const VideoPlayer = ({ cover, title }) => {
             playsInline
           >
             <MediaProvider>
-              <Poster className='vds-poster' src={cover} alt={title} />
+              <Poster className='vds-poster' src={`${TMDB_BACKDROP_BASE_URL}${cover}`} alt={title} />
+              {playerData.subtitles.map(sub => {
+                let isDefault = false;
+
+                if (sub.lang.includes("English") && !hasSelectedDefault) {
+                  isDefault = true;
+                  hasSelectedDefault = true;
+                }
+
+                return (
+                  <Track
+                    key={`${sub.lang}-${sub.url}`}
+                    src={sub.url}
+                    kind="subtitles"
+                    label={sub.lang}
+                    default={isDefault ? "default" : undefined}
+                  />
+                );
+              })}
             </MediaProvider>
             <DefaultVideoLayout icons={defaultLayoutIcons} />
           </MediaPlayer>
         </MainContainer>
+      ) : null}
     </Container>
   );
 };

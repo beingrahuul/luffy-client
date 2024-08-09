@@ -131,7 +131,6 @@ const Search = () => {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        console.log(data)
         setResults(data.results);
         setPageno(Number(data.page));
         setTotalPage(data.total_pages);
@@ -162,7 +161,6 @@ const Search = () => {
 
   const handleNextPage = () => {
     setPageno(prevPageno => prevPageno + 1);
-    console.log(pageno, pageno + 1);
   };
 
   const handlePrevPage = () => {

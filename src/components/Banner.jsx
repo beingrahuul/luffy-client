@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 // Icons
 import PLAY from '../icons/Play.svg';
 import STAR from '../icons/star.svg';
+import { TMDB_BACKDROP_BASE_URL } from '../contants';
 
 const Container = styled.div`
   display: flex;
@@ -192,33 +193,28 @@ const ButtonText = styled.p`
 const Banner = React.memo(({ data }) => {
   const navigate = useNavigate();
 
+  console.log(data);
   const handleClick = useCallback(() => {
-    navigate(`/${data.rel_id}`);
-  }, [navigate, data.rel_id]);
+    navigate(`${data.media_type}/${data.id}`);
+  }, [navigate, data.id, data.media_type]);
 
   return (
     <Container>
       <picture>
-        <source media="(max-width: 479px)" srcSet={data.coverSmall} />
-        <source media="(max-width: 991px)" srcSet={data.coverMedium} />
-        <BannerImage src={data.cover} alt={`Cover image of ${data.title}`} loading="lazy" />
+        <BannerImage src={`${TMDB_BACKDROP_BASE_URL}${data.backdrop_path}`} alt={`Cover image of ${data.title}`} loading="lazy" />
       </picture>
       <MainContainer>
         <InfoContainer>
-          <Title>{data.title}</Title>
+          <Title>{data.title || data.name}</Title>
           <Group>
             <IMDB>
               <img src={STAR} alt="IMDB rating" />
-              {data.rating === null ? 'N/A' : data.rating}
+              {data.vote_average === null ? 'N/A' : data.vote_average.toFixed(1)}
             </IMDB>
-            <Misc>{data.releaseDate.split('-')[0]}</Misc>
-            <Misc>{data.duration}</Misc>
-            {data.genres.slice(0, 3).map((item) => (
-              <Misc key={item}>{item.length > 10 ? `${item.slice(0, 8)}...` : item}</Misc>
-            ))}
+            <Misc>{data.release_date || data.first_air_date}</Misc>            
           </Group>
           <Description>
-            {data.description ? (data.description.length > 150 ? `${data.description.slice(0, 150)}...` : data.description) : 'No description available'}
+            {data.overview ? (data.overview.length > 150 ? `${data.overview.slice(0, 150)}...` : data.overview) : 'No description available'}
           </Description>
           <Button onClick={handleClick}>
             <ButtonImage src={PLAY} alt="Play" />
