@@ -92,7 +92,6 @@ const PersonCard = ({ item }) => {
 
   const handleClick = () => {
     const type = item.media_type ? item.media_type : 'movie';
-    console.log(type);
   };
 
   return (

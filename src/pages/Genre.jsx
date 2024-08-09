@@ -164,7 +164,6 @@ const Genre = () => {
     // Pagination
     const handleNextPage = () => {
       setPageno(prevPageno => prevPageno + 1);
-      console.log(pageno, pageno + 1);
     };
   
     const handlePrevPage = () => {

@@ -152,7 +152,6 @@ const Description = styled.p`
 
 const InfoCard = ({ content }) => {
 
-  console.log(content);
   
 
   const handleClick = (type) => {

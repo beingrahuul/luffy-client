@@ -193,7 +193,6 @@ const ButtonText = styled.p`
 const Banner = React.memo(({ data }) => {
   const navigate = useNavigate();
 
-  console.log(data);
   const handleClick = useCallback(() => {
     navigate(`${data.media_type}/${data.id}`);
   }, [navigate, data.id, data.media_type]);
