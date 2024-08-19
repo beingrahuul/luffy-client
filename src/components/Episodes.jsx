@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import styled from 'styled-components';
 import { useEpisode } from '../context/EpisodeContext';
+import Loader from './Loader';
 
 const Container = styled.div`
   display: flex;
@@ -109,18 +110,17 @@ const EpisodeTitle = styled.div`
   }
 `;
 
-const Episodes = ({ data }) => {
+const Episodes = ({ data, loading, error }) => {
   const { episodeId, setEpisodeId } = useEpisode();
   const [season, setSeason] = useState(1);
   const [ep, setEp] = useState(null || episodeId);
 
   const groupedEpisodes = useMemo(() => {
-    return data.reduce((acc, episode) => {
-      const { season } = episode;
-      if (!acc[season]) {
-        acc[season] = [];
-      }
-      acc[season].push(episode);
+    if (!data) return {}; // Return an empty object if data is null or undefined
+  
+    return data.reduce((acc, seasonData) => {
+      const { season, episodes } = seasonData;
+      acc[season] = episodes;
       return acc;
     }, {});
   }, [data]);
@@ -132,7 +132,14 @@ const Episodes = ({ data }) => {
 
   return (
     <Container>
-      {data.length === 0 ? (
+      {
+      loading ? (
+        <Loader height="100%" width="100%" bgcolor="#1C1E22" type="mutatingDots" />
+      ) : error ? (
+        <h1>{error}</h1>
+      ) :
+      
+      data.length === 0 ? (
         <h1>No episodes found</h1>
       ) : (
         <>

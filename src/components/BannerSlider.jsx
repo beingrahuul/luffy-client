@@ -57,15 +57,12 @@ const BannerSlider = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const URL = "https://luffy-server-production.up.railway.app/banner";
-      const TEST_URL = "http://localhost:8080/banner";
+      const URL = "https://luffy-server-20-production.up.railway.app/tmdb/trending/all/day/en-us/1";
+      //const TEST_URL = "https://luffy-server-20-production.up.railway.app/tmdb/trending/all/day/en-us/1";
       try {
         const response = await fetch(URL);
         const data = await response.json();
-        if (!data.success) {
-          throw new Error(data.message);
-        }
-        setData(data.result);
+        setData(data.results);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -96,7 +93,7 @@ const BannerSlider = () => {
         <ErrorMessage>Error: {error}</ErrorMessage>
       ) : data.length > 0 ? (
         <StyledSlider {...settings}>
-          {data.map((item, index) => (
+          {data.slice(0, 5).map((item, index) => (
             <Banner key={index} data={item} />
           ))}
         </StyledSlider>

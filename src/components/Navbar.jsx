@@ -334,67 +334,7 @@ const Navbar = () => {
 
       <LinkGroup>
         <LinkContainer>
-          <Link onClick={() => handleClick('/')}>Home</Link>
-          <Link className="genre">
-            Genre
-            <Dropdown className="dropdown">
-              <DropdownItem onClick={() => handleClick('/genre/action')}>Action</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/adventure')}>Adventure</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/animation')}>Animation</DropdownItem>
-              {/*<DropdownItem onClick={() => handleClick('/genre/biography')}>Biography</DropdownItem>*/}
-              <DropdownItem onClick={() => handleClick('/genre/comedy')}>Comedy</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/crime')}>Crime</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/documentary')}>Documentary</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/drama')}>Drama</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/family')}>Family</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/kids')}>Kids</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/fantasy')}>Fantasy</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/history')}>History</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/horror')}>Horror</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/music')}>Music</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/mystery')}>Mystery</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/news')}>News</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/reality')}>Reality</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/romance')}>Romance</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/science-fiction')}>Sci-Fi</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/soap')}>Soap</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/talk')}>Talk</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/thriller')}>Thriller</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/tv-movie')}>TV Movie</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/war')}>War</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/western')}>Western</DropdownItem>
-            </Dropdown>
-          </Link>
-          <Link>
-            Country
-            <Dropdown className="dropdown">
-              <DropdownItem onClick={() => handleClick('/genre/action')}>Action</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/adventure')}>Adventure</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/animation')}>Animation</DropdownItem>
-              {/*<DropdownItem onClick={() => handleClick('/genre/biography')}>Biography</DropdownItem>*/}
-              <DropdownItem onClick={() => handleClick('/genre/comedy')}>Comedy</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/crime')}>Crime</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/documentary')}>Documentary</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/drama')}>Drama</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/family')}>Family</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/kids')}>Kids</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/fantasy')}>Fantasy</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/history')}>History</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/horror')}>Horror</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/music')}>Music</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/mystery')}>Mystery</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/news')}>News</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/reality')}>Reality</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/romance')}>Romance</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/science-fiction')}>Sci-Fi</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/soap')}>Soap</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/talk')}>Talk</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/thriller')}>Thriller</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/tv-movie')}>TV Movie</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/war')}>War</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/western')}>Western</DropdownItem>
-            </Dropdown>
-          </Link>
+          <Link onClick={() => handleClick('/')}>Home</Link>        
           <Link onClick={() => handleClick('/')}>Movies</Link>
           <Link onClick={() => handleClick('/')}>TV Shows</Link>
         </LinkContainer>
@@ -408,38 +348,9 @@ const Navbar = () => {
         <MobileMenu>
           <Part>Home</Part>
           <Line />
-          <Part>
-            Genre
-            <SubPart>
-              <DropdownItem onClick={() => handleClick('/genre/action')}>Action</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/adventure')}>Adventure</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/animation')}>Animation</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/biography')}>Biography</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/comedy')}>Comedy</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/crime')}>Crime</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/documentary')}>Documentary</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/drama')}>Drama</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/family')}>Family</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/kids')}>Kids</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/fantasy')}>Fantasy</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/history')}>History</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/horror')}>Horror</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/music')}>Music</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/mystery')}>Mystery</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/news')}>News</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/reality')}>Reality</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/romance')}>Romance</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/science-fiction')}>Sci-Fi</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/soap')}>Soap</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/talk')}>Talk</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/thriller')}>Thriller</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/tv-movie')}>TV Movie</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/war')}>War</DropdownItem>
-              <DropdownItem onClick={() => handleClick('/genre/wastern')}>Western</DropdownItem>
-            </SubPart>
-          </Part>
+        
           <Line />
-          <Part>Country</Part>
+          
           <Line />
           <Part>Movies</Part>
           <Line />

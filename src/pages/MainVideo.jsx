@@ -511,7 +511,6 @@ function MainVideo() {
                 />
               )}
 
-              {/*console.log(quality) */}
 
               <Title>
                 <Series>Beingrahuul: </Series>

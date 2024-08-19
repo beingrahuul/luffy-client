@@ -76,10 +76,22 @@ const Misc = styled.p`
   margin: 0;
 `;
 
-const Card = ({ item, type }) => {
+const PersonCard = ({ item }) => {
+  const navigate = useNavigate();
+
+  const getGender = (id) => {
+    switch (id) {
+      case 1:
+        return "Female";
+      case 2:
+        return "Male";
+      default:
+        return "-";
+  }
+  };
 
   const handleClick = () => {
-    window.location.href = `/${item.media_type ? item.media_type : type}/${item.id}`
+    const type = item.media_type ? item.media_type : 'movie';
   };
 
   return (
@@ -87,9 +99,9 @@ const Card = ({ item, type }) => {
       <ImageContainer>
         <Image
           src={
-            item.poster_path === null
+            item.profile_path === null
               ? "https://i.imgur.com/CVBcGsU.jpeg"
-              : `${TMDB_POSTER_BASE_URL}${item.poster_path}`
+              : `${TMDB_POSTER_BASE_URL}${item.profile_path}` 
           }
           alt={item.title}
           loading="lazy"
@@ -97,18 +109,17 @@ const Card = ({ item, type }) => {
       </ImageContainer>
       <InfoContainer>
         <MiscContainer>
-          <Misc>{item.vote_average ? item.vote_average.toFixed(1) : "N/A"}</Misc>
+          <Misc>{getGender(item.gender)}</Misc>
           <Misc>
             {
-              item.release_date ? item.release_date.split('-')[0] : 
-              item.first_air_date ?  item.first_air_date.split("-")[0] : "N/A"
+              item.known_for_department
             }
           </Misc>
         </MiscContainer>
         <Title>
           {
-            item.title ? item.title.length > 20 ? `${item.title.substring(0, 20)}...` : item.title : 
-            item.name.length > 20 ? `${item.name.substring(0, 20)}...` : item.name
+            item.title ? item.title.length > 21 ? `${item.title.substring(0, 21)}...` : item.title : 
+            item.name.length > 21 ? `${item.name.substring(0, 21)}...` : item.name
           }
         </Title>
       </InfoContainer>
@@ -116,4 +127,4 @@ const Card = ({ item, type }) => {
   );
 };
 
-export default memo(Card);
+export default memo(PersonCard);

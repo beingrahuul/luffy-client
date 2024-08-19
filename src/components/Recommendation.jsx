@@ -1,5 +1,6 @@
+import { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import RecommendCard from './RecommendCard'
+import Card from './Card'
 
 const Container = styled.div`
   display: flex;
@@ -33,15 +34,41 @@ const Title = styled.h1`
 
 
 
-const Recommendation = ({data}) => {
+const Recommendation = ({id, type}) => {
+
+  const [data, setData] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false) 
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const URL = `https://luffy-server-20-production.up.railway.app/tmdb/recommendations/${type}/${id}`;
+      //const TEST_URL = `http://localhost:6969/tmdb/recommendations/${type}/${id}`;
+
+      setLoading(true);
+      setError(null);
+      try {
+        const res = await fetch(URL)
+        const data = await res.json()
+        setData(data.results)
+        setLoading(false)
+      } catch (error) {
+        setError(true)
+        setLoading(false)
+      }
+    }
+    fetchData()
+  }
+  , [id, type])
+
   return (
     <>
     <TitleContainer>
       <Title>Watch Next</Title>
     </TitleContainer>
     <Container>
-      {data.map((item, index) => (
-          <RecommendCard key={index} item={item} />
+      {data.slice(0, 16).map((item, index) => (
+          <Card key={index} item={item} />
       ))}
     </Container>
     </>

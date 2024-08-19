@@ -10,7 +10,8 @@ import LEFT from "../icons/left.svg";
 
 //components
 import Loader from "../components/Loader";
-import SearchCard from "../components/SearchCard";
+import Card from "../components/Card";
+import PersonCard from "../components/PersonCard";
 
 const Container = styled.div`
   display: flex;
@@ -108,34 +109,31 @@ const Search = () => {
   const [error, setError] = useState(null);
   const [results, setResults] = useState([]);
   const [pageno, setPageno] = useState(1);
-  const [hasNextPage, setHasNextPage] = useState(true);
+  const [totalPage, setTotalPage] = useState(true);
 
   useEffect(() => {
     const abortController = new AbortController();
     const fetchSearchResults = async () => {
       setLoading(true);
       setError(null);
-      const URL = "https://luffy-server-production.up.railway.app/search";
-      //const TEST_URL = "http://localhost:8080/search";
+      const URL = `https://luffy-server-20-production.up.railway.app/search`;
+      //const TEST_URL = "http://localhost:6969/search";
       try {
         const response = await fetch(URL, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ query, pageno: pageno }),
+          body: JSON.stringify({ query, page: pageno }),
           signal: abortController.signal
         });
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        if (!data.success) {
-          throw new Error(data.message || 'Failed to fetch search results');
-        }
-        setResults(data.result.results);
-        setPageno(Number(data.result.currentPage));
-        setHasNextPage(data.result.hasNextPage);
+        setResults(data.results);
+        setPageno(Number(data.page));
+        setTotalPage(data.total_pages);
       } catch (error) {
         if (error.name !== 'AbortError') {
           setError(error.message);
@@ -163,7 +161,6 @@ const Search = () => {
 
   const handleNextPage = () => {
     setPageno(prevPageno => prevPageno + 1);
-    console.log(pageno, pageno + 1);
   };
 
   const handlePrevPage = () => {
@@ -182,7 +179,7 @@ const Search = () => {
         <h1>No results found</h1>
       ) : (
         results.map((result, index) => (
-          <SearchCard key={index} item={result} />
+          result.media_type === 'person' ? <PersonCard key={index} item={result} /> : <Card key={index} item={result} />
         ))
       )}
 
@@ -194,10 +191,10 @@ const Search = () => {
           <Button onClick={handlePrevPage} disabled={pageno === 1}>
             <Icon src={LEFT} alt="prev" />
           </Button>
-          {!hasNextPage && pageno !== 1 && <Extra onClick={handlePrevPage}>{pageno - 1}</Extra>}
+          {pageno <= totalPage && pageno !== 1 && <Extra onClick={handlePrevPage}>{pageno - 1}</Extra>}
           <PageNumber>{pageno}</PageNumber>
-          {hasNextPage && <Extra onClick={handleNextPage}>{pageno + 1}</Extra>}
-          <Button onClick={handleNextPage} disabled={!hasNextPage}>
+          {pageno <= totalPage && <Extra onClick={handleNextPage}>{pageno + 1}</Extra>}
+          <Button onClick={handleNextPage} disabled={pageno >= totalPage}>
             <Icon src={RIGHT} alt="next" />
           </Button>
         </PaginationContainer>

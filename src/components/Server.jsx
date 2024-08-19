@@ -123,9 +123,9 @@ const Server = () => {
         }
 
         const data = await response.json();
-
         if (data.success) {
           setServer(data.data);
+          console.log(data.data);
           setSelectedServer(data.data[0]);
         } else {
           setError(data.message);
@@ -137,7 +137,9 @@ const Server = () => {
       }
     };
 
-    fetchData();
+    if(episodeId && mediaId) {
+      fetchData();
+    }
   }, [episodeId, mediaId, setSelectedServer]);
 
   return (
