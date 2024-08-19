@@ -3,10 +3,15 @@ import styled from 'styled-components';
 import { InfinitySpin } from "react-loader-spinner";
 
 // player
-import { MediaPlayer, MediaProvider, Track, Poster } from '@vidstack/react';
-import { defaultLayoutIcons, DefaultVideoLayout } from '@vidstack/react/player/layouts/default';
+//import { MediaPlayer, MediaProvider, Track, Poster } from '@vidstack/react';
+//import { defaultLayoutIcons, DefaultVideoLayout } from '@vidstack/react/player/layouts/default';
 
 import "./style/Videoplayer.css";
+
+//plyr
+
+import { MediaPlayer, MediaProvider, Track, Poster } from '@vidstack/react';
+import { PlyrLayout, plyrLayoutIcons } from '@vidstack/react/player/layouts/plyr';
 
 // context
 import { useEpisode } from '../context/EpisodeContext';
@@ -48,6 +53,8 @@ const VideoPlayer = ({ cover, title }) => {
   };
 
   let hasSelectedDefault = false;
+
+  console.log(getCurrentSource())
 
   return (
     <Container>
@@ -97,7 +104,7 @@ const VideoPlayer = ({ cover, title }) => {
                 );
               })}
             </MediaProvider>
-            <DefaultVideoLayout icons={defaultLayoutIcons} />
+            <PlyrLayout icons={plyrLayoutIcons} />
           </MediaPlayer>
         </MainContainer>
       ) : null}
