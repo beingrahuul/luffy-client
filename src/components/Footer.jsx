@@ -68,8 +68,7 @@ const Footer = () => {
   return (
     <Container>
       <MainContainer>
-        h
-        
+        Working on making site better will be updated soon(there are few bugs, working on it)
       </MainContainer>
     </Container>
   )
