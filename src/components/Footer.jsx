@@ -36,7 +36,7 @@ const Container = styled.div`
 `
 const MainContainer = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   height: 100%;
   width: 100%;
@@ -68,8 +68,8 @@ const Footer = () => {
   return (
     <Container>
       <MainContainer>
-        Working on making site better will be updated soon(there are few bugs, working on it)
-        want to report a bug or have any suggestion? contact me at <a href="mailto:theluffymovies@gmail.com">"theluffymovies@gmail.com"</a> 
+        Working on making site better will be updated soon(there are few bugs, working on it).
+        If you want to report a bug or have any suggestion? contact me at <a href="mailto:theluffymovies@gmail.com">"theluffymovies@gmail.com"</a> 
       </MainContainer>
     </Container>
   )
