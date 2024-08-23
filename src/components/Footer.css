@@ -1,0 +1,39 @@
+.upperbox {
+  width: 100%;
+  height: 273px;
+
+  background-image: url("https://s3-alpha-sig.figma.com/img/d3f1/d37d/2d97e767a5f7659a8e0df95bf542a23a?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=mOIMM9Aa01I-EcErvfKK22YxTKGNpsf02Csx9dHC1MXhgXvnjbXqsH~uY5NwnId10pgzFpRR3ae96vLYTOLxidMIvBAP0jby9h8sv2ZnaDlv-R880bY13fJ95BC8rnPbfPJfobQkhRaxpu4Opp2E1oUNIYAy3vrtfbLe~dH4Con7PRaOJF67lRwas-~0ovu~feC9oFelIyQnO0Mvhudx-bAsYDwkVDEG-o3caLC8YpAiDQVl95cIlgaSoDedHIvanMOhlfI69uqlz16Qr~fzJNa6h1x4EA6x1ik0s2YxaYOXvtJFMDiOlYNkXK55nrkwJvdRjVJ5~8j8sON~PTZQmQ__");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+.lowerbox {
+  background-color: rgba(0, 0, 0, 0.8);
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+.logo {
+  display: flex;
+  width: 8vw;
+  height: 5vh;
+  position: relative;
+  top: 30px;
+  left: 196px;
+}
+
+.logo img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.logo h1 {
+  margin-left: 10px;
+  margin-top: 5px;
+  color: rgb(255, 204, 0);
+}
+
+
