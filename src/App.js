@@ -10,6 +10,7 @@ import Content from './pages/Content';
 import Search from './pages/Search';
 import Genre from './pages/Genre';
 import NotFound from './pages/NotFound';
+import Dmca from './pages/DMCA.jsx';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/search/:query" element={<Search />} />
         <Route path="/genre/:type" element={<Genre />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/dmca" element={<Dmca/>}/>
       </Routes>
       <Footer />
     </BrowserRouter>
