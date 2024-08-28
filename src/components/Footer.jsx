@@ -281,6 +281,11 @@ const Footer = () => {
   const Telepage = () => {
     window.open("https://t.me/+_M92X7_YbVRjZjg9", "_blank");
   };
+
+  const Requestpage = () =>{
+    
+  }
+
   return (
     <Container>
       <MainContainer>
@@ -293,8 +298,6 @@ const Footer = () => {
           </Group>
 
           <Group style={{ justifyContent: "center", margin: "0px" }}>
-            
-
             <MiscContainer>
               <LogoImage src={Contect} alt="contect" />
               <Misc className="tag1">Contact</Misc>
@@ -303,9 +306,7 @@ const Footer = () => {
             <MiscContainer>
               <LogoImage className="logo2" src={Request} alt="request" />
 
-              <NavLink to="/feedback">
-                <Misc className="tag2">Request</Misc>
-              </NavLink>
+              <Misc className="tag2" onClick={Requestpage}>Request</Misc>
             </MiscContainer>
 
             <MiscContainer>
