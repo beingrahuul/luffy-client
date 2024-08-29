@@ -2,45 +2,84 @@ import React from "react";
 import styled from "styled-components";
 import Logo from "../images/logo.jpeg";
 
-const mainContainer = styled.div``;
+// Main container that centers the content and handles responsiveness
+const MainContainer = styled.div`
+ 
+`;
 
-const UpperContainer = styled.div``;
+const UpperContainer = styled.div`
+ 
+`;
 
-const middlecontainer = styled.div``;
+const MiddleContainer = styled.div`
+  
+`;
 
-const inputcontainer = styled.div``;
+const InputContainer = styled.div`
+  
+`;
 
-const logo = styled.img``;
+const LogoImage = styled.img`
+ 
+`;
 
-const heading = styled.h1``;
+const Heading = styled.h1`
+  
+`;
 
-const para = styled.p``;
+const Para = styled.p`
+ 
+`;
 
-const input = styled.input``;
-const button = styled.button``;
+const Label = styled.label`
+  
+`;
+
+const Input = styled.input`
+ 
+`;
+
+const Textarea = styled.textarea`
+ 
+`;
+
+const Button = styled.button`
+  
+`;
 
 function Form() {
   return (
-    <mainContainer>
+    <MainContainer>
       <UpperContainer>
-        <logo src={Logo} alt="This is main logo" />
-        <heading>Make a wish</heading>
-        <para>
+        <LogoImage src={Logo} alt="This is main logo" />
+        <Heading>Make a wish</Heading>
+        <Para>
           If your favorite movie or TV show is missing from our library, please
           let us know. We’ll do our best to add it as quickly as we can.
-        </para>
+        </Para>
       </UpperContainer>
 
-      <middlecontainer>
-       <inputcontainer>
-       <para>Title</para>
-       <input ></input>
-       </inputcontainer>
+      <MiddleContainer>
+        <InputContainer>
+          <Label>Title</Label>
+          <Input type="text" placeholder="Movie/TV Show" />
+        </InputContainer>
 
-      </middlecontainer>
+        <InputContainer>
+          <Label>IMDB Link or any reference</Label>
+          <Input type="url" placeholder="Enter Link" />
+        </InputContainer>
 
-    </mainContainer>
+        <InputContainer>
+          <Label>Write anything else you want to share</Label>
+          <Textarea type="text" placeholder="Write anything else you want to share" rows="4" />
+        </InputContainer>
+
+        <Button>Submit Request</Button>
+      </MiddleContainer>
+    </MainContainer>
   );
 }
 
 export default Form;
+
