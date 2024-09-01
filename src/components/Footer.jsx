@@ -1,5 +1,9 @@
+import {React, useState } from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import Form from '../components/Form.jsx';
+
+
 
 //image
 //import BACK from "../images/footer.png"
@@ -277,17 +281,29 @@ const Button = styled.button`
   }
 `;
 
+
+
 const Footer = () => {
+  const [showForm, setShowForm] = useState(false);
+
+  
   const Telepage = () => {
     window.open("https://t.me/+_M92X7_YbVRjZjg9", "_blank");
   };
 
-  const Requestpage = () =>{
-    
-  }
+  const handleRequestClick = () => {
+    setShowForm(!showForm); // Toggle form visibility
+   
+  };
+
+  
+
+ 
 
   return (
+    
     <Container>
+      
       <MainContainer>
         <UpperContainer>
           <Group>
@@ -303,10 +319,14 @@ const Footer = () => {
               <Misc className="tag1">Contact</Misc>
             </MiscContainer>
 
-            <MiscContainer>
+            <MiscContainer >
               <LogoImage className="logo2" src={Request} alt="request" />
+              
+              <Misc className="tag2" onClick={handleRequestClick}>Request</Misc>
+              
 
-              <Misc className="tag2" onClick={Requestpage}>Request</Misc>
+              
+              
             </MiscContainer>
 
             <MiscContainer>
@@ -333,6 +353,10 @@ const Footer = () => {
           </Group>
         </UpperContainer>
 
+        
+
+
+
         <LowerContainer>
           <Desc>Copyright © luffy.to. All Rights Reserved</Desc>
           <Desc>
@@ -340,7 +364,9 @@ const Footer = () => {
             contents are provided by non-affiliated third parties.
           </Desc>
         </LowerContainer>
+        {showForm && <Form className="form"/>}
       </MainContainer>
+      
     </Container>
   );
 };

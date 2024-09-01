@@ -12,6 +12,7 @@ import Genre from './pages/Genre';
 import NotFound from './pages/NotFound';
 import Dmca from './pages/DMCA.jsx';
 
+
 function App() {
   return (
     <BrowserRouter>
@@ -24,6 +25,7 @@ function App() {
         <Route path="/genre/:type" element={<Genre />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/dmca" element={<Dmca/>}/>
+       
       </Routes>
       <Footer />
     </BrowserRouter>
