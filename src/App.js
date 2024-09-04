@@ -11,12 +11,14 @@ import Search from './pages/Search';
 import Genre from './pages/Genre';
 import NotFound from './pages/NotFound';
 import Dmca from './pages/DMCA.jsx';
+import Alert from './components/Alert.jsx';
 
 
 function App() {
   return (
     <BrowserRouter>
       <Navbar  />
+      <Alert />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/tv/:id" element={<Content type="tv" />} />

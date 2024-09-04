@@ -11,6 +11,7 @@ import Server from '../components/Server';
 import Loader from '../components/Loader';
 import Recommendation from '../components/Recommendation';
 import ShareThis from '../components/ShareThis';
+//import Embed from '../components/Embed';
 
 const Container = styled.div`
   display: flex;
@@ -161,6 +162,8 @@ const Content = ({ type }) => {
           <MainContainer>
             <LeftContainer>
               <VideoPlayer cover={content.backdrop_path} title={content.title} />
+
+              {/*<Embed id={id} type={type} />*/}
               <Server />
               <ShareThis url={window.location.href} />
               {type === 'tv' && (
