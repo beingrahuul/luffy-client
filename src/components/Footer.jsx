@@ -45,6 +45,11 @@ const MainContainer = styled.div`
   flex-direction: column;
   gap: 20px;
 
+  p{
+    margin: 0;
+    padding: 10px;
+  }
+
   @media screen and (max-width: 1299px) {
     
   }
@@ -69,8 +74,7 @@ const Footer = () => {
   return (
     <Container>
       <MainContainer>
-        Working on making site better will be updated soon(there are few bugs, working on it).
-        If you want to report a bug or have any suggestion? contact me at <a href="mailto:theluffymovies@gmail.com">"theluffymovies@gmail.com"</a> 
+        <p>Working on making site better will be updated soon(there are few bugs, working on it). If you want to report a bug or have any suggestion? contact me at <a href="mailto:theluffymovies@gmail.com">"theluffymovies@gmail.com"</a> </p>
       </MainContainer>
     </Container>
   )
