@@ -75,6 +75,7 @@ const Footer = () => {
     <Container>
       <MainContainer>
         <p>Working on making site better will be updated soon(there are few bugs, working on it). If you want to report a bug or have any suggestion? contact me at <a href="mailto:theluffymovies@gmail.com">"theluffymovies@gmail.com"</a> </p>
+        <p>Will start updating from 20 Sept. Busy due to university exams</p>
       </MainContainer>
     </Container>
   )

@@ -252,16 +252,6 @@ const Part = styled.div`
   gap: 10px;
 `;
 
-const SubPart = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: 100%;
-  flex-wrap: wrap;
-  color: white;
-  gap: 10px;
-  font-size: 14px;
-`;
 
 
 const Line = styled.div`
@@ -347,10 +337,6 @@ const Navbar = () => {
       {menu && (
         <MobileMenu>
           <Part>Home</Part>
-          <Line />
-        
-          <Line />
-          
           <Line />
           <Part>Movies</Part>
           <Line />
