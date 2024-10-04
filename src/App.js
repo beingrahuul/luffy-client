@@ -12,6 +12,7 @@ import Genre from './pages/Genre';
 import NotFound from './pages/NotFound';
 import Dmca from './pages/DMCA.jsx';
 import Alert from './components/Alert.jsx';
+import HomeToo from './pages/HomeToo.jsx';
 
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
       <Navbar  />
       <Alert />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<HomeToo />} />
         <Route path="/tv/:id" element={<Content type="tv" />} />
         <Route path="/movie/:id" element={<Content type="movie" />} />
         <Route path="/search/:query" element={<Search />} />

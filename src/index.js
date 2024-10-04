@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
+import App2 from './App2';
 import { EpisodeProvider } from './context/EpisodeContext';
 import GlobalStyle from './styles/GlobalStyle';
 
@@ -15,7 +15,7 @@ root.render(
   <React.StrictMode>
     <EpisodeProvider>
       <GlobalStyle />
-        <App />
+        <App2 />
       <Analytics />
       <SpeedInsights />
     </EpisodeProvider>
