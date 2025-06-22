@@ -22,12 +22,12 @@ function Home() {
     <Container>
       <BannerSlider/>
       <ShareThis  url={url}/>
-      <CardContainer url ="https://luffy-server-20-production.up.railway.app/tmdb/trending/movie/en-us/1"  title = "Trending Movies"  type="movie"/>
-      <CardContainer url ="https://luffy-server-20-production.up.railway.app/tmdb/trending/tv/en-us/1"  title = "Trending TV"  type="tv"/>
-      <CardContainer url ="https://luffy-server-20-production.up.railway.app/tmdb/Latest/movie/en-us/1"  title = "Latest Movies"  type="movie"/>
-      <CardContainer url ="https://luffy-server-20-production.up.railway.app/tmdb/Latest/tv/en-us/1"  title = "Latest TV"  type="tv"/>
-      <CardContainer url ="https://luffy-server-20-production.up.railway.app/tmdb/withKeywords/tv/210024/first_air_date.desc/1"  title = "Latest Anime"  type="tv"/>
-      <CardContainer url ="https://luffy-server-20-production.up.railway.app/tmdb/withKeywords/tv/210024/vote_count.desc/1"  title = "Popular Anime"  type="tv"/>
+      <CardContainer url ="http://localhost:6969/tmdb/trending/movie/en-us/1"  title = "Trending Movies"  type="movie"/>
+      <CardContainer url ="http://localhost:6969/tmdb/trending/tv/en-us/1"  title = "Trending TV"  type="tv"/>
+      <CardContainer url ="http://localhost:6969/tmdb/Latest/movie/en-us/1"  title = "Latest Movies"  type="movie"/>
+      <CardContainer url ="http://localhost:6969/tmdb/Latest/tv/en-us/1"  title = "Latest TV"  type="tv"/>
+      <CardContainer url ="http://localhost:6969/tmdb/withKeywords/tv/210024/first_air_date.desc/1"  title = "Latest Anime"  type="tv"/>
+      <CardContainer url ="http://localhost:6969/tmdb/withKeywords/tv/210024/vote_count.desc/1"  title = "Popular Anime"  type="tv"/>
     </Container>
   )
 }

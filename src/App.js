@@ -19,9 +19,8 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar  />
-      <Alert />
       <Routes>
-        <Route path="/" element={<HomeToo />} />
+        <Route path="/" element={<Home />} />
         <Route path="/tv/:id" element={<Content type="tv" />} />
         <Route path="/movie/:id" element={<Content type="movie" />} />
         <Route path="/search/:query" element={<Search />} />

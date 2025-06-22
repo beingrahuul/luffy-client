@@ -30,7 +30,7 @@ const Embed = ({type, id}) => {
     <Container>
       <MainContainer>
         <StyledIframe
-          src= {type === "movie" ? `https://vidsrc.pro/embed/movie/${id}` : "https://vidsrc.pro/embed/movie/1022789"}
+          src= {type === "movie" ? `https://vidsrc.xyz/embed/movie?tmdb=${id}` : `https://vidsrc.xyz/embed/tv?tmdb=${id}`}
           title="Video Player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen

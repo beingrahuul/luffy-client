@@ -57,8 +57,7 @@ const BannerSlider = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const URL = "https://luffy-server-20-production.up.railway.app/tmdb/trending/all/day/en-us/1";
-      //const TEST_URL = "https://luffy-server-20-production.up.railway.app/tmdb/trending/all/day/en-us/1";
+      const URL = "http://localhost:6969/tmdb/trending/all/day/en-us/1";
       try {
         const response = await fetch(URL);
         const data = await response.json();

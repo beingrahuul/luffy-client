@@ -19,7 +19,7 @@ function App2() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<HomeToo />} />
+        <Route path="/" element={<Home />} />
       </Routes>
     </BrowserRouter>
 
